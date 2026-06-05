@@ -1,0 +1,6 @@
+{
+  "name": "Nature Kingdom",
+  "description": "An immersive, editorial travel documentary-style showcase for the Nature Kingdom Sanctuary in Chikkamagaluru, featuring smooth scroll and parallax.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
