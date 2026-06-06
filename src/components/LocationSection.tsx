@@ -9,11 +9,9 @@ import {
   Car,
 } from "lucide-react";
 
-/* ── Resort coordinates (Himachal Pradesh, India) ───────────────── */
+/* ── Resort location (Chikmagalur, Karnataka, India) ───────────── */
 const RESORT = {
-  lat: 30.9252,
-  lng: 77.1672,
-  googleMapsUrl: "https://maps.google.com/?q=30.9252,77.1672",
+  googleMapsUrl: "https://maps.google.com/?q=Nature+Kingdom+Chikmagalur+Karnataka+India",
 };
 
 /* ── Info items ─────────────────────────────────────────────────── */
@@ -55,12 +53,12 @@ const infoBar = [
   {
     icon: <MapPin size={22} strokeWidth={1.3} />,
     label: "Address",
-    lines: ["Silvan Retreat, Near Emerald Lake,", "Pine Valley, Himachal Pradesh, India"],
+    lines: ["Bommenahalli, Mallenahalli Post,", "Chikmagalur, Karnataka, India"],
   },
   {
     icon: <Car size={22} strokeWidth={1.3} />,
-    label: "From Nearest City",
-    lines: ["2.5 Hours Drive from Solan", "3.5 Hours Drive from Shimla"],
+    label: "Location",
+    lines: ["Chikmagalur District", "Karnataka, India"],
   },
   {
     icon: <Clock size={22} strokeWidth={1.3} />,
@@ -271,7 +269,7 @@ function TopographicMap() {
       <rect x="320" y="315" width="160" height="42" rx="0" fill="none" stroke="#c8a84b" strokeWidth="0.5" strokeOpacity="0.3" />
       <text x="400" y="332" textAnchor="middle" fill="#c8a84b"
         fontSize="11" fontFamily="'Playfair Display', serif" letterSpacing="2.5" fontWeight="400">
-        SILVAN RETREAT
+        NATURE KINGDOM
       </text>
       <text x="400" y="347" textAnchor="middle" fill="#c8a84b" fillOpacity="0.55"
         fontSize="8.5" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="3" fontWeight="300">
@@ -346,7 +344,7 @@ export default function LocationSection() {
     visible: (delay = 0) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 1, delay, ease: [0.25, 1, 0.5, 1] },
+      transition: { duration: 1, delay, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] },
     }),
   };
 
@@ -469,7 +467,7 @@ export default function LocationSection() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-5%" }}
-            transition={{ duration: 1.1, delay: 0.15, ease: [0.25, 1, 0.5, 1] }}
+            transition={{ duration: 1.1, delay: 0.15, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
             className="w-full lg:w-[62%]"
           >
             <div
@@ -514,7 +512,7 @@ export default function LocationSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-5%" }}
-        transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
+        transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
         className="border-t border-white/6"
       >
         <div className="max-w-[1400px] mx-auto px-6 sm:px-12 lg:px-20">

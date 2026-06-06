@@ -25,7 +25,7 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-5%" }}
-      transition={{ duration: 0.9, delay: index * 0.12, ease: [0.25, 1, 0.5, 1] }}
+      transition={{ duration: 0.9, delay: index * 0.12, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
       whileHover={{ y: -6 }}
       className="group relative flex flex-col bg-[#111110] border border-white/5 overflow-hidden cursor-pointer"
       style={{ transition: "box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.25,1,0.5,1)" }}
@@ -48,7 +48,7 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
           className="w-full h-full object-cover select-none"
           style={{ filter: "brightness(0.85)" }}
           whileHover={{ scale: 1.06 }}
-          transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
+          transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
         />
 
         {/* Bottom image gradient */}
@@ -91,12 +91,8 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
         {/* Price + CTA Row */}
         <div className="flex items-end justify-between pt-2 border-t border-white/5">
           <div>
-            <p className="text-[9px] font-sans tracking-[0.2em] uppercase text-on-surface/35 mb-0.5">
-              Starting From
-            </p>
-            <p className="font-headline text-xl text-on-surface">
-              ${pkg.price}
-              <span className="font-sans text-xs font-light text-on-surface/40 ml-1">/ Night</span>
+            <p className="font-sans text-xs font-light text-on-surface/50 tracking-wide">
+              Contact for Pricing
             </p>
           </div>
           <button className="flex items-center gap-2 text-[10px] font-sans tracking-[0.2em] uppercase text-[#e9c349]/70 group-hover:text-[#e9c349] transition-colors duration-300">

@@ -1,5 +1,5 @@
 import { ArrowUpRight, ArrowRight, Instagram, Youtube, Facebook, MessageCircle } from "lucide-react";
-import NightVilla from "../../assets/.aistudio/nightvilla.png";
+const NightVilla = "/assets/nightvilla.png";
 const socials = [
   { label: "Instagram", Icon: Instagram,      href: "#" },
   { label: "YouTube",   Icon: Youtube,         href: "#" },
@@ -89,7 +89,7 @@ export default function LuxuryFooter() {
                 className="font-sans font-medium text-[#C8A97E]"
                 style={{ fontSize: 9, letterSpacing: "0.4em" }}
               >
-                NATURE KINGDOME
+                NATURE KINGDOM
               </span>
             </div>
             {/* City line */}
@@ -191,7 +191,7 @@ export default function LuxuryFooter() {
               className="font-sans font-medium text-[#F4E7D6]/55"
               style={{ fontSize: 9, letterSpacing: "0.38em" }}
             >
-              NATURE KINGDOME
+              NATURE KINGDOM
             </p>
             <p
               className="font-sans font-light text-[#C8A97E]/38"
@@ -252,7 +252,7 @@ export default function LuxuryFooter() {
           className="font-sans font-light text-white/22"
           style={{ fontSize: 8, letterSpacing: "0.32em" }}
         >
-          © 2026 THE SANCTUARY, CHIKKAMAGALURU. ALL RIGHTS RESERVED.
+          © 2026 NATURE KINGDOM, CHIKKAMAGALURU. ALL RIGHTS RESERVED.
         </p>
       </div>
 
