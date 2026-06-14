@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
-import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export interface PackageData {
+  id?: string;
   number: string;
   title: string;
   description: string;
@@ -91,16 +92,21 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
         {/* Price + CTA Row */}
         <div className="flex items-end justify-between pt-2 border-t border-white/5">
           <div>
-            <p className="font-sans text-xs font-light text-on-surface/50 tracking-wide">
-              Contact for Pricing
+            <p className="font-sans text-[10px] font-light text-on-surface/40 tracking-wide">from</p>
+            <p className="font-sans text-base font-semibold text-[#e9c349]">
+              ₹{pkg.price.toLocaleString("en-IN")}
             </p>
+            <p className="font-sans text-[9px] text-on-surface/30">{pkg.nights} nights</p>
           </div>
-          <button className="flex items-center gap-2 text-[10px] font-sans tracking-[0.2em] uppercase text-[#e9c349]/70 group-hover:text-[#e9c349] transition-colors duration-300">
-            View Details
+          <a
+            href={pkg.id ? `/book?package=${pkg.id}` : "/book"}
+            className="flex items-center gap-2 text-[10px] font-sans tracking-[0.2em] uppercase text-[#e9c349]/70 group-hover:text-[#e9c349] transition-colors duration-300"
+          >
+            Book Now
             <span className="w-6 h-6 rounded-full border border-[#e9c349]/30 group-hover:border-[#e9c349]/70 flex items-center justify-center transition-colors duration-300">
               <ArrowRight size={10} />
             </span>
-          </button>
+          </a>
         </div>
       </div>
     </motion.div>

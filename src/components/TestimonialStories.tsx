@@ -76,7 +76,7 @@ export default function TestimonialStories() {
   const [active, setActive]       = useState(0);
   const [isPaused, setIsPaused]   = useState(false);
   const [progressKey, setProgressKey] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const advance = useCallback(() => {
     setActive((p) => (p + 1) % testimonials.length);
@@ -178,7 +178,7 @@ export default function TestimonialStories() {
               }}
               transition={{
                 duration: 1.0,
-                ease: [0.25, 1, 0.5, 1],
+                ease: [0.25, 1, 0.5, 1] as [number, number, number, number],
                 zIndex: { duration: 0 },
               }}
               style={{

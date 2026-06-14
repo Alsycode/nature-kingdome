@@ -122,7 +122,7 @@ export default function CinematicCTA() {
               initial={{ opacity: 0, y: 50, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 30, scale: 0.98 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
               className="bg-[#0b0c0b] border border-on-surface/10 max-w-lg w-full p-8 sm:p-12 relative flex flex-col justify-between"
             >
               {/* Close Button */}

@@ -22,7 +22,7 @@ export default function ChapterDivider({
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
         viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
+        transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
         className="w-[1px] h-24 bg-[#e9c349]/20 mb-12 origin-top"
       />
 
@@ -32,7 +32,7 @@ export default function ChapterDivider({
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
+          transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
           className="text-xs tracking-[0.4em] font-mono text-[#e9c349]/80 uppercase block"
         >
           Act {number} — {subtitle}
@@ -43,7 +43,7 @@ export default function ChapterDivider({
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1.4, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
+          transition={{ duration: 1.4, delay: 0.1, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
           className="font-headline text-4xl sm:text-6xl text-on-surface tracking-tight font-light"
         >
           {title}

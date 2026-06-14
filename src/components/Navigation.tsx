@@ -9,7 +9,7 @@ export default function Navigation({ onEnquireClick }: NavigationProps) {
     <motion.header
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
+      transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
       className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-10 py-8 mix-blend-difference"
     >
       {/* Brand Logo & Editorial Links */}

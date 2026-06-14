@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import heroVideo from "../../assets/.aistudio/herovid.mp4";
+const heroVideo = "/assets/herovid.mp4";
 
 interface HeroProps {
   onBeginJourneyClick?: () => void;
@@ -33,8 +33,9 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
           muted
           loop
           playsInline
+          poster="/assets/golden_hour_hike.png"
           className="absolute inset-0 w-full h-full"
-          style={{ objectFit: "cover", objectPosition: "center" ,}}
+          style={{ objectFit: "cover", objectPosition: "center" }}
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
@@ -51,7 +52,7 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
+          transition={{ delay: 0.4, duration: 1.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
           className="w-16 h-[1px] bg-[#e9c349]/50 mb-8"
         />
 
@@ -64,7 +65,7 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
                 transition={{
                   delay: 0.3 + index * 0.15,
                   duration: 1.2,
-                  ease: [0.16, 1, 0.3, 1],
+                  ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
                 }}
                 className="inline-block"
               >
@@ -78,7 +79,7 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0, duration: 1.4, ease: [0.25, 1, 0.5, 1] }}
+          transition={{ delay: 1.0, duration: 1.4, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
           className="font-sans font-light text-sm sm:text-base lg:text-lg text-on-surface/80 max-w-xl mx-auto mb-10 tracking-wide leading-relaxed"
         >
           Hidden among the ancient forests of Chikkamagaluru lies a private retreat where
@@ -88,7 +89,7 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.2, duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
+          transition={{ delay: 1.2, duration: 1.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
         >
           <a
             onClick={onBeginJourneyClick}

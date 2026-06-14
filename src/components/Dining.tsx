@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import menuImg from "../../assets/.aistudio/menu.png";
+const menuImg = "/assets/menu.png";
 
 interface DiningHighlight {
   title: string;

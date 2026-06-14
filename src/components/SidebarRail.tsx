@@ -5,7 +5,7 @@ export default function SidebarRail() {
     <motion.aside
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1.5, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
+      transition={{ duration: 1.5, delay: 0.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
       className="hidden lg:flex fixed left-0 top-0 h-screen w-20 border-r border-[#f5f5f0]/10 flex-col justify-between items-center py-20 z-40 pointer-events-none"
     >
       {/* Top Coordinate Info or Series marker */}

@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
 import { useRef } from "react";
-import goldenHourImg from "../../assets/.aistudio/golden_hour_hike.png";
-import campfire from "../../assets/.aistudio/campfire.png";
-import breakfast from "../../assets/.aistudio/breakfast.png";
+const goldenHourImg = "/assets/golden_hour_hike.png";
+const campfire = "/assets/campfire.png";
+const breakfast = "/assets/breakfast.png";
 interface TimelineItem {
   time: string;
   title: string;
@@ -63,7 +63,7 @@ export default function ADayInTheForest() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1.2, ease: [0.25, 1, 0.5, 1] },
+      transition: { duration: 1.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] },
     },
   };
 
@@ -111,7 +111,7 @@ export default function ADayInTheForest() {
                     initial={{ scale: 1.05, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true, margin: "-15%" }}
-                    transition={{ duration: 1.4, ease: [0.25, 1, 0.5, 1] }}
+                    transition={{ duration: 1.4, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
                     className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden brightness-85 select-none"
                   >
                     <div className="absolute inset-0 border border-on-surface/5 pointer-events-none z-10" />

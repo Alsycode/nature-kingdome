@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import arrivalVideo from "../../assets/.aistudio/4447119190657531631_sample_1.mp4";
+const arrivalVideo = "/assets/arrival.mp4";
 
 export default function Arrival() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -25,6 +25,7 @@ export default function Arrival() {
           muted
           loop
           playsInline
+          poster="/assets/nightvilla.png"
           className="absolute inset-0 w-full h-full"
           style={{ objectFit: "cover", objectPosition: "center" }}
         >
@@ -42,7 +43,7 @@ export default function Arrival() {
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="font-headline font-bold text-[22vw] leading-none tracking-tighter text-transparent w-full text-center"
           style={{
             WebkitTextStroke: "1px rgba(233,195,73,0.18)",
@@ -85,7 +86,7 @@ export default function Arrival() {
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="font-headline text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.08] tracking-tight mb-6"
         >
           The Kingdom<br />Begins Here.
