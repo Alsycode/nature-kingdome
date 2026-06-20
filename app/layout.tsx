@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
-const BASE_URL = "https://naturekingdom.in";
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
+const BASE_URL = "https://www.naturekingdomhomestay.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -68,13 +71,19 @@ export const metadata: Metadata = {
 
   /* ── Authors ────────────────────────────────────────────────────── */
   authors: [{ name: "Nature Kingdom" }],
+
+  /* ── Icons ──────────────────────────────────────────────────────── */
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 /* ── Structured Data ────────────────────────────────────────────────
    LodgingBusiness covers LocalBusiness as its parent type.
-   All values sourced from CLAUDE.md — no data invented.
-   Geo coordinates omitted: exact coordinates unverified.
-   Telephone omitted: not documented in CLAUDE.md.
+   geo omitted: add latitude/longitude once the property pin is
+   confirmed in Google Maps (replace this comment with a geo block).
 ──────────────────────────────────────────────────────────────────── */
 const lodgingSchema = {
   "@context": "https://schema.org",
@@ -83,13 +92,23 @@ const lodgingSchema = {
   description:
     "A nature resort and homestay in Chikmagalur, Karnataka, surrounded by coffee estates, misty hills, and the Western Ghats. Ideal for families, couples, and nature lovers.",
   url: BASE_URL,
+  telephone: "+91 9148678686",
   image: `${BASE_URL}/assets/nightvilla.png`,
+  priceRange: "₹₹₹",
+  currenciesAccepted: "INR",
+  paymentAccepted: "Cash, UPI",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Bommenahalli, Mallenahalli Post",
     addressLocality: "Chikmagalur",
     addressRegion: "Karnataka",
+    postalCode: "577137",
     addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 13.481783280374168,
+    longitude: 75.79696558049666,
   },
   checkinTime: "12:00",
   checkoutTime: "11:00",
@@ -140,7 +159,29 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(lodgingSchema) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+
+        {/* Google Analytics 4 — only loads when measurement ID is set */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
+      </body>
     </html>
   );
 }

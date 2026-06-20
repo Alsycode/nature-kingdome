@@ -275,6 +275,7 @@ export default function Dashboard() {
           <nav className="flex items-center gap-4 text-sm">
             <span className="text-[#e9c349]">Bookings</span>
             <Link href="/admin/packages" className="text-white/50 hover:text-white transition">Packages</Link>
+            <Link href="/admin/blog" className="text-white/50 hover:text-white transition">Blog</Link>
           </nav>
         </div>
         <button onClick={logout} className="text-xs text-white/40 hover:text-white transition">Sign Out</button>

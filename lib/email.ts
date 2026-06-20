@@ -4,7 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Use Resend's test sender for local dev — swap to your verified domain in production
 const FROM = process.env.NODE_ENV === "production"
-  ? "Nature Kingdom <bookings@naturekingdom.in>"
+  ? "Nature Kingdom <bookings@naturekingdomhomestay.com>"
   : "Nature Kingdom <onboarding@resend.dev>";
 // In dev, all emails go to the test recipient so Resend allows them
 const CLIENT_EMAIL = process.env.NODE_ENV === "production"

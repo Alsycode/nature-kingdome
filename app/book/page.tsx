@@ -200,6 +200,8 @@ function BookingForm() {
               value={form.phone}
               onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
               required
+              pattern="[+]?[0-9\s\-]{7,15}"
+              title="Enter a valid phone number (7–15 digits)"
               placeholder="+91 98765 43210"
               className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#e9c349]/50"
             />

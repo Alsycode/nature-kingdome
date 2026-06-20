@@ -1,12 +1,28 @@
 import type { Metadata } from "next";
-import ClientApp from "@/src/App";
+import HomePage from "@/components/HomePage";
+import { supabaseAdmin } from "@/lib/supabase";
+import type { ApiPackage } from "@/components/PackagesSection";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://naturekingdom.in/",
+    canonical: "https://www.naturekingdomhomestay.com/",
   },
 };
 
-export default function Page() {
-  return <ClientApp />;
+async function fetchPackages(): Promise<ApiPackage[]> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from("packages")
+      .select("*")
+      .order("number");
+    if (error) throw error;
+    return data ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export default async function Page() {
+  const packages = await fetchPackages();
+  return <HomePage initialPackages={packages} />;
 }
