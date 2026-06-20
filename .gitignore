@@ -8,3 +8,6 @@ coverage/
 !.env.example
 .next/
 tsconfig.tsbuildinfo
+
+# Large video files — host on CDN instead
+public/assets/arrival.mp4
