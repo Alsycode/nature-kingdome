@@ -228,7 +228,7 @@ export default function LocationSection() {
               }}
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3878.2!2d75.7700!3d13.3122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbaba4e5dd58d45%3A0x9c1f0a3b2e4f5c6d!2sNature+Kingdom+Homestay%2C+Chikmagalur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.6326278494516!2d75.7979431!3d13.4350521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbadf801fb25f63%3A0xc32076d353a28e1c!2sNature%20Kingdom%20Homestay!5e0!3m2!1sen!2sin!4v1782031465827!5m2!1sen!2sin"
                 className="absolute inset-0 w-full h-full border-0 grayscale contrast-[1.1] brightness-[0.85]"
                 allowFullScreen
                 loading="lazy"

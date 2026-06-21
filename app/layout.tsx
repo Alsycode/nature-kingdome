@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -161,6 +162,9 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+
+        {/* Floating WhatsApp button */}
+        <WhatsAppButton />
 
         {/* Google Analytics 4 — only loads when measurement ID is set */}
         {GA_ID && (

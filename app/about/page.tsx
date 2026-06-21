@@ -4,7 +4,14 @@ import { motion } from "motion/react";
 import LuxuryFooter from "@/components/LuxuryFooter";
 
 const ease = [0.25, 1, 0.5, 1] as [number, number, number, number];
-const IMG = "/assets/nightvilla.png";
+
+const IMGS = {
+  hero:        "/assets/goldenhourhouse.png", // replace: villa exterior at dusk/golden hour
+  vision:      "/assets/coffeeestate.png", // replace: coffee estate rows / cherries close-up
+  philosophy:  "/assets/philosphy.png", // replace: empty terrace / mist at dawn
+  reality:     "https://lh3.googleusercontent.com/aida-public/AB6AXuB1SHNI7ct5Yx-u6MpbHwS6oyrEJ921q4Yn3Z41bBEtgFzPY-__Lg_Axd8x-eh003gHkw-ViyffOteJk8_n_ziwXc03RRkVHf0Q3B_CaP3K4ezodoZj0G-kr_2Z1plC0m0B7BoXboDtjB8LSLTM3EV5DRrsKXtK5GH8Ztq4jiR9aNexNnnHDoVbgmTf11k1cEGvX-GRrK3RqOfcMhclTt9nEPzzdiDesoiSebBETDWiD7BhZ4yKHKCpaTXyg7eEcOiPFSC4Mj52ZASf.", // replace: interior — living room or bedroom
+  guests:      "/assets/campfire.png", // replace: bonfire / guests / outdoor dining
+};
 
 /* ── SVG icons ── */
 const LeafIcon = () => (
@@ -84,12 +91,12 @@ const perspectives = [
   {
     Icon: BuildingIcon,
     title: "Architecture That Defers",
-    body: "We did not want the architecture to lead. The structures are minimal and low-slung, built around what was already here — the trees, the slopes, and the sound.",
+    body: "We did not want the architecture to lead. The structures are minimal and low-slung, built around what was already here - the trees, the slopes, and the sound.",
   },
   {
     Icon: PeopleIcon,
     title: "People Who Want to Slow Down",
-    body: "We are not for people in transit. We are for those who want to pause — to breathe, to read, to sit without agenda, to feel surrounded by silence that stays with them.",
+    body: "We are not for people in transit. We are for those who want to pause - to breathe, to read, to sit without agenda, to feel surrounded by silence that stays with them.",
   },
 ];
 
@@ -164,11 +171,11 @@ const whatIsHere = [
 ];
 
 const whatIsNot = [
-  "Television signal",
+  
   "Room service",
   "Crowd and rush",
   "Noise",
-  "24/7 hot water (due to our belief in the right energy expression).",
+  
 ];
 
 /* ── Page ── */
@@ -212,7 +219,7 @@ export default function AboutPage() {
           {/* Right image panel */}
           <div className="absolute right-0 top-0 w-[55%] h-full hidden lg:block">
             <img
-              src={IMG}
+              src={IMGS.hero}
               alt="Nature Kingdom at night"
               className="w-full h-full object-cover"
             />
@@ -254,8 +261,7 @@ export default function AboutPage() {
               transition={{ duration: 1.2, delay: 0.4, ease }}
               className="font-sans font-light text-sm sm:text-base text-[#F4E7D6]/60 leading-[1.85] max-w-xl"
             >
-              Nature Kingdom is a private nature homestay in Bommenahalli, Chikmagalur —
-              surrounded by coffee estates, spice plantations, and the first ridgeline of
+              Nature Kingdom is a private nature homestay in Bommenahalli, Chikmagalur - surrounded by coffee estates, spice plantations, and the first ridgeline of
               the Western Ghats. It is not a hotel, and it was not designed to look like one.
             </motion.p>
           </div>
@@ -292,7 +298,7 @@ export default function AboutPage() {
               style={{ aspectRatio: "3/4" }}
             >
               <img
-                src={IMG}
+                src={IMGS.vision}
                 alt=""
                 aria-hidden="true"
                 className="w-full h-full object-cover"
@@ -309,13 +315,13 @@ export default function AboutPage() {
             >
               <p className="font-sans font-light text-sm text-[#F4E7D6]/55 leading-[1.88]">
                 Chikmagalur has been a coffee growing district for more than two hundred and
-                fifty years. The landscape exists, the topography — this is the living land.
+                fifty years. The landscape exists, the topography this is the living land.
                 We were few visitors when we first came. We came back because we felt it.
               </p>
               <p className="font-sans font-light text-sm text-[#F4E7D6]/55 leading-[1.88]">
                 The property sits within a working estate, never in front of it. The morning
                 smell of coffee and damp earth. The evening fog out at play. The road that
-                leads here — not a road you find by accident — which is, in a sense, the point.
+                leads here ,not a road you find by accident which is, in a sense, the point.
               </p>
               <p className="font-sans font-light text-sm text-[#F4E7D6]/55 leading-[1.88]">
                 We are not a retreat from it. We are not a sixth. We are in the property,
@@ -425,7 +431,7 @@ export default function AboutPage() {
               className="hidden lg:block overflow-hidden"
               style={{ aspectRatio: "3/4" }}
             >
-              <img src={IMG} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+              <img src={IMGS.philosophy} alt="" aria-hidden="true" className="w-full h-full object-cover" />
             </motion.div>
 
           </div>
@@ -510,7 +516,7 @@ export default function AboutPage() {
               className="hidden lg:block overflow-hidden"
               style={{ aspectRatio: "3/4" }}
             >
-              <img src={IMG} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1SHNI7ct5Yx-u6MpbHwS6oyrEJ921q4Yn3Z41bBEtgFzPY-__Lg_Axd8x-eh003gHkw-ViyffOteJk8_n_ziwXc03RRkVHf0Q3B_CaP3K4ezodoZj0G-kr_2Z1plC0m0B7BoXboDtjB8LSLTM3EV5DRrsKXtK5GH8Ztq4jiR9aNexNnnHDoVbgmTf11k1cEGvX-GRrK3RqOfcMhclTt9nEPzzdiDesoiSebBETDWiD7BhZ4yKHKCpaTXyg7eEcOiPFSC4Mj52ZASf" alt="" aria-hidden="true" className="w-full h-full object-cover" />
             </motion.div>
 
           </div>
@@ -569,7 +575,7 @@ export default function AboutPage() {
               className="hidden lg:block overflow-hidden"
               style={{ aspectRatio: "3/4" }}
             >
-              <img src={IMG} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+              <img src={IMGS.guests} alt="" aria-hidden="true" className="w-full h-full object-cover" />
             </motion.div>
 
           </div>

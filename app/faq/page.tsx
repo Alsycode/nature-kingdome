@@ -6,6 +6,7 @@ import LuxuryFooter from "@/components/LuxuryFooter";
 
 const ease = [0.25, 1, 0.5, 1] as [number, number, number, number];
 const PLACEHOLDER = "/assets/nightvilla.png";
+const HERO_IMG = "/assets/goldenhourhouse.png";
 
 interface FaqItem {
   q: string;
@@ -16,6 +17,7 @@ interface FaqCategory {
   num: string;
   label: string;
   title: string;
+  img?: string;
   items: FaqItem[];
 }
 
@@ -24,6 +26,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     num: "01",
     label: "Planning Your Visit",
     title: "Before You Pack",
+    img: "/assets/arivalcar.png",
     items: [
       {
         q: "What is the best time to visit Chikmagalur?",
@@ -55,6 +58,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     num: "02",
     label: "The Property & Facilities",
     title: "What to Expect",
+    img: "/assets/nightvilla.png",
     items: [
       {
         q: "What facilities are included in the stay?",
@@ -82,6 +86,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     num: "03",
     label: "Food & Dining",
     title: "Meals at the Property",
+    img: "/assets/campfire.png",
     items: [
       {
         q: "Are meals included in the stay?",
@@ -105,6 +110,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     num: "04",
     label: "Booking & Payment",
     title: "Reserving Your Stay",
+    img: "/assets/breakfast.png",
     items: [
       {
         q: "How do I confirm a booking?",
@@ -132,6 +138,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     num: "05",
     label: "Activities & Nearby",
     title: "Beyond the Estate",
+    img: "/assets/golden_hour_hike.png",
     items: [
       {
         q: "What activities are available at Nature Kingdom?",
@@ -271,7 +278,7 @@ export default function FAQPage() {
 
           {/* Background image */}
           <img
-            src={PLACEHOLDER}
+            src={HERO_IMG}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
@@ -280,7 +287,7 @@ export default function FAQPage() {
           />
 
           {/* Layered dark overlays */}
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-black/10" />
           <div
             className="absolute inset-0"
             style={{ background: "rgba(20,10,2,0.48)", mixBlendMode: "multiply" }}
@@ -420,7 +427,7 @@ export default function FAQPage() {
                 {/* ── Left: Image ── */}
                 <div className="relative min-h-[320px] lg:min-h-0 overflow-hidden">
                   <img
-                    src={PLACEHOLDER}
+                    src={cat.img ?? PLACEHOLDER}
                     alt=""
                     aria-hidden="true"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
