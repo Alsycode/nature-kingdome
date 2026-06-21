@@ -1,7 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-const arrivalVideo = "/assets/arrival.mp4";
+const arrivalVideo = "https://res.cloudinary.com/ds05t0bd0/video/upload/v1782042408/4447119190657531631_sample_0_1_xwyfdd.mp4";
 
 export default function Arrival() {
   const sectionRef = useRef<HTMLDivElement>(null);
