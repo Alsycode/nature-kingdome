@@ -1,5 +1,38 @@
 -- Run this in your Supabase SQL editor
 
+-- Blog posts table
+create table if not exists blog_posts (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  slug text not null unique,
+  excerpt text,
+  content text,
+  cover_image_url text,
+  category text,
+  published boolean not null default false,
+  published_at timestamptz,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+-- Auto-update updated_at on every row change
+create or replace function update_updated_at()
+returns trigger as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$ language plpgsql;
+
+create trigger blog_posts_updated_at
+  before update on blog_posts
+  for each row execute function update_updated_at();
+
+-- RLS
+alter table blog_posts enable row level security;
+create policy "Public can read published posts" on blog_posts
+  for select using (published = true);
+
 -- Packages table
 create table if not exists packages (
   id uuid primary key default gen_random_uuid(),
