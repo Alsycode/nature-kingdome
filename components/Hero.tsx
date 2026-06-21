@@ -1,7 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-const heroVideo = "https://res.cloudinary.com/ds05t0bd0/video/upload/v1782042593/2703072408932448006_sample_3_twjphw.mp4";
+const heroVideo = "https://res.cloudinary.com/ds05t0bd0/video/upload/v1782043180/herovid_hsy4rr.mp4";
 
 interface HeroProps {
   onBeginJourneyClick?: () => void;
