@@ -116,9 +116,9 @@ export default function KingdomBeyond() {
   const xTranslate = useTransform(scrollYProgress, [0, 1], ["0%", "-83.333%"]);
 
   return (
-    <div ref={containerRef} className="relative h-[480vh] lg:h-[550vh] bg-surface lg:-ml-20 lg:w-[calc(100%+5rem)]" id="kingdom-beyond">
-      {/* Sticky container that locks in place during vertical scroll */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between">
+    <div ref={containerRef} className="relative h-auto lg:h-[550vh] bg-surface lg:-ml-20 lg:w-[calc(100%+5rem)]" id="kingdom-beyond">
+      {/* Sticky container that locks in place during vertical scroll (desktop only) */}
+      <div className="lg:sticky lg:top-0 lg:h-screen w-full overflow-hidden flex flex-col justify-between">
 
         <TopographicalCurves progress={scrollYProgress} />
 
@@ -243,7 +243,7 @@ export default function KingdomBeyond() {
         </motion.div>
 
         {/* MOBILE LAYOUT */}
-        <div className="lg:hidden w-full h-full overflow-y-auto px-6 py-24 space-y-24 bg-surface z-10">
+        <div className="lg:hidden w-full px-6 py-20 sm:py-28 space-y-20 sm:space-y-28 bg-surface z-10">
 
           <div className="space-y-6 pt-12 pb-12 border-b border-on-surface/5">
             <span className="text-xs tracking-[0.3em] text-[#e9c349] font-semibold uppercase font-sans">

@@ -25,13 +25,11 @@ export default function BrandStory() {
       </div>
 
       {/* ── TOP SPLIT: content (42%) + image (58%) ── */}
+      {/* Removed hardcoded inline flex styles — use responsive Tailwind classes instead */}
       <div className="relative flex flex-col lg:flex-row" style={{ minHeight: "68vh" }}>
 
-        {/* Left content column */}
-        <div
-          className="relative z-10 flex flex-col justify-center px-12 sm:px-16 lg:px-24 pt-28 pb-16 lg:py-32"
-          style={{ flex: "0 0 42%", maxWidth: "42%" }}
-        >
+        {/* Left content column — full width on mobile, 42% on desktop */}
+        <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 lg:px-24 pt-24 pb-12 lg:py-32 w-full lg:w-[42%]">
           {/* ETHOS label + rule */}
           <div className="mb-7 space-y-3">
             <span
@@ -46,7 +44,7 @@ export default function BrandStory() {
           {/* Headline */}
           <h2
             className="font-headline text-[#F4E7D6] leading-[0.95] mb-10"
-            style={{ fontSize: "clamp(3.2rem, 5.5vw, 7rem)", letterSpacing: "-0.01em" }}
+            style={{ fontSize: "clamp(2.5rem, 5.5vw, 7rem)", letterSpacing: "-0.01em" }}
           >
             Not A Stay.<br />A Return To Nature.
           </h2>
@@ -77,22 +75,23 @@ export default function BrandStory() {
           </p>
         </div>
 
-        {/* Right image column */}
-        <div
-          className="relative overflow-hidden"
-          style={{ flex: "0 0 58%", maxWidth: "58%" }}
-        >
+        {/* Right image column — full height on mobile, 58% on desktop */}
+        <div className="relative overflow-hidden w-full lg:w-[58%] min-h-[60vw] sm:min-h-[50vw] lg:min-h-0">
           <img
             src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=85&w=1400"
             alt="Dark cinematic forest path lined with lanterns"
-            className="w-full h-full object-cover select-none transition-transform duration-[1200ms] ease-out hover:scale-[1.02]"
-            style={{ minHeight: "68vh" }}
+            className="absolute inset-0 w-full h-full object-cover select-none transition-transform duration-[1200ms] ease-out hover:scale-[1.02]"
             draggable={false}
           />
           {/* Subtle left-edge blend into content area */}
           <div
             className="absolute inset-y-0 left-0 w-32 pointer-events-none"
             style={{ background: "linear-gradient(to right, #050505, transparent)" }}
+          />
+          {/* Top blend for mobile stacking */}
+          <div
+            className="absolute inset-x-0 top-0 h-20 pointer-events-none lg:hidden"
+            style={{ background: "linear-gradient(to bottom, #050505, transparent)" }}
           />
           {/* Cinematic grade */}
           <div
@@ -109,8 +108,7 @@ export default function BrandStory() {
       <div className="grid grid-cols-1 sm:grid-cols-3 relative">
         {/* Column 01 — SILENCE */}
         <div
-          className="group flex flex-col px-12 sm:px-16 lg:px-24 py-14 lg:py-16 transition-colors duration-300"
-          style={{ borderRight: "1px solid rgba(200,169,126,0.13)" }}
+          className="group flex flex-col px-8 sm:px-10 lg:px-24 py-12 lg:py-16 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-[rgba(200,169,126,0.13)]"
         >
           <div className="flex items-start gap-5 mb-6">
             <span
@@ -154,8 +152,7 @@ export default function BrandStory() {
 
         {/* Column 02 — PRESENCE */}
         <div
-          className="group flex flex-col px-12 sm:px-16 lg:px-20 py-14 lg:py-16 transition-colors duration-300"
-          style={{ borderRight: "1px solid rgba(200,169,126,0.13)" }}
+          className="group flex flex-col px-8 sm:px-10 lg:px-20 py-12 lg:py-16 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-[rgba(200,169,126,0.13)]"
         >
           <div className="flex items-start gap-5 mb-6">
             <span
@@ -202,7 +199,7 @@ export default function BrandStory() {
 
         {/* Column 03 — WILDERNESS */}
         <div
-          className="group flex flex-col px-12 sm:px-16 lg:px-20 py-14 lg:py-16 transition-colors duration-300"
+          className="group flex flex-col px-8 sm:px-10 lg:px-20 py-12 lg:py-16 transition-colors duration-300"
         >
           <div className="flex items-start gap-5 mb-6">
             <span

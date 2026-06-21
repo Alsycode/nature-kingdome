@@ -4,6 +4,7 @@ import { useRef } from "react";
 const goldenHourImg = "/assets/golden_hour_hike.png";
 const campfire = "/assets/campfire.png";
 const breakfast = "/assets/breakfast.png";
+
 interface TimelineItem {
   time: string;
   title: string;
@@ -72,11 +73,11 @@ export default function ADayInTheForest() {
     <section
       ref={containerRef}
       id="experiences"
-      className="py-24 sm:py-32 lg:py-48 px-6 sm:px-12 lg:px-20 w-full bg-[#0a0a0a] relative overflow-hidden"
+      className="py-20 sm:py-32 lg:py-48 px-6 sm:px-12 lg:px-20 w-full bg-[#0a0a0a] relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto space-y-32 sm:space-y-48">
+      <div className="max-w-7xl mx-auto space-y-20 sm:space-y-36 lg:space-y-48">
 
-        {/* Intro header block with oversized display text */}
+        {/* Intro header block */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -87,26 +88,26 @@ export default function ADayInTheForest() {
           <span className="text-xs sm:text-sm tracking-[0.4em] font-semibold text-[#e9c349] uppercase block font-sans">
             A Day Inside
           </span>
-          <h2 className="font-headline text-4xl sm:text-6xl lg:text-7xl leading-tight text-on-surface font-medium">
+          <h2 className="font-headline text-3xl sm:text-5xl lg:text-7xl leading-tight text-on-surface font-medium">
             Silent Moments <br />
             Represented In Time.
           </h2>
-          <p className="font-sans font-light text-base sm:text-lg text-on-surface/60 leading-relaxed max-w-xl mx-auto">
+          <p className="font-sans font-light text-sm sm:text-lg text-on-surface/60 leading-relaxed max-w-xl mx-auto">
             A curated flow of experiences throughout your day. Feel the natural, comforting transition of the sun while rediscovering pure stillness.
           </p>
         </motion.div>
 
         {/* Dynamic Asymmetric Timeline Stack */}
-        <div className="space-y-40 lg:space-y-64">
+        <div className="space-y-20 sm:space-y-36 lg:space-y-64">
           {timelineData.map((item, index) => {
             const isEven = index % 2 === 0;
 
             return (
               <div
                 key={index}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 items-center"
               >
-                {/* Visual Image Block (Col-span-7) */}
+                {/* Visual Image Block */}
                 <div className={`lg:col-span-7 ${isEven ? "" : "lg:order-2"}`}>
                   <motion.div
                     initial={{ scale: 1.05, opacity: 0 }}
@@ -125,14 +126,14 @@ export default function ADayInTheForest() {
                   </motion.div>
                 </div>
 
-                {/* Narrative Typography Block (Col-span-5) */}
-                <div className={`lg:col-span-5 flex flex-col space-y-6 ${isEven ? "" : "lg:order-1 lg:pr-12"}`}>
+                {/* Narrative Typography Block */}
+                <div className={`lg:col-span-5 flex flex-col space-y-5 sm:space-y-6 ${isEven ? "" : "lg:order-1 lg:pr-12"}`}>
                   <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-10%" }}
                     variants={revealVariants}
-                    className="space-y-4"
+                    className="space-y-3 sm:space-y-4"
                   >
                     {/* Time Marker Accent */}
                     <div className="flex items-center space-x-4">
@@ -143,7 +144,7 @@ export default function ADayInTheForest() {
                     </div>
 
                     {/* Headline */}
-                    <h3 className="font-headline text-3xl sm:text-4xl text-on-surface leading-tight font-medium">
+                    <h3 className="font-headline text-2xl sm:text-4xl text-on-surface leading-tight font-medium">
                       {item.title}
                     </h3>
                   </motion.div>

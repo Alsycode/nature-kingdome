@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "motion/react";
-import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass, Map, ShieldCheck, Headphones, Briefcase } from "lucide-react";
+import { useState, useRef } from "react";
+import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass, Map, ShieldCheck, Headphones, Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
 import PackageCard, { PackageData } from "./PackageCard";
 
 export type ApiPackage = {
@@ -81,6 +82,24 @@ interface PackagesSectionProps {
 
 export default function PackagesSection({ initialPackages }: PackagesSectionProps) {
   const packages = initialPackages.filter((p) => p.active).map(toCardData);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+
+  const prevSlide = () => setSlideIndex((i) => (i - 1 + packages.length) % packages.length);
+  const nextSlide = () => setSlideIndex((i) => (i + 1) % packages.length);
+
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 44) {
+      delta > 0 ? nextSlide() : prevSlide();
+    }
+    touchStartX.current = null;
+  }
 
   return (
     <section
@@ -128,26 +147,81 @@ export default function PackagesSection({ initialPackages }: PackagesSectionProp
           </a>
         </motion.div>
 
-        {/* ── Package Cards Grid ──────────────────────────────────── */}
+        {/* ── Package Cards ──────────────────────────────────────── */}
         {packages.length > 0 && (
           <>
-            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+            {/* Desktop: 4-column grid (≥1024px) */}
+            <div className="hidden lg:grid lg:grid-cols-4 gap-5">
               {packages.map((pkg, i) => (
-                <div key={pkg.number}>
-                  <PackageCard pkg={pkg} index={i} />
-                </div>
+                <PackageCard key={pkg.number} pkg={pkg} index={i} />
               ))}
             </div>
 
-            <div
-              className="sm:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            >
-              {packages.map((pkg, i) => (
-                <div key={pkg.number} className="flex-shrink-0 w-[78vw] snap-start">
-                  <PackageCard pkg={pkg} index={i} />
+            {/* Mobile + Tablet: single-card swipe carousel (<1024px) */}
+            <div className="lg:hidden">
+              <div
+                className="relative overflow-hidden select-none"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+                role="region"
+                aria-label="Packages carousel"
+              >
+                {/* Slide track */}
+                <div
+                  className="flex"
+                  style={{
+                    transform: `translateX(${-slideIndex * 100}%)`,
+                    transition: "transform 0.55s cubic-bezier(0.25, 1, 0.5, 1)",
+                  }}
+                >
+                  {packages.map((pkg, i) => (
+                    <div key={pkg.number} className="w-full flex-shrink-0">
+                      <PackageCard pkg={pkg} index={i} />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Carousel controls */}
+              <div className="flex items-center justify-between mt-6">
+                <button
+                  onClick={prevSlide}
+                  aria-label="Previous package"
+                  className="w-11 h-11 border border-white/10 flex items-center justify-center text-on-surface/50 hover:text-[#e9c349] hover:border-[#e9c349]/30 transition-all duration-300"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+
+                {/* Dots */}
+                <div className="flex items-center gap-2">
+                  {packages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSlideIndex(i)}
+                      aria-label={`Go to package ${i + 1}`}
+                      className="transition-all duration-400"
+                      style={{
+                        height: 1,
+                        width: i === slideIndex ? 32 : 18,
+                        background: i === slideIndex ? "#e9c349" : "rgba(233,195,73,0.25)",
+                        display: "block",
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={nextSlide}
+                  aria-label="Next package"
+                  className="w-11 h-11 border border-white/10 flex items-center justify-center text-on-surface/50 hover:text-[#e9c349] hover:border-[#e9c349]/30 transition-all duration-300"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+
+              <p className="text-center mt-4 text-[8px] tracking-[0.3em] font-sans uppercase text-on-surface/25">
+                Swipe to explore packages
+              </p>
             </div>
           </>
         )}
@@ -165,7 +239,7 @@ export default function PackagesSection({ initialPackages }: PackagesSectionProp
           {trustFeatures.map((f, i) => (
             <div
               key={i}
-              className="flex flex-col items-center text-center gap-4 py-12 px-6 sm:px-8"
+              className={`flex flex-col items-center text-center gap-4 py-10 px-4 sm:px-8 ${i < 2 ? "border-b lg:border-b-0" : ""}`}
             >
               <span className="text-[#e9c349]/50">{f.icon}</span>
               <div className="space-y-2">

@@ -59,7 +59,7 @@ export default function CinematicCTA() {
       {/* Floating Centered Narrative details */}
       <motion.div
         style={{ y: contentY }}
-        className="relative z-10 text-center max-w-5xl px-6 flex flex-col items-center space-y-8"
+        className="relative z-10 text-center max-w-5xl px-6 flex flex-col items-center space-y-6 sm:space-y-8"
       >
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
@@ -73,19 +73,19 @@ export default function CinematicCTA() {
           The Final Act
         </span>
 
-        <h2 className="font-headline text-5xl sm:text-7xl lg:text-[110px] leading-[1.02] text-on-surface font-light tracking-tighter">
+        <h2 className="font-headline text-4xl sm:text-6xl lg:text-[110px] leading-[1.02] text-on-surface font-light tracking-tighter">
           The Forest <br className="sm:hidden" />
           <span className="italic font-light text-[#bdcac0]">Is Waiting.</span>
         </h2>
 
-        <p className="font-sans font-light text-base sm:text-lg lg:text-xl text-on-surface/70 max-w-xl mx-auto leading-relaxed tracking-wide">
+        <p className="font-sans font-light text-sm sm:text-lg lg:text-xl text-on-surface/70 max-w-xl mx-auto leading-relaxed tracking-wide">
           Leave the noise behind and rediscover what matters.
         </p>
 
-        <div className="pt-8">
+        <div className="pt-4 sm:pt-8">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="group relative inline-flex items-center justify-center px-12 py-5 border border-on-surface/25 bg-surface text-[#e9c349] hover:bg-[#e9c349] hover:text-surface transition-all duration-700 ease-in-out text-xs sm:text-sm tracking-[0.3em] uppercase overflow-hidden"
+            className="group relative inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-5 border border-on-surface/25 bg-surface text-[#e9c349] hover:bg-[#e9c349] hover:text-surface transition-all duration-700 ease-in-out text-xs sm:text-sm tracking-[0.3em] uppercase overflow-hidden"
           >
             <span className="relative z-10 font-sans font-medium">
               Begin The Transition — Enquire
@@ -102,7 +102,7 @@ export default function CinematicCTA() {
         ESTABLISHED 2026 — CHIKKAMAGALURU
       </div>
 
-      {/* ENQUIRY MODAL */}
+      {/* ENQUIRY MODAL — scrollable on small screens */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -110,27 +110,29 @@ export default function CinematicCTA() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
-            className="fixed inset-0 z-50 bg-[#050505]/95 backdrop-blur-md flex items-center justify-center p-6"
+            className="fixed inset-0 z-50 bg-[#050505]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+            onClick={(e) => { if (e.target === e.currentTarget) setIsModalOpen(false); }}
           >
             <motion.div
               initial={{ opacity: 0, y: 50, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 30, scale: 0.98 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-              className="bg-[#0b0c0b] border border-on-surface/10 max-w-lg w-full p-8 sm:p-12 relative flex flex-col justify-between"
+              className="bg-[#0b0c0b] border border-on-surface/10 max-w-lg w-full p-6 sm:p-12 relative flex flex-col justify-between my-auto"
             >
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-6 right-6 text-on-surface/50 hover:text-on-surface transition-colors font-mono text-sm tracking-widest uppercase py-2 px-1"
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 text-on-surface/50 hover:text-on-surface transition-colors font-mono text-sm tracking-widest uppercase py-2 px-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="Close modal"
               >
                 [ CLOSE ]
               </button>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6 mt-4 sm:mt-0">
                 <span className="text-[10px] tracking-[0.3em] text-[#e9c349] font-mono uppercase block">
                   Private Sanctuary Allocation
                 </span>
-                <h3 className="font-headline text-3xl sm:text-4xl text-on-surface leading-tight font-light">
+                <h3 className="font-headline text-2xl sm:text-4xl text-on-surface leading-tight font-light">
                   Reserve Your Place.
                 </h3>
                 <p className="font-sans font-light text-xs sm:text-sm text-on-surface/60 leading-relaxed">
@@ -151,7 +153,7 @@ export default function CinematicCTA() {
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+                <form onSubmit={handleSubmit} className="mt-6 sm:mt-8 space-y-5 sm:space-y-6">
                   <div className="space-y-1 group">
                     <label className="text-[9px] tracking-[0.25em] text-[#e9c349]/80 uppercase block font-sans">
                       Your Name
@@ -162,7 +164,7 @@ export default function CinematicCTA() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-on-surface/20 focus:border-[#e9c349] py-2 text-sm text-on-surface outline-none transition-colors duration-300 font-sans font-light"
+                      className="w-full bg-transparent border-b border-on-surface/20 focus:border-[#e9c349] py-3 text-sm text-on-surface outline-none transition-colors duration-300 font-sans font-light"
                       placeholder="e.g., Katherine Pierce"
                     />
                   </div>
@@ -177,7 +179,7 @@ export default function CinematicCTA() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-on-surface/20 focus:border-[#e9c349] py-2 text-sm text-on-surface outline-none transition-colors duration-300 font-sans font-light"
+                      className="w-full bg-transparent border-b border-on-surface/20 focus:border-[#e9c349] py-3 text-sm text-on-surface outline-none transition-colors duration-300 font-sans font-light"
                       placeholder="e.g., katherine@epure.com"
                     />
                   </div>
@@ -191,15 +193,15 @@ export default function CinematicCTA() {
                       value={formData.notes}
                       onChange={handleInputChange}
                       rows={2}
-                      className="w-full bg-transparent border-b border-on-surface/20 focus:border-[#e9c349] py-2 text-sm text-on-surface outline-none transition-colors duration-300 font-sans font-light resize-none"
+                      className="w-full bg-transparent border-b border-on-surface/20 focus:border-[#e9c349] py-3 text-sm text-on-surface outline-none transition-colors duration-300 font-sans font-light resize-none"
                       placeholder="e.g., Autumn canopy escape..."
                     />
                   </div>
 
-                  <div className="pt-4">
+                  <div className="pt-3 sm:pt-4">
                     <button
                       type="submit"
-                      className="w-full py-4 bg-[#e9c349] text-surface font-sans text-[11px] font-semibold tracking-[0.25em] uppercase hover:bg-on-surface-variant hover:text-on-surface transition-all duration-500 rounded-[1px]"
+                      className="w-full py-4 bg-[#e9c349] text-surface font-sans text-[11px] font-semibold tracking-[0.25em] uppercase hover:bg-on-surface-variant hover:text-on-surface transition-all duration-500 rounded-[1px] min-h-[52px]"
                     >
                       Submit Booking Enquiry
                     </button>

@@ -47,7 +47,7 @@ export default function Dining() {
       id="dining"
       className="py-24 sm:py-32 lg:py-48 px-6 sm:px-12 lg:px-20 w-full bg-[#0a0a0a] relative overflow-hidden border-t border-on-surface/5"
     >
-      <div className="max-w-7xl mx-auto flex flex-col space-y-24 sm:space-y-36">
+      <div className="max-w-7xl mx-auto flex flex-col space-y-20 sm:space-y-36">
 
         {/* Editorial Title Block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -55,7 +55,7 @@ export default function Dining() {
             <span className="text-xs sm:text-sm tracking-[0.4em] font-semibold text-[#e9c349] uppercase block font-sans">
               The Nourishment
             </span>
-            <h2 className="font-headline text-5xl sm:text-7xl lg:text-8xl leading-[1.05] tracking-tight text-on-surface">
+            <h2 className="font-headline text-4xl sm:text-6xl lg:text-8xl leading-[1.05] tracking-tight text-on-surface">
               Simple Food. <br />
               <span className="font-sans font-light italic text-[#e9c349]">Extraordinary Setting.</span>
             </h2>
@@ -68,7 +68,8 @@ export default function Dining() {
         </div>
 
         {/* Immersive visual element with subtle parallax */}
-        <div className="relative aspect-[21/9] w-full overflow-hidden brightness-90 shadow-2xl rounded-[1px]">
+        {/* aspect-[16/9] on mobile, aspect-[21/9] on lg — prevents a near-invisible image on small screens */}
+        <div className="relative aspect-[16/9] lg:aspect-[21/9] w-full overflow-hidden brightness-90 shadow-2xl rounded-[1px]">
           <div className="absolute inset-0 border border-on-surface/5 pointer-events-none z-10" />
           <motion.img
             style={{ y: imgY }}
@@ -80,7 +81,7 @@ export default function Dining() {
         </div>
 
         {/* Minimal Narrative list - highlights */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 pt-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 pt-4 sm:pt-8 items-start">
           <div className="lg:col-span-4 space-y-4">
             <h3 className="font-headline text-2xl sm:text-3xl text-on-surface font-medium">
               The Culinary Rhythm
@@ -90,7 +91,7 @@ export default function Dining() {
             </p>
           </div>
 
-          {/* Highlights Stack (Col-span-8) */}
+          {/* Highlights Stack */}
           <div className="lg:col-span-8 divide-y divide-on-surface/10">
             {highlights.map((item, index) => (
               <motion.div
@@ -99,7 +100,7 @@ export default function Dining() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-5%" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="py-10 grid grid-cols-1 sm:grid-cols-12 gap-4 group"
+                className="py-8 sm:py-10 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4 group"
               >
                 <div className="sm:col-span-4">
                   <h4 className="font-headline text-xl text-on-surface group-hover:text-[#e9c349] transition-colors duration-300">

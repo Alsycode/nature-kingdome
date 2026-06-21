@@ -14,7 +14,7 @@ export default function ChapterDivider({
   title,
   subtitle,
   quote,
-  height = "py-44 sm:py-56"
+  height = "py-24 sm:py-40 lg:py-52",
 }: ChapterDividerProps) {
   return (
     <div className={`w-full flex flex-col items-center justify-center bg-surface relative overflow-hidden ${height} px-6`}>
@@ -45,7 +45,7 @@ export default function ChapterDivider({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 1.4, delay: 0.1, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
-          className="font-headline text-4xl sm:text-6xl text-on-surface tracking-tight font-light"
+          className="font-headline text-3xl sm:text-5xl lg:text-6xl text-on-surface tracking-tight font-light"
         >
           {title}
         </motion.h3>
@@ -59,16 +59,16 @@ export default function ChapterDivider({
             transition={{ duration: 1.8, delay: 0.3 }}
             className="font-headline italic text-sm sm:text-base text-on-surface/50 max-w-lg mx-auto pt-4 leading-relaxed tracking-wide"
           >
-            "{quote}"
+            &ldquo;{quote}&rdquo;
           </motion.p>
         )}
       </div>
 
-      {/* Decorative background absolute layout markers */}
-      <span className="absolute left-10 bottom-6 text-[8px] font-mono tracking-[0.4em] text-on-surface/10 uppercase select-none pointer-events-none">
+      {/* Decorative background labels */}
+      <span className="absolute left-6 sm:left-10 bottom-6 text-[8px] font-mono tracking-[0.4em] text-on-surface/10 uppercase select-none pointer-events-none hidden sm:block">
         NATURE KINGDOM CHRONICLES
       </span>
-      <span className="absolute right-10 bottom-6 text-[8px] font-mono tracking-[0.4em] text-[#e9c349]/10 uppercase select-none pointer-events-none">
+      <span className="absolute right-6 sm:right-10 bottom-6 text-[8px] font-mono tracking-[0.4em] text-[#e9c349]/10 uppercase select-none pointer-events-none">
         0{number} / 05
       </span>
     </div>
