@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 const RESORT = {
-  googleMapsUrl: "https://maps.google.com/?q=Nature+Kingdom+Chikmagalur+Karnataka+India",
+  googleMapsUrl: "https://maps.google.com/?q=Nature+Kingdom+Homestay+Chikmagalur&ll=13.3122,75.7700",
 };
 
 const highlights = [
@@ -65,167 +65,6 @@ const infoBar = [
   },
 ];
 
-function TopographicMap() {
-  return (
-    <svg
-      viewBox="0 0 800 500"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-      style={{ display: "block" }}
-    >
-      <defs>
-        <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
-          <stop offset="0%" stopColor="#1a2030" />
-          <stop offset="100%" stopColor="#0d1119" />
-        </radialGradient>
-        <radialGradient id="hill1" cx="35%" cy="40%" r="30%">
-          <stop offset="0%" stopColor="#1e2d1e" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#0d1119" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="hill2" cx="70%" cy="30%" r="25%">
-          <stop offset="0%" stopColor="#1a2a1a" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#0d1119" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="hill3" cx="60%" cy="70%" r="28%">
-          <stop offset="0%" stopColor="#1c2820" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="#0d1119" stopOpacity="0" />
-        </radialGradient>
-        <filter id="noise" x="0%" y="0%" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
-          <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
-          <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" result="blended" />
-          <feComponentTransfer in="blended">
-            <feFuncA type="linear" slope="0.06" />
-          </feComponentTransfer>
-          <feMerge>
-            <feMergeNode in="SourceGraphic" />
-            <feMergeNode />
-          </feMerge>
-        </filter>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <filter id="markerGlow">
-          <feGaussianBlur stdDeviation="6" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      <rect width="800" height="500" fill="url(#bgGrad)" />
-      <ellipse cx="280" cy="200" rx="220" ry="170" fill="url(#hill1)" />
-      <ellipse cx="560" cy="150" rx="200" ry="140" fill="url(#hill2)" />
-      <ellipse cx="480" cy="350" rx="190" ry="150" fill="url(#hill3)" />
-      <ellipse cx="640" cy="200" rx="65" ry="45" fill="#111e2a" opacity="0.7" />
-      <ellipse cx="640" cy="200" rx="60" ry="40" fill="#152030" opacity="0.5" />
-
-      <path d="M50,380 Q120,280 200,240 Q280,200 350,180 Q430,160 510,170 Q600,185 680,220 Q730,245 760,300 Q780,350 750,400 Q700,450 620,460 Q500,475 380,465 Q260,455 160,430 Q80,410 50,380Z"
-        fill="none" stroke="#c8a84b" strokeWidth="0.4" opacity="0.2" />
-      <path d="M80,360 Q150,275 230,238 Q310,200 380,183 Q460,168 535,178 Q615,193 685,228 Q725,252 745,300 Q762,345 732,390 Q685,440 610,450 Q495,463 378,453 Q265,445 168,420 Q100,400 80,360Z"
-        fill="none" stroke="#c8a84b" strokeWidth="0.4" opacity="0.25" />
-      <path d="M110,340 Q185,268 265,235 Q340,202 410,190 Q485,178 555,188 Q625,200 680,235 Q715,258 730,300 Q742,340 715,378 Q672,425 600,435 Q490,447 378,438 Q272,430 180,408 Q120,388 110,340Z"
-        fill="none" stroke="#c8a84b" strokeWidth="0.5" opacity="0.3" />
-      <path d="M145,318 Q220,260 298,232 Q370,205 438,196 Q508,186 572,198 Q638,212 678,245 Q706,267 718,305 Q727,342 700,375 Q658,418 590,426 Q483,438 375,428 Q278,418 195,396 Q142,375 145,318Z"
-        fill="none" stroke="#c8a84b" strokeWidth="0.5" opacity="0.33" />
-      <path d="M185,295 Q258,252 332,228 Q400,208 463,202 Q530,196 586,210 Q642,226 672,255 Q693,275 702,308 Q710,340 686,368 Q647,405 582,412 Q476,423 372,413 Q285,404 213,383 Q167,363 185,295Z"
-        fill="none" stroke="#c8a84b" strokeWidth="0.6" opacity="0.36" />
-      <path d="M268,252 Q332,235 398,218 Q458,204 516,202 Q572,200 614,218 Q653,237 668,264 Q680,288 683,315 Q686,342 664,362 Q629,390 568,394 Q466,403 364,392 Q298,383 252,358 Q225,338 268,252Z"
-        fill="none" stroke="#c8a84b" strokeWidth="0.7" opacity="0.42" />
-      <path d="M348,222 Q402,212 454,206 Q506,201 554,204 Q600,208 628,228 Q652,248 658,274 Q664,300 660,322 Q655,344 636,358 Q606,376 552,379 Q456,386 358,374 Q306,365 290,338 Q278,315 348,222Z"
-        fill="none" stroke="#c8a84b" strokeWidth="0.8" opacity="0.48" />
-
-      <path d="M0,310 Q100,305 200,295 Q300,285 400,280 Q500,275 620,268 Q700,265 800,260"
-        fill="none" stroke="#c8a84b" strokeWidth="1.2" opacity="0.5" />
-      <path d="M400,280 Q410,320 418,370 Q424,410 430,500"
-        fill="none" stroke="#c8a84b" strokeWidth="0.8" opacity="0.4" />
-      <path d="M400,280 Q395,240 388,195 Q382,155 375,80"
-        fill="none" stroke="#c8a84b" strokeWidth="0.8" opacity="0.38" />
-      <path d="M400,280 Q480,255 560,230 Q620,212 680,195"
-        fill="none" stroke="#c8a84b" strokeWidth="0.7" opacity="0.35" />
-      <path d="M400,280 Q340,270 270,260 Q190,250 100,245 Q50,242 0,238"
-        fill="none" stroke="#c8a84b" strokeWidth="0.7" opacity="0.35" />
-      <path d="M400,280 Q460,310 520,345 Q570,372 620,400"
-        fill="none" stroke="#c8a84b" strokeWidth="0.5" opacity="0.28" strokeDasharray="4 3" />
-
-      <path d="M160,80 Q220,140 280,190 Q320,220 360,250 Q380,265 400,280"
-        fill="none" stroke="#1e3a5a" strokeWidth="2.5" opacity="0.6" />
-      <path d="M162,82 Q222,142 282,192 Q322,222 362,252"
-        fill="none" stroke="#254a70" strokeWidth="1.2" opacity="0.4" />
-
-      <text x="375" y="72" textAnchor="middle" fill="#c8a84b" fillOpacity="0.55"
-        fontSize="11" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="2" fontWeight="300">Pine</text>
-      <text x="375" y="87" textAnchor="middle" fill="#c8a84b" fillOpacity="0.55"
-        fontSize="11" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="2" fontWeight="300">Forest</text>
-      <text x="95" y="258" textAnchor="middle" fill="#c8a84b" fillOpacity="0.5"
-        fontSize="10" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="1.5" fontWeight="300">Whispering</text>
-      <text x="95" y="272" textAnchor="middle" fill="#c8a84b" fillOpacity="0.5"
-        fontSize="10" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="1.5" fontWeight="300">Falls</text>
-      <text x="170" y="398" textAnchor="middle" fill="#c8a84b" fillOpacity="0.45"
-        fontSize="10" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="1.5" fontWeight="300">Mountain</text>
-      <text x="170" y="412" textAnchor="middle" fill="#c8a84b" fillOpacity="0.45"
-        fontSize="10" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="1.5" fontWeight="300">Trail</text>
-      <text x="695" y="186" textAnchor="middle" fill="#c8a84b" fillOpacity="0.5"
-        fontSize="10" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="1.5" fontWeight="300">Lake</text>
-      <text x="695" y="200" textAnchor="middle" fill="#c8a84b" fillOpacity="0.5"
-        fontSize="10" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="1.5" fontWeight="300">Viewpoint</text>
-
-      <ellipse cx="640" cy="200" rx="42" ry="28" fill="#182535" opacity="0.55" />
-      <ellipse cx="640" cy="200" rx="35" ry="22" fill="#1a2d40" opacity="0.4" />
-
-      <text x="660" y="400" textAnchor="middle" fill="#c8a84b" fillOpacity="0.45"
-        fontSize="10" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="1.5" fontWeight="300">Sunrise</text>
-      <text x="660" y="414" textAnchor="middle" fill="#c8a84b" fillOpacity="0.45"
-        fontSize="10" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="1.5" fontWeight="300">Point</text>
-
-      <circle cx="400" cy="280" r="28" fill="#c8a84b" fillOpacity="0.06" filter="url(#markerGlow)" />
-      <circle cx="400" cy="280" r="18" fill="#c8a84b" fillOpacity="0.1" />
-      <g filter="url(#glow)" transform="translate(400,280)">
-        <path d="M0,-34 C-14,-34 -24,-24 -24,-10 C-24,6 0,28 0,28 C0,28 24,6 24,-10 C24,-24 14,-34 0,-34Z"
-          fill="#c8a84b" />
-        <circle cx="0" cy="-12" r="8" fill="#0d1119" />
-      </g>
-
-      <rect x="320" y="315" width="160" height="42" rx="0" fill="#0d1119" fillOpacity="0.82" />
-      <rect x="320" y="315" width="160" height="42" rx="0" fill="none" stroke="#c8a84b" strokeWidth="0.5" strokeOpacity="0.3" />
-      <text x="400" y="332" textAnchor="middle" fill="#c8a84b"
-        fontSize="11" fontFamily="'Playfair Display', serif" letterSpacing="2.5" fontWeight="400">NATURE KINGDOM</text>
-      <text x="400" y="347" textAnchor="middle" fill="#c8a84b" fillOpacity="0.55"
-        fontSize="8.5" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="3" fontWeight="300">NATURE RESORT</text>
-
-      <rect x="740" y="360" width="36" height="36" rx="2" fill="#0d1119" fillOpacity="0.85"
-        stroke="#c8a84b" strokeWidth="0.5" strokeOpacity="0.3" />
-      <text x="758" y="384" textAnchor="middle" fill="#c8a84b" fillOpacity="0.7"
-        fontSize="20" fontFamily="'Hanken Grotesk', sans-serif" fontWeight="200">+</text>
-      <rect x="740" y="400" width="36" height="36" rx="2" fill="#0d1119" fillOpacity="0.85"
-        stroke="#c8a84b" strokeWidth="0.5" strokeOpacity="0.3" />
-      <text x="758" y="424" textAnchor="middle" fill="#c8a84b" fillOpacity="0.7"
-        fontSize="22" fontFamily="'Hanken Grotesk', sans-serif" fontWeight="200">−</text>
-
-      <defs>
-        <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
-          <stop offset="60%" stopColor="transparent" />
-          <stop offset="100%" stopColor="#0a0c10" stopOpacity="0.6" />
-        </radialGradient>
-      </defs>
-      <rect width="800" height="500" fill="url(#vignette)" />
-
-      {[100,200,300,400,500,600,700].map(x => (
-        <line key={`vg${x}`} x1={x} y1="0" x2={x} y2="500"
-          stroke="#c8a84b" strokeWidth="0.15" strokeOpacity="0.08" />
-      ))}
-      {[100,200,300,400].map(y => (
-        <line key={`hg${y}`} x1="0" y1={y} x2="800" y2={y}
-          stroke="#c8a84b" strokeWidth="0.15" strokeOpacity="0.08" />
-      ))}
-    </svg>
-  );
-}
 
 interface InfoItemProps {
   icon: ReactNode;
@@ -388,9 +227,20 @@ export default function LocationSection() {
                 aspectRatio: "16/10",
               }}
             >
-              <div className="absolute inset-0">
-                <TopographicMap />
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3878.2!2d75.7700!3d13.3122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbaba4e5dd58d45%3A0x9c1f0a3b2e4f5c6d!2sNature+Kingdom+Homestay%2C+Chikmagalur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                className="absolute inset-0 w-full h-full border-0 grayscale contrast-[1.1] brightness-[0.85]"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Nature Kingdom location map"
+              />
+
+              {/* Tint overlay to match dark theme */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: "rgba(10,10,8,0.18)", mixBlendMode: "multiply" }}
+              />
 
               <div className="absolute top-4 right-4 z-10">
                 <a
@@ -404,9 +254,6 @@ export default function LocationSection() {
                   <ExternalLink size={10} className="opacity-60" />
                 </a>
               </div>
-
-              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface/40 to-transparent pointer-events-none" />
-              <div className="absolute top-0 left-0 bottom-0 w-12 bg-gradient-to-r from-[#0a0c10]/50 to-transparent pointer-events-none" />
             </div>
           </motion.div>
         </div>

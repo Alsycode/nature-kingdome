@@ -108,7 +108,7 @@ export default function BrandStory() {
       <div className="grid grid-cols-1 sm:grid-cols-3 relative">
         {/* Column 01 — SILENCE */}
         <div
-          className="group flex flex-col px-8 sm:px-10 lg:px-24 py-12 lg:py-16 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-[rgba(200,169,126,0.13)]"
+          className="group flex flex-col items-center text-center sm:items-start sm:text-left px-8 sm:px-10 lg:px-24 py-12 lg:py-16 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-[rgba(200,169,126,0.13)]"
         >
           <div className="flex items-start gap-5 mb-6">
             <span
@@ -152,7 +152,7 @@ export default function BrandStory() {
 
         {/* Column 02 — PRESENCE */}
         <div
-          className="group flex flex-col px-8 sm:px-10 lg:px-20 py-12 lg:py-16 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-[rgba(200,169,126,0.13)]"
+          className="group flex flex-col items-center text-center sm:items-start sm:text-left px-8 sm:px-10 lg:px-20 py-12 lg:py-16 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-[rgba(200,169,126,0.13)]"
         >
           <div className="flex items-start gap-5 mb-6">
             <span
@@ -199,7 +199,7 @@ export default function BrandStory() {
 
         {/* Column 03 — WILDERNESS */}
         <div
-          className="group flex flex-col px-8 sm:px-10 lg:px-20 py-12 lg:py-16 transition-colors duration-300"
+          className="group flex flex-col items-center text-center sm:items-start sm:text-left px-8 sm:px-10 lg:px-20 py-12 lg:py-16 transition-colors duration-300"
         >
           <div className="flex items-start gap-5 mb-6">
             <span
