@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabase";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 function isAdmin(req: NextRequest) {
   return req.headers.get("x-admin-token") === process.env.ADMIN_PASSWORD;
@@ -12,6 +18,7 @@ export async function POST(req: NextRequest) {
 
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
+  const folder = (formData.get("folder") as string | null) ?? "nature-kingdom";
 
   if (!file) {
     return NextResponse.json({ error: "No file provided" }, { status: 400 });
@@ -26,21 +33,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "File must be under 5 MB" }, { status: 400 });
   }
 
-  const ext = file.name.split(".").pop();
-  const filename = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
   const buffer = Buffer.from(await file.arrayBuffer());
 
-  const { error } = await supabaseAdmin.storage
-    .from("blog-images")
-    .upload(filename, buffer, { contentType: file.type, upsert: false });
+  const url = await new Promise<string>((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { folder, resource_type: "image" },
+      (error, result) => {
+        if (error || !result) return reject(error ?? new Error("Upload failed"));
+        resolve(result.secure_url);
+      }
+    );
+    stream.end(buffer);
+  });
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
-  const { data: urlData } = supabaseAdmin.storage
-    .from("blog-images")
-    .getPublicUrl(filename);
-
-  return NextResponse.json({ url: urlData.publicUrl }, { status: 201 });
+  return NextResponse.json({ url }, { status: 201 });
 }

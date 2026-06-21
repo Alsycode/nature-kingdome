@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { adminHeaders } from "@/lib/adminAuth";
+import { adminHeaders, getStoredToken } from "@/lib/adminAuth";
 
 const CATEGORIES = [
   "Chikmagalur Travel Guide",
@@ -71,7 +71,7 @@ export default function BlogEditor({ initialData, mode }: Props) {
     setError("");
     const fd = new FormData();
     fd.append("file", file);
-    const res = await fetch("/api/upload", { method: "POST", headers: adminHeaders(), body: fd });
+    const res = await fetch("/api/upload", { method: "POST", headers: { "x-admin-token": getStoredToken() ?? "" }, body: fd });
     const data = await res.json();
     setUploading(false);
     if (!res.ok) { setError(data.error ?? "Upload failed"); return; }

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { adminHeaders, getStoredToken, clearStoredToken } from "@/lib/adminAuth";
@@ -36,7 +36,9 @@ export default function PackagesAdmin() {
   const [form, setForm] = useState(emptyForm);
   const [showForm, setShowForm] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const fetchPackages = useCallback(async () => {
     setLoading(true);
@@ -65,6 +67,7 @@ export default function PackagesAdmin() {
     });
     setShowForm(true);
     setError("");
+    setUploading(false);
   }
 
   function startNew() {
@@ -72,6 +75,20 @@ export default function PackagesAdmin() {
     setForm(emptyForm);
     setShowForm(true);
     setError("");
+    setUploading(false);
+  }
+
+  async function handleImageUpload(file: File) {
+    setUploading(true);
+    setError("");
+    const fd = new FormData();
+    fd.append("file", file);
+    fd.append("folder", "nature-kingdom/packages");
+    const res = await fetch("/api/upload", { method: "POST", headers: { "x-admin-token": getStoredToken() ?? "" }, body: fd });
+    const data = await res.json();
+    setUploading(false);
+    if (!res.ok) { setError(data.error ?? "Upload failed"); return; }
+    setForm((f) => ({ ...f, image_url: data.url }));
   }
 
   async function handleSave(e: React.FormEvent) {
@@ -167,7 +184,52 @@ export default function PackagesAdmin() {
                 <Field label="Description" value={form.description} onChange={(v) => setForm((f) => ({ ...f, description: v }))} required />
                 <Field label="Price (₹)" type="number" value={form.price} onChange={(v) => setForm((f) => ({ ...f, price: v }))} required />
                 <Field label="Features (comma separated)" value={form.features} onChange={(v) => setForm((f) => ({ ...f, features: v }))} placeholder="2 Nights Stay, All Meals, Nature Trails" />
-                <Field label="Image URL" value={form.image_url} onChange={(v) => setForm((f) => ({ ...f, image_url: v }))} />
+                {/* Image upload */}
+                <div>
+                  <label className="block text-[10px] text-white/40 mb-1 tracking-wide uppercase">Package Image</label>
+                  {form.image_url ? (
+                    <div className="relative">
+                      <img src={form.image_url} alt="Preview" className="w-full h-36 object-cover rounded-lg" />
+                      <button
+                        type="button"
+                        onClick={() => setForm((f) => ({ ...f, image_url: "" }))}
+                        className="absolute top-2 right-2 w-6 h-6 bg-black/70 text-white/80 rounded-full text-xs hover:bg-black transition flex items-center justify-center"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ) : (
+                    <div
+                      onClick={() => fileRef.current?.click()}
+                      className="border border-dashed border-white/15 rounded-lg p-6 text-center cursor-pointer hover:border-[#e9c349]/40 hover:bg-white/[0.02] transition"
+                    >
+                      {uploading ? (
+                        <p className="text-white/40 text-xs">Uploading...</p>
+                      ) : (
+                        <>
+                          <p className="text-white/40 text-xs mb-1">Click to upload image</p>
+                          <p className="text-white/20 text-[10px]">JPEG, PNG, WebP · Max 5 MB</p>
+                        </>
+                      )}
+                    </div>
+                  )}
+                  <input
+                    ref={fileRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    className="hidden"
+                    onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImageUpload(f); e.target.value = ""; }}
+                  />
+                  {!form.image_url && (
+                    <input
+                      type="url"
+                      placeholder="Or paste an image URL"
+                      value={form.image_url}
+                      onChange={(e) => setForm((f) => ({ ...f, image_url: e.target.value }))}
+                      className="mt-2 w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#e9c349]/50"
+                    />
+                  )}
+                </div>
                 <Field label="Image Alt Text" value={form.image_alt} onChange={(v) => setForm((f) => ({ ...f, image_alt: v }))} />
 
                 {error && <p className="text-red-400 text-xs">{error}</p>}

@@ -85,7 +85,7 @@ The temptation to plan activities on day one is real. Resist it. The transition 
 
 This is your active day. Options within a reasonable drive from Nature Kingdom:
 
-- Mullayanagiri: Karnataka's highest peak at 1,930 metres. About 45 minutes from us. The sunrise trek starts at 5am. Even if you skip the trek, the viewpoint is worth the drive.
+- Mullayanagiri: Karnataka''s highest peak at 1,930 metres. About 45 minutes from us. The sunrise trek starts at 5am. Even if you skip the trek, the viewpoint is worth the drive.
 - Baba Budangiri: Named after the Sufi saint Baba Budan, whose shrine sits at the peak. The views across the coffee-growing valleys are among the best in the region.
 - Jhari Falls: Around 30 kilometres from the property. Best visited in the morning. A waterfall surrounded by forest, quieter than the tourist circuit waterfalls.
 - Chikmagalur town: 25–30 kilometres away. Markets, coffee board outlets, local restaurants. Worth an hour if you want to pick up fresh ground coffee from the estates.

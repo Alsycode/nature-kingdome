@@ -1,5 +1,5 @@
 {
-  "name": "react-example",
+  "name": "nature-kingdom",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,6 +13,7 @@
     "@google/genai": "^2.4.0",
     "@supabase/supabase-js": "^2.107.0",
     "@tailwindcss/postcss": "^4.3.0",
+    "cloudinary": "^2.10.0",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
     "gsap": "^3.15.0",
