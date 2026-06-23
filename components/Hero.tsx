@@ -33,6 +33,7 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
           muted
           loop
           playsInline
+          preload="auto"
           poster="/assets/golden_hour_hike.png"
           className="absolute inset-0 w-full h-full"
           style={{ objectFit: "cover", objectPosition: "center" }}

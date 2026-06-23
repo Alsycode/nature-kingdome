@@ -53,7 +53,7 @@ const timelineData: TimelineItem[] = [
     time: "08:30 PM",
     title: "Dinner at the Table",
     description: "Settle into the dining area for a warm, home-cooked Karnataka meal. Rice, dal, fresh curries, and a sweet dish — prepared in the kitchen and served at the table. Simple food, good company, and the sounds of the night outside.",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=1200"
+    image: "/dining.webp"
   }
 ];
 
