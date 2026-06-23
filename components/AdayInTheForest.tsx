@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { useRef } from "react";
 const goldenHourImg = "/assets/golden_hour_hike.png";
@@ -117,11 +118,12 @@ export default function ADayInTheForest() {
                     className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden brightness-85 select-none"
                   >
                     <div className="absolute inset-0 border border-on-surface/5 pointer-events-none z-10" />
-                    <img
+                    <Image
                       alt={item.title}
-                      className="w-full h-full object-cover transition-all duration-1000 scale-100 hover:scale-105"
+                      className="object-cover transition-all duration-1000 scale-100 hover:scale-105"
                       src={item.image}
-                      referrerPolicy="no-referrer"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 60vw"
                     />
                   </motion.div>
                 </div>

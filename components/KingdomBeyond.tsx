@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
@@ -167,11 +168,12 @@ export default function KingdomBeyond() {
                 {/* Visual Image Block */}
                 <div className="col-span-6 relative aspect-[4/5] bg-surface-container-highest overflow-hidden select-none shadow-2xl">
                   <div className="absolute inset-0 border border-on-surface/5 pointer-events-none z-10" />
-                  <img
+                  <Image
                     alt={`Scenic landscape illustrating Chapter ${chapter.number} — ${chapter.title}`}
-                    className="w-full h-full object-cover brightness-85 contrast-95 transition-all duration-700 hover:scale-105"
+                    className="object-cover brightness-85 contrast-95 transition-all duration-700 hover:scale-105"
                     src={chapter.image}
-                    referrerPolicy="no-referrer"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
 
                   <div className="absolute top-10 right-10 flex flex-col items-end">
@@ -278,11 +280,12 @@ export default function KingdomBeyond() {
               </div>
 
               <div className="relative aspect-[16/10] overflow-hidden grayscale-[10%] select-none rounded-[1px]">
-                <img
+                <Image
                   alt={`Scenic landscape illustrating Chapter ${chapter.number} — ${chapter.title}`}
-                  className="w-full h-full object-cover"
+                  className="object-cover"
                   src={chapter.image}
-                  referrerPolicy="no-referrer"
+                  fill
+                  sizes="100vw"
                 />
               </div>
 

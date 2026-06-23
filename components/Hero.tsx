@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 const heroVideo = "https://res.cloudinary.com/ds05t0bd0/video/upload/v1782043180/herovid_hsy4rr.mp4";
@@ -28,13 +29,22 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
     >
       {/* Background video with subtle parallax and minimal dark vignette */}
       <motion.div style={{ y: imgY }} className="absolute inset-0 z-0 scale-105">
+        {/* Priority-loaded poster — visible while video buffers */}
+        <Image
+          src="/assets/golden_hour_hike.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
         <video
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          poster="/assets/golden_hour_hike.png"
           className="absolute inset-0 w-full h-full"
           style={{ objectFit: "cover", objectPosition: "center" }}
         >

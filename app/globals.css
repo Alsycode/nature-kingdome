@@ -15,8 +15,8 @@
   --color-outline: #8d928d;
   --color-outline-variant: #434844;
 
-  --font-headline: "Playfair Display", serif;
-  --font-sans: "Hanken Grotesk", sans-serif;
+  --font-headline: var(--font-playfair), serif;
+  --font-sans: var(--font-hanken), sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
   --spacing-section-gap: 12rem;

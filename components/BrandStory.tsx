@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function BrandStory() {
   return (
     <section
@@ -77,10 +79,12 @@ export default function BrandStory() {
 
         {/* Right image column — full height on mobile, 58% on desktop */}
         <div className="relative overflow-hidden w-full lg:w-[58%] min-h-[60vw] sm:min-h-[50vw] lg:min-h-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=85&w=1400"
             alt="Dark cinematic forest path lined with lanterns"
-            className="absolute inset-0 w-full h-full object-cover select-none transition-transform duration-[1200ms] ease-out hover:scale-[1.02]"
+            fill
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            className="object-cover select-none transition-transform duration-[1200ms] ease-out hover:scale-[1.02]"
             draggable={false}
           />
           {/* Subtle left-edge blend into content area */}

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { useState, useEffect, useCallback, useRef } from "react";
 
@@ -209,10 +210,12 @@ export default function TestimonialStories() {
                       : "1px solid rgba(200,169,126,0.14)",
                   }}
                 >
-                  <img
+                  <Image
                     src={t.image_url || FALLBACK_IMAGES[i % FALLBACK_IMAGES.length]}
                     alt={t.name}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    className="object-cover"
                     draggable={false}
                   />
                   <div
@@ -364,10 +367,12 @@ export default function TestimonialStories() {
                   className="relative overflow-hidden"
                   style={{ borderRadius: 14, aspectRatio: "3/4", border: "1px solid rgba(200,169,126,0.35)" }}
                 >
-                  <img
+                  <Image
                     src={t.image_url || FALLBACK_IMAGES[i % FALLBACK_IMAGES.length]}
                     alt={t.name}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    className="object-cover"
                     draggable={false}
                   />
                   <div

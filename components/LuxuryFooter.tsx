@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { ArrowUpRight, ArrowRight, Instagram, Youtube, Facebook, MessageCircle } from "lucide-react";
 const NightVilla = "/assets/nightvilla.png";
 const socials = [
@@ -28,11 +29,13 @@ export default function LuxuryFooter() {
       <div className="relative flex flex-col justify-end" style={{ minHeight: "62vh" }}>
 
         {/* Background image */}
-        <img
+        <Image
           src={NightVilla}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+          fill
+          sizes="100vw"
+          className="object-cover pointer-events-none select-none"
           draggable={false}
         />
 
