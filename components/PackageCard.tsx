@@ -93,11 +93,10 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
         {/* Price + CTA Row */}
         <div className="flex items-end justify-between pt-2 border-t border-white/5">
           <div>
-            <p className="font-sans text-[10px] font-light text-on-surface/40 tracking-wide">from</p>
             <p className="font-sans text-base font-semibold text-[#e9c349]">
               ₹{pkg.price.toLocaleString("en-IN")}
             </p>
-            <p className="font-sans text-[9px] text-on-surface/30">{pkg.nights} nights</p>
+            <p className="font-sans text-[9px] text-on-surface/40 tracking-wide">per person / night</p>
           </div>
           <a
             href={pkg.id ? `/book?package=${pkg.id}` : "/book"}

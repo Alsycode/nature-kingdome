@@ -90,11 +90,11 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "Are meals included in the stay?",
-        a: "Meals are prepared on the property using seasonal local Karnataka produce. Breakfast, lunch, and dinner can all be arranged. The specifics of what is included depend on the package you book — we confirm meal arrangements when you finalise your stay. If you have dietary requirements or preferences, mention them when booking and we will plan accordingly.",
+        a: "Every stay includes three meals: breakfast (8:30–10:00 AM), evening high tea, and dinner (8:30–10:00 PM). No lunch is served. Breakfast is a choice of Set Dosa, Idly, or Neer Dosa with Sambar and Chutney, plus Lemon Rice or Pullav or Uppama, and coffee, tea, or milk. Evening high tea is Onion or Vegetable Pakoda with a hot drink. Dinner is a full spread — rice, chapathi, dal or rasam, a veg curry, and sweets. Non-vegetarian options (chicken or fish) are available for dinner, subject to availability.",
       },
       {
         q: "What kind of food is served at Nature Kingdom?",
-        a: "The food is home-style Karnataka cooking — not a hotel buffet, not catered. Think rice-based meals, fresh vegetables, local spices, and the kind of cooking that is designed for the climate and the landscape. We use seasonal produce. If you have a specific craving or a preference for a particular dish, mention it when booking.",
+        a: "Home-style Karnataka cooking — not a hotel buffet, not catered. Dinner includes Ghee Rice or Jeera Rice with Chapathi, Dal or Rasam, Paneer or Veg Kurma, Gobi, Sabaji, Papad, Curd Rice, and a sweet dish like Gulab Jamun or Payasa. Chicken gravy or fry and fish are available as optional non-vegetarian additions. All items are subject to availability and prepared fresh on the property.",
       },
       {
         q: "Are vegetarian and non-vegetarian options available?",
@@ -122,7 +122,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "What are the check-in and check-out times?",
-        a: "Check-in is at 12:00 PM and check-out is at 11:00 AM. If you need an early check-in or late check-out, let us know when booking and we will do our best to accommodate. Guests arriving early are welcome to leave their luggage with us and explore the estate while the room is being prepared.",
+        a: "Check-in is at 12:00 PM and check-out is at 10:00 AM. If you need an early check-in or late check-out, let us know when booking and we will do our best to accommodate. Guests arriving early are welcome to leave their luggage with us and explore the estate while the room is being prepared.",
       },
       {
         q: "What is the cancellation policy?",
@@ -136,6 +136,34 @@ const FAQ_CATEGORIES: FaqCategory[] = [
   },
   {
     num: "05",
+    label: "House Rules",
+    title: "Guest Guidelines",
+    img: "/assets/nightvilla.png",
+    items: [
+      {
+        q: "What are the check-in and check-out times?",
+        a: "Check-in is at 12:00 PM. Check-out is at 10:00 AM. If you need to arrive early or leave later, let us know in advance and we will accommodate where possible.",
+      },
+      {
+        q: "Is there a quiet hours policy?",
+        a: "We ask all guests to keep noise levels low after 10:00 PM. Nature Kingdom is a peaceful property and the surrounding environment — the forest, the birds, the stillness — is part of what makes the stay special. Respecting that benefits everyone.",
+      },
+      {
+        q: "Are there any rules around water and electricity?",
+        a: "Yes — we ask guests to use water and electricity mindfully. The property is in a natural setting and we are conscious of our environmental footprint. Power backup is available, but we appreciate guests switching off lights and appliances when not in use.",
+      },
+      {
+        q: "Is smoking allowed at Nature Kingdom?",
+        a: "Smoking is not permitted in common areas or inside the rooms. If you smoke, please do so in the outdoor areas away from other guests and the property interiors.",
+      },
+      {
+        q: "Is the management responsible for lost belongings?",
+        a: "The management is not responsible for lost or misplaced belongings. We recommend keeping valuables secure during your stay. If you do misplace something, let us know immediately and we will do our best to help locate it.",
+      },
+    ],
+  },
+  {
+    num: "06",
     label: "Activities & Nearby",
     title: "Beyond the Estate",
     img: "/assets/golden_hour_hike.png",

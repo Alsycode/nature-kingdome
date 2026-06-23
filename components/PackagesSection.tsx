@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import { useState, useRef } from "react";
-import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass, Map, ShieldCheck, Headphones, Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass, Map, Wifi, Flame, Bird, Footprints, ChevronLeft, ChevronRight } from "lucide-react";
 import PackageCard, { PackageData } from "./PackageCard";
 
 export type ApiPackage = {
@@ -55,24 +55,29 @@ function toCardData(pkg: ApiPackage): PackageData {
 
 const trustFeatures = [
   {
-    icon: <Briefcase size={28} strokeWidth={1.2} />,
-    title: "Handpicked Stays",
-    description: "Every stay is carefully selected for comfort, charm, and character.",
+    icon: <Wifi size={28} strokeWidth={1.2} />,
+    title: "Free Wi-Fi",
+    description: "Stay connected across the property whenever you need it.",
   },
   {
-    icon: <Flower2 size={28} strokeWidth={1.2} />,
-    title: "Authentic Experiences",
-    description: "Curated activities that connect you with nature and culture.",
+    icon: <Footprints size={28} strokeWidth={1.2} />,
+    title: "Nature Trails",
+    description: "Walk the coffee estate rows and forest paths at your own pace.",
   },
   {
-    icon: <Headphones size={28} strokeWidth={1.2} />,
-    title: "Personalized Service",
-    description: "From the moment you book to your last goodbye.",
+    icon: <UtensilsCrossed size={28} strokeWidth={1.2} />,
+    title: "Homestyle Meals",
+    description: "Fresh Karnataka cooking — breakfast, evening tea, and a full dinner.",
   },
   {
-    icon: <ShieldCheck size={28} strokeWidth={1.2} />,
-    title: "Safe & Secure",
-    description: "Your safety and peace of mind are always our priority.",
+    icon: <Flame size={28} strokeWidth={1.2} />,
+    title: "Campfire Spot",
+    description: "Bonfire set up each evening under an open sky full of stars.",
+  },
+  {
+    icon: <Bird size={28} strokeWidth={1.2} />,
+    title: "Bird Watching",
+    description: "The estate is home to a variety of birds — mornings are magical.",
   },
 ];
 
@@ -235,11 +240,11 @@ export default function PackagesSection({ initialPackages }: PackagesSectionProp
         transition={{ duration: 1, delay: 0.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
         className="mt-20 border-t border-white/5"
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/5">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 grid grid-cols-2 lg:grid-cols-5 divide-x divide-white/5">
           {trustFeatures.map((f, i) => (
             <div
               key={i}
-              className={`flex flex-col items-center text-center gap-4 py-10 px-4 sm:px-8 ${i < 2 ? "border-b lg:border-b-0" : ""}`}
+              className={`flex flex-col items-center text-center gap-4 py-10 px-4 sm:px-6 ${i < 2 ? "border-b lg:border-b-0" : i === 2 ? "border-b lg:border-b-0" : ""}`}
             >
               <span className="text-[#e9c349]/50">{f.icon}</span>
               <div className="space-y-2">

@@ -5,30 +5,40 @@ const menuImg = "/assets/menu.png";
 
 interface DiningHighlight {
   title: string;
-  description: string;
+  subtitle?: string;
+  items: string[];
+  note?: string;
 }
 
 const highlights: DiningHighlight[] = [
   {
-    title: "Breakfast",
-    description: "Begin mornings with warm, stone-milled grains and fresh estate-ground spices, served precisely when the morning bird call ends."
+    title: "Morning Breeze Breakfast",
+    subtitle: "8:30 AM – 10:00 AM",
+    items: [
+      "Set Dosa / Idly / Neer Dosa with Sambar & Chutney (any one)",
+      "Lemon Rice / Pullav / Uppama",
+      "Coffee · Tea · Milk",
+    ],
   },
   {
-    title: "Evening Snacks",
-    description: "Pause in the late afternoon for toasted millet cakes and traditional roasted forest tubers, cooked slow over glowing coal embers."
+    title: "Evening High Tea",
+    items: [
+      "Onion Pakoda / Vegetable Pakoda (any one)",
+      "Coffee · Tea · Milk",
+    ],
   },
   {
-    title: "Coffee & Tea",
-    description: "Sample small-batch Arabica, hand-selected from our oldest blocks, paired with infusions of homegrown mountain lemongrass."
+    title: "Sunset Delights Dinner",
+    subtitle: "8:30 PM – 10:00 PM",
+    items: [
+      "Ghee Rice / Jeera Rice & Chapathi",
+      "Chicken Gravy / Fry or Fish — optional, subject to availability",
+      "Veg: Dal / Rasam",
+      "Paneer / Veg Kurma · Gobi · Sabaji · Papad · Curd Rice",
+      "Sweets: Gulab Jamun / Payasa",
+    ],
+    note: "No lunch served. All food items are subject to availability.",
   },
-  {
-    title: "Vegetarian Dining",
-    description: "Clean, delicate plant pairings sourced directly from our valley estates and neighboring smallholders, presenting raw earthy sweetness."
-  },
-  {
-    title: "Non-Vegetarian Dining",
-    description: "Thoughtfully prepared local poultry and heritage recipes, slow-simmered in hand-beaten copper pots with cold-pressed oils."
-  }
 ];
 
 export default function Dining() {
@@ -84,10 +94,10 @@ export default function Dining() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 pt-4 sm:pt-8 items-start">
           <div className="lg:col-span-4 space-y-4">
             <h3 className="font-headline text-2xl sm:text-3xl text-on-surface font-medium">
-              The Culinary Rhythm
+              What's On The Table
             </h3>
             <p className="font-sans font-light text-sm sm:text-base text-on-surface/50 leading-relaxed">
-              We reject noisy buffets and static restaurant menus. In their place is a quiet kitchen that honors regional Karnataka heritage, serving single, thoughtful plates shaped by local micro-seasons.
+              Home-style Karnataka cooking prepared fresh on the property. Breakfast, evening high tea, and a full dinner — no lunch. Simple, seasonal, and made with local produce.
             </p>
           </div>
 
@@ -100,17 +110,32 @@ export default function Dining() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-5%" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="py-8 sm:py-10 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4 group"
+                className="py-8 sm:py-10 grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-6 group"
               >
                 <div className="sm:col-span-4">
                   <h4 className="font-headline text-xl text-on-surface group-hover:text-[#e9c349] transition-colors duration-300">
                     {item.title}
                   </h4>
+                  {item.subtitle && (
+                    <p className="font-sans text-[10px] text-on-surface/35 tracking-wide mt-1 uppercase">
+                      {item.subtitle}
+                    </p>
+                  )}
                 </div>
-                <div className="sm:col-span-8">
-                  <p className="font-sans font-light text-sm sm:text-base text-on-surface/70 leading-relaxed">
-                    {item.description}
-                  </p>
+                <div className="sm:col-span-8 space-y-2">
+                  <ul className="space-y-1.5">
+                    {item.items.map((line, i) => (
+                      <li key={i} className="flex items-start gap-2 font-sans font-light text-sm text-on-surface/70 leading-relaxed">
+                        <span className="text-[#e9c349]/50 mt-1.5 flex-shrink-0" style={{ fontSize: 5, lineHeight: 1 }}>●</span>
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                  {item.note && (
+                    <p className="font-sans text-[11px] text-on-surface/30 italic mt-3">
+                      *{item.note}
+                    </p>
+                  )}
                 </div>
               </motion.div>
             ))}

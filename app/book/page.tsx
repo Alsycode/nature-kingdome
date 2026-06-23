@@ -9,6 +9,15 @@ type Package = {
   nights: number;
 };
 
+function guestsFromTitle(title: string): number | null {
+  const t = title.toLowerCase();
+  if (t.includes("double")) return 2;
+  if (t.includes("three")) return 3;
+  if (t.includes("four")) return 4;
+  if (t.includes("five")) return 5;
+  return null;
+}
+
 function BookingForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -40,6 +49,13 @@ function BookingForm() {
   }, []);
 
   const selectedPkg = packages.find((p) => p.id === form.package_id);
+  const fixedGuests = selectedPkg ? guestsFromTitle(selectedPkg.title) : null;
+
+  useEffect(() => {
+    if (fixedGuests !== null) {
+      setForm((f) => ({ ...f, guests: String(fixedGuests) }));
+    }
+  }, [form.package_id, fixedGuests]);
 
   function isDateBlocked(dateStr: string) {
     return blockedDates.has(dateStr);
@@ -122,7 +138,7 @@ function BookingForm() {
               <option value="">General Stay (No specific package)</option>
               {packages.map((p) => (
                 <option key={p.id} value={p.id} className="bg-[#0e1a13]">
-                  {p.title} — ₹{p.price.toLocaleString("en-IN")} / {p.nights} nights
+                  {p.title} — ₹{p.price.toLocaleString("en-IN")} / person / night
                 </option>
               ))}
             </select>
@@ -160,12 +176,19 @@ function BookingForm() {
             <select
               value={form.guests}
               onChange={(e) => setForm((f) => ({ ...f, guests: e.target.value }))}
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#e9c349]/50 appearance-none"
+              disabled={fixedGuests !== null}
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#e9c349]/50 appearance-none disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                <option key={n} value={n} className="bg-[#0e1a13]">{n} Guest{n > 1 ? "s" : ""}</option>
-              ))}
+              {fixedGuests !== null
+                ? <option value={fixedGuests} className="bg-[#0e1a13]">{fixedGuests} Guests</option>
+                : [1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                    <option key={n} value={n} className="bg-[#0e1a13]">{n} Guest{n > 1 ? "s" : ""}</option>
+                  ))
+              }
             </select>
+            {fixedGuests !== null && (
+              <p className="text-[10px] text-white/30 mt-1.5">Guest count is fixed by the selected sharing package.</p>
+            )}
           </div>
 
           {/* Personal Details */}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import SmoothScroll from "./SmoothScroll";
 import Navigation from "./Navigation";
 import SidebarRail from "./SidebarRail";
@@ -12,18 +13,22 @@ import LuxuryFooter from "./LuxuryFooter";
 import TestimonialStories from "./TestimonialStories";
 import PackagesSection, { type ApiPackage } from "./PackagesSection";
 import LocationSection from "./LocationSection";
+import EnquiryModal from "./EnquiryModal";
 
 interface HomePageProps {
   initialPackages: ApiPackage[];
 }
 
 export default function HomePage({ initialPackages }: HomePageProps) {
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+
   return (
     <div className="relative min-h-screen bg-surface text-on-surface font-sans antialiased overflow-x-clip">
       <SmoothScroll />
 
-      <Navigation />
+      <Navigation onEnquireClick={() => setEnquiryOpen(true)} />
       <SidebarRail />
+      <EnquiryModal open={enquiryOpen} onClose={() => setEnquiryOpen(false)} />
 
       <main className="lg:pl-20">
         <Hero />

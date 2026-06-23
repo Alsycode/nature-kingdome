@@ -2,10 +2,10 @@
 import { ArrowUpRight, ArrowRight, Instagram, Youtube, Facebook, MessageCircle } from "lucide-react";
 const NightVilla = "/assets/nightvilla.png";
 const socials = [
-  { label: "Instagram", Icon: Instagram,      href: "#" },
-  { label: "YouTube",   Icon: Youtube,         href: "#" },
-  { label: "Facebook",  Icon: Facebook,        href: "#" },
-  { label: "WhatsApp",  Icon: MessageCircle,   href: "#" },
+  { label: "Instagram", Icon: Instagram,    href: "https://www.instagram.com/naturekingdomhomestay/" },
+  { label: "YouTube",   Icon: Youtube,      href: "https://youtu.be/NUdai3reMl4" },
+  { label: "Facebook",  Icon: Facebook,     href: "#" },
+  { label: "WhatsApp",  Icon: MessageCircle, href: "https://wa.me/919036022922" },
 ] as const;
 
 const legalLinks = [

@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { adminHeaders, getStoredToken, clearStoredToken } from "@/lib/adminAuth";
+import AdminNav from "@/components/admin/AdminNav";
 
 type Package = {
   id: string;
@@ -27,6 +27,13 @@ const emptyForm = {
   image_url: "",
   image_alt: "",
 };
+
+const NAV_ITEMS = [
+  { href: "/admin/dashboard", label: "Bookings" },
+  { href: "/admin/packages", label: "Packages", active: true },
+  { href: "/admin/blog", label: "Blog" },
+  { href: "/admin/testimonials", label: "Testimonials" },
+];
 
 export default function PackagesAdmin() {
   const router = useRouter();
@@ -95,7 +102,6 @@ export default function PackagesAdmin() {
     e.preventDefault();
     setSaving(true);
     setError("");
-
     const payload = {
       number: form.number,
       title: form.title,
@@ -106,19 +112,9 @@ export default function PackagesAdmin() {
       image_url: form.image_url,
       image_alt: form.image_alt,
     };
-
     const res = editingPkg
-      ? await fetch(`/api/packages/${editingPkg.id}`, {
-          method: "PUT",
-          headers: adminHeaders(),
-          body: JSON.stringify(payload),
-        })
-      : await fetch("/api/packages", {
-          method: "POST",
-          headers: adminHeaders(),
-          body: JSON.stringify(payload),
-        });
-
+      ? await fetch(`/api/packages/${editingPkg.id}`, { method: "PUT", headers: adminHeaders(), body: JSON.stringify(payload) })
+      : await fetch("/api/packages", { method: "POST", headers: adminHeaders(), body: JSON.stringify(payload) });
     if (!res.ok) {
       const d = await res.json();
       setError(d.error ?? "Failed to save.");
@@ -139,41 +135,43 @@ export default function PackagesAdmin() {
   }
 
   async function deletePackage(id: string) {
-    if (!confirm("Delete this package? (It will be hidden from the site.)")) return;
+    if (!confirm("Delete this package?")) return;
     await fetch(`/api/packages/${id}`, { method: "DELETE", headers: adminHeaders() });
     fetchPackages();
   }
 
   return (
     <div className="min-h-screen bg-[#0e1a13] text-white">
-      <div className="border-b border-white/5 px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-6">
-          <h1 className="text-lg font-serif text-white">Nature Kingdom Admin</h1>
-          <nav className="flex items-center gap-4 text-sm">
-            <Link href="/admin/dashboard" className="text-white/50 hover:text-white transition">Bookings</Link>
-            <span className="text-[#e9c349]">Packages</span>
-          </nav>
-        </div>
-        <button onClick={() => { clearStoredToken(); router.push("/admin"); }} className="text-xs text-white/40 hover:text-white transition">
-          Sign Out
-        </button>
-      </div>
+      <AdminNav
+        items={NAV_ITEMS}
+        rightSlot={
+          <>
+            <button
+              onClick={startNew}
+              className="px-4 py-2 bg-[#e9c349] text-[#0e1a13] text-xs font-semibold rounded-lg hover:bg-[#e9c349]/90 transition w-full sm:w-auto"
+            >
+              + Add Package
+            </button>
+            <button
+              onClick={() => { clearStoredToken(); router.push("/admin"); }}
+              className="text-xs text-white/40 hover:text-white transition"
+            >
+              Sign Out
+            </button>
+          </>
+        }
+      />
 
-      <div className="max-w-5xl mx-auto px-6 py-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-serif">Packages</h2>
-          <button
-            onClick={startNew}
-            className="px-4 py-2 bg-[#e9c349] text-[#0e1a13] text-xs font-semibold rounded-lg hover:bg-[#e9c349]/90 transition"
-          >
-            + Add Package
-          </button>
+          <p className="text-xs text-white/30">{packages.length} total</p>
         </div>
 
         {/* Form Modal */}
         {showForm && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4">
-            <div className="bg-[#111e15] border border-white/10 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 bg-black/70 flex items-start sm:items-center justify-center z-50 px-4 pt-6 sm:pt-0 overflow-y-auto">
+            <div className="bg-[#111e15] border border-white/10 rounded-2xl p-5 sm:p-6 w-full max-w-lg my-auto">
               <h3 className="text-lg font-serif mb-5">{editingPkg ? "Edit Package" : "New Package"}</h3>
               <form onSubmit={handleSave} className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
@@ -182,9 +180,13 @@ export default function PackagesAdmin() {
                 </div>
                 <Field label="Title" value={form.title} onChange={(v) => setForm((f) => ({ ...f, title: v }))} required />
                 <Field label="Description" value={form.description} onChange={(v) => setForm((f) => ({ ...f, description: v }))} required />
-                <Field label="Price (₹)" type="number" value={form.price} onChange={(v) => setForm((f) => ({ ...f, price: v }))} required />
-                <Field label="Features (comma separated)" value={form.features} onChange={(v) => setForm((f) => ({ ...f, features: v }))} placeholder="2 Nights Stay, All Meals, Nature Trails" />
-                {/* Image upload */}
+                <Field label="Price (₹ / person)" type="number" value={form.price} onChange={(v) => setForm((f) => ({ ...f, price: v }))} required />
+                <Field
+                  label="Features (comma separated)"
+                  value={form.features}
+                  onChange={(v) => setForm((f) => ({ ...f, features: v }))}
+                  placeholder="2 Nights Stay, All Meals, Nature Trails"
+                />
                 <div>
                   <label className="block text-[10px] text-white/40 mb-1 tracking-wide uppercase">Package Image</label>
                   {form.image_url ? (
@@ -257,42 +259,67 @@ export default function PackagesAdmin() {
 
         {loading ? (
           <p className="text-white/40 text-sm">Loading packages...</p>
+        ) : packages.length === 0 ? (
+          <div className="text-center py-16 bg-white/[0.02] border border-white/5 rounded-2xl">
+            <p className="text-white/30 text-sm mb-4">No packages yet</p>
+            <button
+              onClick={startNew}
+              className="px-5 py-2.5 bg-[#e9c349] text-[#0e1a13] text-xs font-semibold rounded-lg hover:bg-[#e9c349]/90 transition"
+            >
+              Add your first package
+            </button>
+          </div>
         ) : (
           <div className="space-y-3">
             {packages.map((pkg) => (
-              <div key={pkg.id} className={`bg-white/[0.03] border rounded-xl p-5 flex gap-4 items-start ${pkg.active ? "border-white/5" : "border-red-500/10 opacity-60"}`}>
-                {pkg.image_url && (
-                  <img src={pkg.image_url} alt={pkg.image_alt} className="w-20 h-16 object-cover rounded-lg flex-shrink-0" />
-                )}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] text-[#e9c349] font-mono">{pkg.number}</span>
-                    <h3 className="font-medium text-white">{pkg.title}</h3>
-                    {!pkg.active && <span className="text-[10px] bg-red-500/20 text-red-300 px-2 py-0.5 rounded-full">Hidden</span>}
-                  </div>
-                  <p className="text-xs text-white/50 mb-1">{pkg.description}</p>
-                  <div className="flex items-center gap-3 text-xs text-white/40">
-                    <span className="text-[#e9c349] font-medium text-sm">₹{pkg.price.toLocaleString("en-IN")}</span>
-                    <span>{pkg.nights} nights</span>
-                    <span>{pkg.features.map((f) => f.label).join(" · ")}</span>
+              <div
+                key={pkg.id}
+                className={`bg-white/[0.03] border rounded-xl p-4 sm:p-5 ${pkg.active ? "border-white/5" : "border-red-500/10 opacity-60"}`}
+              >
+                <div className="flex gap-3 sm:gap-4 items-start">
+                  {pkg.image_url && (
+                    <img
+                      src={pkg.image_url}
+                      alt={pkg.image_alt}
+                      className="w-16 h-14 sm:w-20 sm:h-16 object-cover rounded-lg flex-shrink-0"
+                    />
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <span className="text-[10px] text-[#e9c349] font-mono">{pkg.number}</span>
+                      <h3 className="font-medium text-white text-sm">{pkg.title}</h3>
+                      {!pkg.active && (
+                        <span className="text-[10px] bg-red-500/20 text-red-300 px-2 py-0.5 rounded-full">Hidden</span>
+                      )}
+                    </div>
+                    <p className="text-xs text-white/50 mb-2 line-clamp-2">{pkg.description}</p>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-white/40">
+                      <span className="text-[#e9c349] font-medium text-sm">₹{pkg.price.toLocaleString("en-IN")}</span>
+                      <span>{pkg.nights} nights</span>
+                      {pkg.features.length > 0 && (
+                        <span className="hidden sm:inline truncate max-w-xs">{pkg.features.map((f) => f.label).join(" · ")}</span>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="flex gap-2 flex-shrink-0">
+
+                {/* Actions — separated below for mobile clarity */}
+                <div className="flex gap-2 mt-3 pt-3 border-t border-white/5 flex-wrap">
                   <button
                     onClick={() => startEdit(pkg)}
-                    className="px-3 py-1 bg-white/5 text-white/60 text-xs rounded-lg hover:bg-white/10 transition"
+                    className="px-3 py-1.5 bg-white/5 text-white/60 text-xs rounded-lg hover:bg-white/10 transition"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => toggleActive(pkg)}
-                    className="px-3 py-1 bg-white/5 text-white/60 text-xs rounded-lg hover:bg-white/10 transition"
+                    className="px-3 py-1.5 bg-white/5 text-white/60 text-xs rounded-lg hover:bg-white/10 transition"
                   >
                     {pkg.active ? "Hide" : "Show"}
                   </button>
                   <button
                     onClick={() => deletePackage(pkg.id)}
-                    className="px-3 py-1 bg-white/5 text-white/30 text-xs rounded-lg hover:bg-red-600/20 hover:text-red-300 transition"
+                    className="px-3 py-1.5 bg-white/5 text-white/30 text-xs rounded-lg hover:bg-red-600/20 hover:text-red-300 transition"
                   >
                     Delete
                   </button>
