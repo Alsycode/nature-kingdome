@@ -49,9 +49,18 @@ export default function TestimonialStories() {
   const [active, setActive]       = useState(0);
   const [isPaused, setIsPaused]   = useState(false);
   const [progressKey, setProgressKey] = useState(0);
+  const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
   const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const totalRef = useRef(0);
   const touchStartX = useRef<number | null>(null);
+
+  function imgSrc(t: Testimonial, i: number) {
+    if (imgErrors[t.id] || !t.image_url) return FALLBACK_IMAGES[i % FALLBACK_IMAGES.length];
+    return t.image_url;
+  }
+  function onImgError(id: string) {
+    setImgErrors((prev) => ({ ...prev, [id]: true }));
+  }
 
   useEffect(() => {
     fetch("/api/testimonials")
@@ -211,12 +220,13 @@ export default function TestimonialStories() {
                   }}
                 >
                   <Image
-                    src={t.image_url || FALLBACK_IMAGES[i % FALLBACK_IMAGES.length]}
+                    src={imgSrc(t, i)}
                     alt={t.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 25vw"
                     className="object-cover"
                     draggable={false}
+                    onError={() => onImgError(t.id)}
                   />
                   <div
                     className="absolute inset-0"
@@ -368,12 +378,13 @@ export default function TestimonialStories() {
                   style={{ borderRadius: 14, aspectRatio: "3/4", border: "1px solid rgba(200,169,126,0.35)" }}
                 >
                   <Image
-                    src={t.image_url || FALLBACK_IMAGES[i % FALLBACK_IMAGES.length]}
+                    src={imgSrc(t, i)}
                     alt={t.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 25vw"
                     className="object-cover"
                     draggable={false}
+                    onError={() => onImgError(t.id)}
                   />
                   <div
                     className="absolute inset-0"
