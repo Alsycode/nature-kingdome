@@ -59,7 +59,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     num: "02",
     label: "The Property & Facilities",
     title: "What to Expect",
-    img: "/assets/nightvilla.png",
+    img: "/collage.png",
     items: [
       {
         q: "What facilities are included in the stay?",
