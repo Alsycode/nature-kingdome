@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 const heroVideo = "https://res.cloudinary.com/ds05t0bd0/video/upload/v1782043180/herovid_hsy4rr.mp4";
 
 interface HeroProps {
@@ -10,6 +10,19 @@ interface HeroProps {
 
 export default function Hero({ onBeginJourneyClick }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoVisible, setVideoVisible] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Load video after initial paint so poster shows immediately
+    video.src = heroVideo;
+    video.load();
+    const onCanPlay = () => setVideoVisible(true);
+    video.addEventListener("canplay", onCanPlay);
+    return () => video.removeEventListener("canplay", onCanPlay);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -40,16 +53,19 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
           className="object-cover"
         />
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full"
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
+          preload="none"
+          className="absolute inset-0 w-full h-full transition-opacity duration-700"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            opacity: videoVisible ? 1 : 0,
+          }}
+        />
         <div className="absolute inset-0 bg-black/15 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-black/20" />
       </motion.div>
