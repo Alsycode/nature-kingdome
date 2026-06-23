@@ -1,10 +1,34 @@
 "use client";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 const arrivalVideo = "https://res.cloudinary.com/ds05t0bd0/video/upload/v1782042408/4447119190657531631_sample_0_1_xwyfdd.mp4";
 
 export default function Arrival() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoVisible, setVideoVisible] = useState(false);
+
+  // Only start downloading the video when the section scrolls near the viewport.
+  // This prevents the browser from fetching the Cloudinary video on initial page
+  // load, which was blocking window.load and freezing the page on mobile.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        const video = videoRef.current;
+        if (!video || video.src) return;
+        video.src = arrivalVideo;
+        video.load();
+        const onCanPlay = () => setVideoVisible(true);
+        video.addEventListener("canplay", onCanPlay, { once: true });
+        observer.disconnect();
+      },
+      { rootMargin: "300px" }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -21,17 +45,30 @@ export default function Arrival() {
     >
       {/* Full-bleed background video */}
       <motion.div style={{ y: videoY }} className="absolute inset-0 scale-110 z-0">
+        {/* Poster shown immediately — no network cost, replaced by video once loaded */}
+        <Image
+          src="/assets/nightvilla.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          poster="/assets/nightvilla.png"
-          className="absolute inset-0 w-full h-full"
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        >
-          <source src={arrivalVideo} type="video/mp4" />
-        </video>
+          preload="none"
+          className="absolute inset-0 w-full h-full transition-opacity duration-700"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            opacity: videoVisible ? 1 : 0,
+          }}
+        />
         {/* Dark gradient — heavy on left so text is readable, fades to transparent on right */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-black/10" />
         {/* Subtle top & bottom fades */}

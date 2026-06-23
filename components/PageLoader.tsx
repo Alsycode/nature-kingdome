@@ -51,16 +51,20 @@ export default function PageLoader() {
       setTimeout(() => setVisible(false), 700);
     };
 
-    if (document.readyState === "complete") {
-      hide();
+    // DOMContentLoaded = HTML parsed, page interactive — does NOT wait for
+    // videos/images to finish downloading (unlike window.load which blocked
+    // the loader for up to 8s waiting for Cloudinary videos)
+    if (document.readyState !== "loading") {
+      // Already past DOMContentLoaded
+      setTimeout(hide, 300);
       return;
     }
 
-    window.addEventListener("load", hide);
-    const fallback = setTimeout(hide, 8000);
+    document.addEventListener("DOMContentLoaded", hide);
+    const fallback = setTimeout(hide, 3000); // hard cap at 3s
 
     return () => {
-      window.removeEventListener("load", hide);
+      document.removeEventListener("DOMContentLoaded", hide);
       clearTimeout(fallback);
     };
   }, []);
