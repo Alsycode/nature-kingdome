@@ -4,7 +4,7 @@ const NightVilla = "/assets/nightvilla.png";
 const socials = [
   { label: "Instagram", Icon: Instagram,    href: "https://www.instagram.com/naturekingdomhomestay/" },
   { label: "YouTube",   Icon: Youtube,      href: "https://youtu.be/NUdai3reMl4" },
-  { label: "Facebook",  Icon: Facebook,     href: "#" },
+  { label: "Facebook",  Icon: Facebook,     href: "https://www.facebook.com/p/Nature-Kingdom-Homestay-100068958836566/" },
   { label: "WhatsApp",  Icon: MessageCircle, href: "https://wa.me/919036022922" },
 ] as const;
 
