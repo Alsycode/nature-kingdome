@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import { useState, useRef } from "react";
-import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass, Map, Wifi, Flame, Bird, Footprints, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass, Map, Wifi, Flame, Footprints, ChevronLeft, ChevronRight, Bike, Brain, Target, Zap, Music } from "lucide-react";
 import PackageCard, { PackageData } from "./PackageCard";
 
 export type ApiPackage = {
@@ -67,7 +67,7 @@ const trustFeatures = [
   {
     icon: <UtensilsCrossed size={28} strokeWidth={1.2} />,
     title: "Homestyle Meals",
-    description: "Fresh Karnataka cooking — breakfast, evening tea, and a full dinner.",
+    description: "Fresh Karnataka cooking, breakfast, evening tea, and a full dinner.",
   },
   {
     icon: <Flame size={28} strokeWidth={1.2} />,
@@ -75,9 +75,29 @@ const trustFeatures = [
     description: "Bonfire set up each evening under an open sky full of stars.",
   },
   {
-    icon: <Bird size={28} strokeWidth={1.2} />,
-    title: "Bird Watching",
-    description: "The estate is home to a variety of birds — mornings are magical.",
+    icon: <Bike size={28} strokeWidth={1.2} />,
+    title: "Cycling",
+    description: "Explore the estate and surrounding roads at your own pace.",
+  },
+  {
+    icon: <Brain size={28} strokeWidth={1.2} />,
+    title: "Chess",
+    description: "A quiet game of chess in the open air with a cup of fresh coffee.",
+  },
+  {
+    icon: <Target size={28} strokeWidth={1.2} />,
+    title: "Carroms",
+    description: "Classic carrom board sessions for a relaxed afternoon.",
+  },
+  {
+    icon: <Zap size={28} strokeWidth={1.2} />,
+    title: "Table Tennis",
+    description: "Quick rallies and friendly matches right on the property.",
+  },
+  {
+    icon: <Music size={28} strokeWidth={1.2} />,
+    title: "Campfire & Music",
+    description: "Evenings around the fire with acoustic music under the stars.",
   },
 ];
 
@@ -240,11 +260,11 @@ export default function PackagesSection({ initialPackages }: PackagesSectionProp
         transition={{ duration: 1, delay: 0.2, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
         className="mt-20 border-t border-white/5"
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 grid grid-cols-2 lg:grid-cols-5 divide-x divide-white/5">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 grid grid-cols-3 gap-px bg-white/5">
           {trustFeatures.map((f, i) => (
             <div
               key={i}
-              className={`flex flex-col items-center text-center gap-4 py-10 px-4 sm:px-6 ${i < 2 ? "border-b lg:border-b-0" : i === 2 ? "border-b lg:border-b-0" : ""}`}
+              className="flex flex-col items-center text-center gap-4 py-10 px-4 sm:px-6 bg-surface"
             >
               <span className="text-[#e9c349]/50">{f.icon}</span>
               <div className="space-y-2">
