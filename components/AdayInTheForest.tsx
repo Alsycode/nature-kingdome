@@ -50,10 +50,10 @@ const timelineData: TimelineItem[] = [
     image: campfire
   },
   {
-    time: "09:30 PM",
-    title: "Dinner Under The Stars",
-    description: "Savor gourmet, slow-cooked ancestral cuisine beneath ambient woven lanterns. Locally-sourced valley organic produce brings exquisite, clean notes to your plate, closing a day of profound wilderness connection.",
-    image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&q=80&w=1200"
+    time: "08:30 PM",
+    title: "Dinner at the Table",
+    description: "Settle into the dining area for a warm, home-cooked Karnataka meal. Rice, dal, fresh curries, and a sweet dish — prepared in the kitchen and served at the table. Simple food, good company, and the sounds of the night outside.",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=1200"
   }
 ];
 
