@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import LuxuryFooter from "@/components/LuxuryFooter";
@@ -305,13 +306,15 @@ export default function FAQPage() {
         <section className="relative flex flex-col justify-end overflow-hidden" style={{ minHeight: "78vh" }}>
 
           {/* Background image */}
-          <img
+          <Image
             src={HERO_IMG}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover pointer-events-none select-none"
             style={{ objectPosition: "center 40%" }}
-            draggable={false}
           />
 
           {/* Layered dark overlays */}
@@ -454,12 +457,13 @@ export default function FAQPage() {
 
                 {/* ── Left: Image ── */}
                 <div className="relative min-h-[320px] lg:min-h-0 overflow-hidden">
-                  <img
+                  <Image
                     src={cat.img ?? PLACEHOLDER}
                     alt=""
                     aria-hidden="true"
-                    className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-                    draggable={false}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover pointer-events-none select-none"
                   />
                   {/* Subtle right-side fade to blend into content */}
                   <div

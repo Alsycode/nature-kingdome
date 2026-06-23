@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import React, { useRef, useState } from "react";
 
@@ -44,11 +45,12 @@ export default function CinematicCTA() {
           style={{ y: bgY, scale: imgScale }}
           className="absolute -top-[15%] -bottom-[15%] left-0 right-0"
         >
-          <img
+          <Image
             alt="The illuminated night villa canopy under Chikkamagaluru stars"
-            className="w-full h-full object-cover brightness-[0.38] contrast-[1.05]"
+            fill
+            sizes="100vw"
+            className="object-cover brightness-[0.38] contrast-[1.05]"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9f1-jhuuEwHXI073pkhzu7w9VYbkneLrpra594XVVeVcJ3hkrVUWpebJYsXuQBnQPm-sZzpP_6NQR7eaTJK9pOegxItQjvT3G-VmQkmUdKGJxCVEwo8V6e8fQ5IofvPtoQf8RaOLvnlRJ4RU4Jp0Jx9DIA13_nRoRoOoCV6FZhczRTEejFr5VhICfMQeA_WJtVwgYcJylGRfScZw8B0kYRB0elVi22mnU2yjj-eUJ2JOSg-pq0gTI2XyctZ-Dxr1zVyWvpRp0_zGg"
-            referrerPolicy="no-referrer"
           />
         </motion.div>
 

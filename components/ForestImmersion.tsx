@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
@@ -21,9 +22,11 @@ export default function ForestImmersion() {
       {/* Background with parallax scroll scaling */}
       <div className="absolute inset-0 z-0">
         <motion.div style={{ y: bgY }} className="absolute -top-[15%] -bottom-[15%] left-0 right-0">
-          <img
+          <Image
             alt="Enchanting forest mist view from Balcony Sanctuary"
-            className="w-full h-full object-cover brightness-60 contrast-95"
+            fill
+            sizes="100vw"
+            className="object-cover brightness-60 contrast-95"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4C0mh62WXjl8chvz213_fS-kVlSpNZYp9XWItOqgbiUnA9EwPmnUzISVWcUKcqlz_hWDUjHPIMr23c1iQTGCQhnwC_5YlXaheE7Awgj8G_URxNzZ2046OdC6aJPdcFMcTxxay0Vxwqmjsvla-7w-GF5iWmBjrFPL_DjytyM7hjz27Y1ugHcSJ9zuVOjmoRag1-fibKpFxUBK6kvYrvpUHsT-fUel1tLrFG5Mc8zcHNh14LhYfogKWmxtTb7ZYcuufBV6zkISciRKN"
           />
         </motion.div>

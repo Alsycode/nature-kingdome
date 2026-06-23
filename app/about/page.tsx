@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import LuxuryFooter from "@/components/LuxuryFooter";
 
@@ -218,10 +219,13 @@ export default function AboutPage() {
 
           {/* Right image panel */}
           <div className="absolute right-0 top-0 w-[55%] h-full hidden lg:block">
-            <img
+            <Image
               src={IMGS.hero}
               alt="Nature Kingdom at night"
-              className="w-full h-full object-cover"
+              fill
+              priority
+              sizes="55vw"
+              className="object-cover"
             />
             {/* gradient fade left → transparent */}
             <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #050505 0%, rgba(5,5,5,0.55) 35%, transparent 70%)" }} />
@@ -294,14 +298,16 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-8%" }}
               transition={{ duration: 1.3, delay: 0.1, ease }}
-              className="w-full overflow-hidden"
+              className="relative w-full overflow-hidden"
               style={{ aspectRatio: "3/4" }}
             >
-              <img
+              <Image
                 src={IMGS.vision}
                 alt=""
                 aria-hidden="true"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 30vw"
+                className="object-cover"
               />
             </motion.div>
 
@@ -428,10 +434,10 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-8%" }}
               transition={{ duration: 1.3, delay: 0.15, ease }}
-              className="hidden lg:block overflow-hidden"
+              className="relative hidden lg:block overflow-hidden"
               style={{ aspectRatio: "3/4" }}
             >
-              <img src={IMGS.philosophy} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+              <Image src={IMGS.philosophy} alt="" aria-hidden="true" fill sizes="25vw" className="object-cover" />
             </motion.div>
 
           </div>
@@ -513,10 +519,10 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-8%" }}
               transition={{ duration: 1.3, delay: 0.18, ease }}
-              className="hidden lg:block overflow-hidden"
+              className="relative hidden lg:block overflow-hidden"
               style={{ aspectRatio: "3/4" }}
             >
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1SHNI7ct5Yx-u6MpbHwS6oyrEJ921q4Yn3Z41bBEtgFzPY-__Lg_Axd8x-eh003gHkw-ViyffOteJk8_n_ziwXc03RRkVHf0Q3B_CaP3K4ezodoZj0G-kr_2Z1plC0m0B7BoXboDtjB8LSLTM3EV5DRrsKXtK5GH8Ztq4jiR9aNexNnnHDoVbgmTf11k1cEGvX-GRrK3RqOfcMhclTt9nEPzzdiDesoiSebBETDWiD7BhZ4yKHKCpaTXyg7eEcOiPFSC4Mj52ZASf" alt="" aria-hidden="true" className="w-full h-full object-cover" />
+              <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1SHNI7ct5Yx-u6MpbHwS6oyrEJ921q4Yn3Z41bBEtgFzPY-__Lg_Axd8x-eh003gHkw-ViyffOteJk8_n_ziwXc03RRkVHf0Q3B_CaP3K4ezodoZj0G-kr_2Z1plC0m0B7BoXboDtjB8LSLTM3EV5DRrsKXtK5GH8Ztq4jiR9aNexNnnHDoVbgmTf11k1cEGvX-GRrK3RqOfcMhclTt9nEPzzdiDesoiSebBETDWiD7BhZ4yKHKCpaTXyg7eEcOiPFSC4Mj52ZASf" alt="" aria-hidden="true" fill sizes="25vw" className="object-cover" />
             </motion.div>
 
           </div>
@@ -572,10 +578,10 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-8%" }}
               transition={{ duration: 1.3, delay: 0.15, ease }}
-              className="hidden lg:block overflow-hidden"
+              className="relative hidden lg:block overflow-hidden"
               style={{ aspectRatio: "3/4" }}
             >
-              <img src={IMGS.guests} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+              <Image src={IMGS.guests} alt="" aria-hidden="true" fill sizes="25vw" className="object-cover" />
             </motion.div>
 
           </div>

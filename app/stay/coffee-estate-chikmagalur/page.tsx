@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import FAQ, { type FaqItem } from "@/components/FAQ";
 import LuxuryFooter from "@/components/LuxuryFooter";
 
@@ -141,10 +142,13 @@ export default function CoffeeEstateChikmagalurPage() {
         ───────────────────────────────────────── */}
         <section className="relative min-h-screen flex items-center overflow-hidden">
           {/* Full-bleed background image */}
-          <img
+          <Image
             src={IMG}
             alt="Coffee estate at Nature Kingdom, Chikmagalur"
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
           />
           {/* Gradient: solid dark on left fading to transparent right */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#050505] from-30% via-[#050505]/85 via-60% to-[#050505]/10" />
@@ -226,12 +230,14 @@ export default function CoffeeEstateChikmagalurPage() {
           {/* Full-bleed image strip */}
           <div className="flex gap-0.5 overflow-hidden">
             {[0, 1, 2, 3, 4].map((i) => (
-              <div key={i} className="flex-1 aspect-[4/3] overflow-hidden min-w-0">
-                <img
+              <div key={i} className="relative flex-1 aspect-[4/3] overflow-hidden min-w-0">
+                <Image
                   src={IMG}
                   alt=""
                   aria-hidden
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  fill
+                  sizes="20vw"
+                  className="object-cover hover:scale-105 transition-transform duration-700"
                   style={{ objectPosition: `${10 + i * 20}% center` }}
                 />
               </div>
@@ -443,11 +449,13 @@ export default function CoffeeEstateChikmagalurPage() {
             Final CTA — image bg
         ───────────────────────────────────────── */}
         <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-          <img
+          <Image
             src={IMG}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-black/72" />
           <div className="relative z-10 text-center px-6 py-24 max-w-2xl mx-auto space-y-6">

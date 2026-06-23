@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import ForestImmersion from "@/components/ForestImmersion";
 import ADayInTheForest from "@/components/AdayInTheForest";
@@ -37,10 +38,13 @@ export default function ExperiencePage() {
 
           {/* Banner Image */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-            <img
+            <Image
               src="/assets/experiencehero.png"
               alt=""
-              className="w-full h-full object-cover opacity-20"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover opacity-20"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/60 via-transparent to-[#050505]/80" />
           </div>
