@@ -35,6 +35,16 @@ export default function ExperiencePage() {
         ───────────────────────────────────────── */}
         <section className="relative pt-40 pb-24 sm:pt-52 sm:pb-32 px-6 sm:px-12 lg:px-20 bg-[#050505] overflow-hidden">
 
+          {/* Banner Image */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <img
+              src="/assets/experiencehero.png"
+              alt=""
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/60 via-transparent to-[#050505]/80" />
+          </div>
+
           {/* Watermark */}
           <div className="absolute inset-x-0 top-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
             <span
@@ -79,7 +89,7 @@ export default function ExperiencePage() {
                 transition={{ duration: 1.2, delay: 0.4, ease }}
                 className="font-sans font-light text-base sm:text-lg text-[#F4E7D6]/70 leading-[1.85] max-w-2xl"
               >
-                From the first forest sounds at dawn to the last ember of the bonfire — this is what
+                From the first forest sounds at dawn to the last ember of the bonfire - this is what
                 a stay at Nature Kingdom feels like, hour by hour, meal by meal.
               </motion.p>
             </div>

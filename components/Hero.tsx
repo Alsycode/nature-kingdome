@@ -82,7 +82,7 @@ export default function Hero({ onBeginJourneyClick }: HeroProps) {
           transition={{ delay: 1.0, duration: 1.4, ease: [0.25, 1, 0.5, 1] as [number, number, number, number] }}
           className="font-sans font-light text-sm sm:text-base lg:text-lg text-on-surface/80 max-w-xl mx-auto mb-10 tracking-wide leading-relaxed"
         >
-          A nature homestay in Chikmagalur — coffee estates, mountain mist, and bonfire
+          A nature homestay in Chikmagalur - coffee estates, mountain mist, and bonfire
           evenings in the Western Ghats.
         </motion.p>
 

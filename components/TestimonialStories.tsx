@@ -3,49 +3,19 @@ import { motion } from "motion/react";
 import { useState, useEffect, useCallback, useRef } from "react";
 
 interface Testimonial {
-  id: number;
+  id: string;
   quote: string;
   name: string;
   role: string;
-  image: string;
+  image_url: string;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    quote: "The journey there felt like part of the experience.",
-    name: "Arjun M.",
-    role: "Solo Traveler",
-    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=900",
-  },
-  {
-    id: 2,
-    quote: "Breakfast among the trees felt unreal.",
-    name: "Meera & Karan",
-    role: "Photographers",
-    image: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&q=80&w=900",
-  },
-  {
-    id: 3,
-    quote: "The campfire conversations stayed with us long after we left.",
-    name: "Rohan V.",
-    role: "Entrepreneur",
-    image: "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&q=80&w=900",
-  },
-  {
-    id: 4,
-    quote: "The wilderness here is raw, honest and beautiful.",
-    name: "Ananya P.",
-    role: "Solo Traveler",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=900",
-  },
-  {
-    id: 5,
-    quote: "It's not just a stay, it's a feeling you carry home.",
-    name: "Dev & Simran",
-    role: "Couple",
-    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=900",
-  },
+const FALLBACK_IMAGES = [
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=900",
+  "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&q=80&w=900",
+  "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&q=80&w=900",
+  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=900",
+  "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=900",
 ];
 
 /* ── Desktop carousel config (≥1024px only) ──────────────────────────── */
@@ -74,21 +44,33 @@ const CARD_H  = 520;
 const AUTOPLAY_MS = 6000;
 
 export default function TestimonialStories() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [active, setActive]       = useState(0);
   const [isPaused, setIsPaused]   = useState(false);
   const [progressKey, setProgressKey] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
-  // Touch tracking for mobile swipe
+  const totalRef = useRef(0);
   const touchStartX = useRef<number | null>(null);
 
+  useEffect(() => {
+    fetch("/api/testimonials")
+      .then((r) => r.json())
+      .then((data: Testimonial[]) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setTestimonials(data);
+          totalRef.current = data.length;
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const advance = useCallback(() => {
-    setActive((p) => (p + 1) % testimonials.length);
+    setActive((p) => (p + 1) % totalRef.current);
     setProgressKey((k) => k + 1);
   }, []);
 
   const retreat = useCallback(() => {
-    setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
+    setActive((p) => (p - 1 + totalRef.current) % totalRef.current);
     setProgressKey((k) => k + 1);
   }, []);
 
@@ -116,6 +98,8 @@ export default function TestimonialStories() {
     }
     touchStartX.current = null;
   }
+
+  if (testimonials.length === 0) return null;
 
   return (
     <section className="relative w-full bg-[#050505] pt-20 pb-16 overflow-hidden">
@@ -226,7 +210,7 @@ export default function TestimonialStories() {
                   }}
                 >
                   <img
-                    src={t.image}
+                    src={t.image_url || FALLBACK_IMAGES[i % FALLBACK_IMAGES.length]}
                     alt={t.name}
                     className="absolute inset-0 w-full h-full object-cover"
                     draggable={false}
@@ -373,7 +357,7 @@ export default function TestimonialStories() {
               transition: "transform 0.65s cubic-bezier(0.25, 1, 0.5, 1)",
             }}
           >
-            {testimonials.map((t) => (
+            {testimonials.map((t, i) => (
               <div key={t.id} className="w-full flex-shrink-0 px-6">
                 {/* Card */}
                 <div
@@ -381,7 +365,7 @@ export default function TestimonialStories() {
                   style={{ borderRadius: 14, aspectRatio: "3/4", border: "1px solid rgba(200,169,126,0.35)" }}
                 >
                   <img
-                    src={t.image}
+                    src={t.image_url || FALLBACK_IMAGES[i % FALLBACK_IMAGES.length]}
                     alt={t.name}
                     className="absolute inset-0 w-full h-full object-cover"
                     draggable={false}

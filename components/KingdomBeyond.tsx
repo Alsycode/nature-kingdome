@@ -28,7 +28,7 @@ const chapters: Chapter[] = [
       { name: "Baba Budangiri", description: "A mystical range where the winds narrate legacy tales of the first coffee seeds." },
       { name: "Jhari Falls", description: "Deep within forest estates, water cascades down natural basalt tiers like liquid silver." }
     ],
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=1200",
+    image: "/assets/mullayanagiri.png",
     ambientColor: "from-[#111A16]/85 to-[#0A0D0B]/95"
   },
   {
@@ -41,7 +41,7 @@ const chapters: Chapter[] = [
       { name: "Hebbe Falls", description: "A two-tiered mountain waterfall crashing with raw majesty deep inside natural reserves." },
       { name: "Z Point", description: "A steep, raw hillside trail terminating on an overlook above infinite oceans of emerald valley." }
     ],
-    image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=1200",
+    image: "/assets/golden_hour_hike.png",
     ambientColor: "from-[#121A24]/85 to-[#080C12]/95"
   },
   {
@@ -54,7 +54,7 @@ const chapters: Chapter[] = [
       { name: "Muthodi Forest", description: "The deep, primeval heartbeat of Bhadra Sanctuary, echoing with the calls of native tigers." },
       { name: "Bandekal Gudda", description: "An imposing, rarely trodden rock peak crowned with dramatic, moody evening clouds." }
     ],
-    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=1200",
+    image: "/assets/hirekolale.png",
     ambientColor: "from-[#131713]/85 to-[#090A09]/95"
   },
   {
@@ -67,7 +67,7 @@ const chapters: Chapter[] = [
       { name: "Halebeedu", description: "A sprawling masterpiece of dark basalt ruins, housing stellar double-shrine Hoysaleswara chambers." },
       { name: "Belavadi", description: "A peaceful, majestic triple-shrine structure carrying deep architectural balance and absolute calm." }
     ],
-    image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&q=80&w=1200",
+    image: "/assets/belur.png",
     ambientColor: "from-[#1E1712]/85 to-[#0D0A08]/95"
   }
 ];

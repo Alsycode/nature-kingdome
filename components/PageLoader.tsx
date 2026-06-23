@@ -6,7 +6,7 @@ const ICONS = [
   {
     label: "Into the mountains",
     svg: (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#C8A97E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#e9c349" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="2,42 16,18 24,30 32,14 46,42" />
         <line x1="2" y1="42" x2="46" y2="42" />
         <polyline points="18,42 24,30 30,42" opacity="0.4" />
@@ -16,7 +16,7 @@ const ICONS = [
   {
     label: "Through the estates",
     svg: (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#C8A97E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#e9c349" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <line x1="24" y1="44" x2="24" y2="14" />
         <polyline points="24,14 14,22 24,20 34,22 24,14" />
         <polyline points="24,22 16,28 24,26 32,28 24,22" />
@@ -27,7 +27,7 @@ const ICONS = [
   {
     label: "Almost there",
     svg: (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#C8A97E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#e9c349" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="6" y="20" width="36" height="14" rx="3" />
         <path d="M10 20 L14 12 H34 L38 20" />
         <circle cx="14" cy="35" r="4" />
@@ -84,9 +84,9 @@ export default function PageLoader() {
     <div className={`nk-loader-overlay${fading ? " nk-loader-fade" : ""}`}>
 
       {/* Icon */}
-      <div className={`nk-loader-icon${iconVisible ? " nk-icon-in" : " nk-icon-out"}`}>
+      {/* <div className={`nk-loader-icon${iconVisible ? " nk-icon-in" : " nk-icon-out"}`}>
         {current.svg}
-      </div>
+      </div> */}
 
       {/* Triangle spinner */}
       <div className="nk-triangle" />
@@ -106,7 +106,7 @@ export default function PageLoader() {
           align-items: center;
           justify-content: center;
           gap: 20px;
-          background: #0D1B2A;
+          background: #0a0a0a;
           opacity: 1;
           transition: opacity 0.7s ease;
         }
@@ -144,7 +144,7 @@ export default function PageLoader() {
           content: "";
           position: absolute;
           inset: -8% 0;
-          background: conic-gradient(#0000 35%, #C8A97E, #0000 65%);
+          background: conic-gradient(#0000 35%, #e9c349, #0000 65%);
           animation: nk-spin 2s linear infinite;
         }
         @keyframes nk-spin {

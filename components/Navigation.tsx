@@ -12,8 +12,8 @@ const navLinks = [
   { label: "Experience", href: "/experience" },
   { label: "Explore", href: "/explore" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
-  { label: "Reserve", href: "#reserve" },
 ];
 
 export default function Navigation({ onEnquireClick }: NavigationProps) {
