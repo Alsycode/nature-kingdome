@@ -31,11 +31,11 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "What is the best time to visit Chikmagalur?",
-        a: "September to February is the most popular window — cool weather, clear skies, and the coffee harvest running from November onwards. March to May is pleasant and quieter. June to August is monsoon season: some roads become difficult and trekking paths may close, but the waterfalls are spectacular and the estates are at their greenest. We are open year-round.",
+        a: "September to February is the most popular window: cool weather, clear skies, and the coffee harvest running from November onwards. March to May is pleasant and quieter. June to August is monsoon season: some roads become difficult and trekking paths may close, but the waterfalls are spectacular and the estates are at their greenest. We are open year-round.",
       },
       {
         q: "How far is Nature Kingdom from Bangalore?",
-        a: "Nature Kingdom is approximately 250 km from Bangalore — around 5 to 6 hours by road. The most direct route is via the Nelamangala–Hassan highway (NH75), then on to Chikmagalur. Many guests enjoy the drive; the final stretch through the coffee and spice estates is one of the most scenic roads in Karnataka. Starting early lets you arrive before sunset.",
+        a: "Nature Kingdom is approximately 250 km from Bangalore, around 5 to 6 hours by road. The most direct route is via the Nelamangala–Hassan highway (NH75), then on to Chikmagalur. Many guests enjoy the drive; the final stretch through the coffee and spice estates is one of the most scenic roads in Karnataka. Starting early lets you arrive before sunset.",
       },
       {
         q: "Is Nature Kingdom suitable for couples?",
@@ -43,11 +43,11 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Can families with children stay at Nature Kingdom?",
-        a: "Families are very welcome. Children enjoy the open outdoor areas, the coffee estate surroundings, and the freedom of being somewhere that is not a city. We can arrange meals suited to younger guests. Parents appreciate that the property is private, enclosed, and calm — the kind of place where children actually want to be outside.",
+        a: "Families are very welcome. Children enjoy the open outdoor areas, the coffee estate surroundings, and the freedom of being somewhere that is not a city. We can arrange meals suited to younger guests. Parents appreciate that the property is private, enclosed, and calm, the kind of place where children actually want to be outside.",
       },
       {
         q: "Is Nature Kingdom suitable for solo travellers?",
-        a: "Solo travellers do stay with us, and many find the quiet and the landscape exactly what they were looking for. The property is private, so you would have the space to yourself. If you have questions about whether the property suits what you have in mind, message us on WhatsApp before booking — we will be straightforward about whether it is the right fit.",
+        a: "Solo travellers do stay with us, and many find the quiet and the landscape exactly what they were looking for. The property is private, so you would have the space to yourself. If you have questions about whether the property suits what you have in mind, message us on WhatsApp before booking; we will be straightforward about whether it is the right fit.",
       },
       {
         q: "What should I pack for a Chikmagalur stay?",
@@ -63,23 +63,23 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "What facilities are included in the stay?",
-        a: "Your stay includes a dining area, living room, flat-screen TV, private terrace with forest views, housekeeping, parking, power backup, and a washing machine. Bonfire and BBQ facilities are set up for you each evening — just let us know your preferred time. Meals are prepared on the property using seasonal, local Karnataka produce.",
+        a: "Your stay includes a dining area, living room, flat-screen TV, private terrace with forest views, housekeeping, parking, power backup, and a washing machine. Bonfire and BBQ facilities are set up for you each evening. Just let us know your preferred time. Meals are prepared on the property using seasonal, local Karnataka produce.",
       },
       {
         q: "Is Nature Kingdom a private property or shared with other guests?",
-        a: "Nature Kingdom is a private property. When you stay, the space is yours — no shared lobby, no other guests at the dining table, no common pool. The experience is closer to renting a private estate than checking into a hotel. This is a deliberate decision. We believe it makes a meaningful difference to how the stay feels.",
+        a: "Nature Kingdom is a private property. When you stay, the space is yours: no shared lobby, no other guests at the dining table, no common pool. The experience is closer to renting a private estate than checking into a hotel. This is a deliberate decision. We believe it makes a meaningful difference to how the stay feels.",
       },
       {
         q: "Is Wi-Fi available at Nature Kingdom?",
-        a: "Wi-Fi is available on the property. Signal strength depends on your mobile network — Chikmagalur is a hilly region and some networks perform better than others. Guests who plan to work remotely generally manage, though we would gently suggest that the setting makes disconnecting easier than staying online.",
+        a: "Wi-Fi is available on the property. Signal strength depends on your mobile network. Chikmagalur is a hilly region and some networks perform better than others. Guests who plan to work remotely generally manage, though we would gently suggest that the setting makes disconnecting easier than staying online.",
       },
       {
         q: "Is the property accessible by car?",
-        a: "Yes — private parking is available at the property. The roads leading to Bommenahalli are paved and accessible to regular cars. During heavy monsoon rain, some approach roads can get muddy or slippery. If you are travelling in June to August, a slightly higher vehicle clearance helps. We can share driving directions after you confirm your booking.",
+        a: "Yes, private parking is available at the property. The roads leading to Bommenahalli are paved and accessible to regular cars. During heavy monsoon rain, some approach roads can get muddy or slippery. If you are travelling in June to August, a slightly higher vehicle clearance helps. We can share driving directions after you confirm your booking.",
       },
       {
         q: "What is the coffee estate experience like at the property?",
-        a: "Chikmagalur is one of India's oldest coffee-growing regions. Staying at Nature Kingdom means waking up surrounded by coffee and spice plantations. You can smell the fresh crop on the morning air, walk among the estate rows, and experience the landscape that produces your morning cup — a genuinely different kind of holiday, quiet and grounded.",
+        a: "Chikmagalur is one of India's oldest coffee-growing regions. Staying at Nature Kingdom means waking up surrounded by coffee and spice plantations. You can smell the fresh crop on the morning air, walk among the estate rows, and experience the landscape that produces your morning cup, a genuinely different kind of holiday, quiet and grounded.",
       },
     ],
   },
@@ -91,19 +91,19 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "Are meals included in the stay?",
-        a: "Every stay includes three meals: breakfast (8:30–10:00 AM), evening high tea, and dinner (8:30–10:00 PM). No lunch is served. Breakfast is a choice of Set Dosa, Idly, or Neer Dosa with Sambar and Chutney, plus Lemon Rice or Pullav or Uppama, and coffee, tea, or milk. Evening high tea is Onion or Vegetable Pakoda with a hot drink. Dinner is a full spread — rice, chapathi, dal or rasam, a veg curry, and sweets. Non-vegetarian options (chicken or fish) are available for dinner, subject to availability.",
+        a: "Every stay includes three meals: breakfast (8:30–10:00 AM), evening high tea, and dinner (8:30–10:00 PM). No lunch is served. Breakfast is a choice of Set Dosa, Idly, or Neer Dosa with Sambar and Chutney, plus Lemon Rice or Pullav or Uppama, and coffee, tea, or milk. Evening high tea is Onion or Vegetable Pakoda with a hot drink. Dinner is a full spread: rice, chapathi, dal or rasam, a veg curry, and sweets. Non-vegetarian options (chicken or fish) are available for dinner, subject to availability.",
       },
       {
         q: "What kind of food is served at Nature Kingdom?",
-        a: "Home-style Karnataka cooking — not a hotel buffet, not catered. Dinner includes Ghee Rice or Jeera Rice with Chapathi, Dal or Rasam, Paneer or Veg Kurma, Gobi, Sabaji, Papad, Curd Rice, and a sweet dish like Gulab Jamun or Payasa. Chicken gravy or fry and fish are available as optional non-vegetarian additions. All items are subject to availability and prepared fresh on the property.",
+        a: "Home-style Karnataka cooking, not a hotel buffet, not catered. Dinner includes Ghee Rice or Jeera Rice with Chapathi, Dal or Rasam, Paneer or Veg Kurma, Gobi, Sabaji, Papad, Curd Rice, and a sweet dish like Gulab Jamun or Payasa. Chicken gravy or fry and fish are available as optional non-vegetarian additions. All items are subject to availability and prepared fresh on the property.",
       },
       {
         q: "Are vegetarian and non-vegetarian options available?",
-        a: "Both are available. Let us know your preferences when you book so we can plan meals accordingly. If you have specific dietary requirements — allergies, intolerances, or religious dietary restrictions — mention these in advance and we will accommodate them where possible.",
+        a: "Both are available. Let us know your preferences when you book so we can plan meals accordingly. If you have specific dietary requirements (allergies, intolerances, or religious dietary restrictions), mention these in advance and we will accommodate them where possible.",
       },
       {
         q: "Can we arrange a bonfire and BBQ during the stay?",
-        a: "Yes — bonfire evenings are one of the things guests talk about most after they leave. We set up the fire in the outdoor area at sunset. It is included as part of your stay — just let us know your preferred time and we will have it ready. BBQ arrangements are also available on request. Tell us in the morning if you want BBQ in the evening.",
+        a: "Yes, bonfire evenings are one of the things guests talk about most after they leave. We set up the fire in the outdoor area at sunset. It is included as part of your stay. Just let us know your preferred time and we will have it ready. BBQ arrangements are also available on request. Tell us in the morning if you want BBQ in the evening.",
       },
     ],
   },
@@ -115,11 +115,11 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "How do I confirm a booking?",
-        a: "Fill in the booking form on our website with your dates and details. You will receive a booking reference immediately. Message us on WhatsApp with that reference — we will confirm your dates and share payment details within 2 hours. Your booking is confirmed once payment is received.",
+        a: "Fill in the booking form on our website with your dates and details. You will receive a booking reference immediately. Message us on WhatsApp with that reference; we will confirm your dates and share payment details within 2 hours. Your booking is confirmed once payment is received.",
       },
       {
         q: "What payment methods are accepted?",
-        a: "We accept UPI transfers (Google Pay, PhonePe, Paytm, NEFT) and cash. Payment is arranged via WhatsApp after you submit your booking request — there is no online payment gateway on the site. We confirm your stay once payment is received and do not hold a pre-authorisation on your card.",
+        a: "We accept UPI transfers (Google Pay, PhonePe, Paytm, NEFT) and cash. Payment is arranged via WhatsApp after you submit your booking request. There is no online payment gateway on the site. We confirm your stay once payment is received and do not hold a pre-authorisation on your card.",
       },
       {
         q: "What are the check-in and check-out times?",
@@ -131,7 +131,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Can I make a special request for an anniversary or honeymoon?",
-        a: "Yes — tell us when you book and describe what would feel meaningful to you. We do not offer fixed anniversary packages with preset decorations. What we offer is genuine effort: a particular dinner setup, a bonfire set for a specific hour, fresh flowers from the estate, or simply making sure your room is ready well before noon on arrival day.",
+        a: "Yes, tell us when you book and describe what would feel meaningful to you. We do not offer fixed anniversary packages with preset decorations. What we offer is genuine effort: a particular dinner setup, a bonfire set for a specific hour, fresh flowers from the estate, or simply making sure your room is ready well before noon on arrival day.",
       },
     ],
   },
@@ -147,11 +147,11 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Is there a quiet hours policy?",
-        a: "We ask all guests to keep noise levels low after 10:00 PM. Nature Kingdom is a peaceful property and the surrounding environment — the forest, the birds, the stillness — is part of what makes the stay special. Respecting that benefits everyone.",
+        a: "We ask all guests to keep noise levels low after 10:00 PM. Nature Kingdom is a peaceful property and the surrounding environment (the forest, the birds, the stillness) is part of what makes the stay special. Respecting that benefits everyone.",
       },
       {
         q: "Are there any rules around water and electricity?",
-        a: "Yes — we ask guests to use water and electricity mindfully. The property is in a natural setting and we are conscious of our environmental footprint. Power backup is available, but we appreciate guests switching off lights and appliances when not in use.",
+        a: "Yes, we ask guests to use water and electricity mindfully. The property is in a natural setting and we are conscious of our environmental footprint. Power backup is available, but we appreciate guests switching off lights and appliances when not in use.",
       },
       {
         q: "Is smoking allowed at Nature Kingdom?",
@@ -175,15 +175,15 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Can we go trekking from Nature Kingdom?",
-        a: "Mullayanagiri — Karnataka's highest peak at 1,930 metres — is approximately 45 kilometres from the property, around an hour's drive. It is one of the most popular sunrise treks in the region. Baba Budangiri and the trails around Kemmangundi are also accessible. Most treks in the region do not require a guide for the main routes, though conditions vary by season.",
+        a: "Mullayanagiri, Karnataka's highest peak at 1,930 metres, is approximately 45 kilometres from the property, around an hour's drive. It is one of the most popular sunrise treks in the region. Baba Budangiri and the trails around Kemmangundi are also accessible. Most treks in the region do not require a guide for the main routes, though conditions vary by season.",
       },
       {
         q: "What waterfalls are near Chikmagalur?",
-        a: "Jhari Falls is approximately 30 kilometres from Nature Kingdom — quieter than the more well-known waterfalls in Karnataka and worth it for the drive through coffee estates alone. Manikyadhara Falls is further, around 65 kilometres, and is best visited in the morning before tour groups arrive. Both are most spectacular between July and October when water flow is highest.",
+        a: "Jhari Falls is approximately 30 kilometres from Nature Kingdom, quieter than the more well-known waterfalls in Karnataka and worth it for the drive through coffee estates alone. Manikyadhara Falls is further, around 65 kilometres, and is best visited in the morning before tour groups arrive. Both are most spectacular between July and October when water flow is highest.",
       },
       {
         q: "Is Chikmagalur town accessible from Nature Kingdom?",
-        a: "Chikmagalur town is approximately 25 to 30 kilometres from the property — around 40 to 50 minutes by road. The town has markets, restaurants, coffee board outlets, and the practical amenities most guests need. We can recommend what is worth visiting in town if you ask when you arrive.",
+        a: "Chikmagalur town is approximately 25 to 30 kilometres from the property, around 40 to 50 minutes by road. The town has markets, restaurants, coffee board outlets, and the practical amenities most guests need. We can recommend what is worth visiting in town if you ask when you arrive.",
       },
     ],
   },

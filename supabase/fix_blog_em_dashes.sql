@@ -1,13 +1,9 @@
--- Run this in your Supabase SQL editor AFTER running schema.sql
--- Seeds 4 draft blog posts. Edit and publish them from /admin/blog
+-- Run this in your Supabase SQL editor to remove em dashes from blog posts.
+-- Uses dollar-quoting ($$) so you don't need to worry about escaping apostrophes.
 
-insert into blog_posts (title, slug, excerpt, content, category, published, published_at) values
-
-(
-  'Best Time to Visit Chikmagalur: A Month-by-Month Guide',
-  'best-time-to-visit-chikmagalur',
-  'Chikmagalur is worth visiting any time of year, but each season offers something different. Here is what to expect across every month so you can plan around the experience you want.',
-  'Chikmagalur sits at an elevation of around 1,000 metres in the Western Ghats, which means the weather is almost always more pleasant than the city you are coming from. That said, the experience changes significantly month to month, with rain, mist, harvest, and clear skies each having their season.
+UPDATE blog_posts SET
+  title   = 'Best Time to Visit Chikmagalur: A Month-by-Month Guide',
+  content = $$Chikmagalur sits at an elevation of around 1,000 metres in the Western Ghats, which means the weather is almost always more pleasant than the city you are coming from. That said, the experience changes significantly month to month, with rain, mist, harvest, and clear skies each having their season.
 
 # October to February: The Best All-Round Window
 
@@ -49,17 +45,13 @@ It is a good month to visit if you want the green of the monsoon without its ful
 
 ## A Final Note
 
-Nature Kingdom is open year-round. Whatever month you visit, the coffee estate surroundings, the morning air, and the quiet are constants. If you are unsure whether your planned dates work for the experience you have in mind, message us on WhatsApp and we will tell you honestly.',
-  'Chikmagalur Travel Guide',
-  false,
-  null
-),
+Nature Kingdom is open year-round. Whatever month you visit, the coffee estate surroundings, the morning air, and the quiet are constants. If you are unsure whether your planned dates work for the experience you have in mind, message us on WhatsApp and we will tell you honestly.$$
+WHERE slug = 'best-time-to-visit-chikmagalur';
 
-(
-  'Bangalore to Chikmagalur: The Complete Weekend Trip Guide',
-  'bangalore-to-chikmagalur-weekend-trip',
-  'Everything you need to plan a weekend trip from Bangalore to Chikmagalur: the drive, the route, what to do, and how to make the most of two nights away.',
-  'Chikmagalur is one of the few weekend destinations from Bangalore that actually earns the journey. It is far enough that it feels like a proper escape, around 250 kilometres and five to six hours depending on your starting point, and different enough from the city that the transition feels complete the moment you enter the estate roads.
+UPDATE blog_posts SET
+  title   = 'Bangalore to Chikmagalur: The Complete Weekend Trip Guide',
+  excerpt = 'Everything you need to plan a weekend trip from Bangalore to Chikmagalur: the drive, the route, what to do, and how to make the most of two nights away.',
+  content = $$Chikmagalur is one of the few weekend destinations from Bangalore that actually earns the journey. It is far enough that it feels like a proper escape, around 250 kilometres and five to six hours depending on your starting point, and different enough from the city that the transition feels complete the moment you enter the estate roads.
 
 # The Drive
 
@@ -85,7 +77,7 @@ The temptation to plan activities on day one is real. Resist it. The transition 
 
 This is your active day. Options within a reasonable drive from Nature Kingdom:
 
-- Mullayanagiri: Karnataka''s highest peak at 1,930 metres. About 45 minutes from us. The sunrise trek starts at 5am. Even if you skip the trek, the viewpoint is worth the drive.
+- Mullayanagiri: Karnataka's highest peak at 1,930 metres. About 45 minutes from us. The sunrise trek starts at 5am. Even if you skip the trek, the viewpoint is worth the drive.
 - Baba Budangiri: Named after the Sufi saint Baba Budan, whose shrine sits at the peak. The views across the coffee-growing valleys are among the best in the region.
 - Jhari Falls: Around 30 kilometres from the property. Best visited in the morning. A waterfall surrounded by forest, quieter than the tourist circuit waterfalls.
 - Chikmagalur town: 25–30 kilometres away. Markets, coffee board outlets, local restaurants. Worth an hour if you want to pick up fresh ground coffee from the estates.
@@ -106,17 +98,13 @@ If you want to stop on the way back, Belur and Halebidu (the 12th-century Hoysal
 
 # Booking Your Stay
 
-If you are coming from Bangalore for a weekend, book at least two weeks in advance, particularly for October to January when the property fills quickly. Message us on WhatsApp with your dates and we will confirm availability within two hours.',
-  'Weekend Getaway',
-  false,
-  null
-),
+If you are coming from Bangalore for a weekend, book at least two weeks in advance, particularly for October to January when the property fills quickly. Message us on WhatsApp with your dates and we will confirm availability within two hours.$$
+WHERE slug = 'bangalore-to-chikmagalur-weekend-trip';
 
-(
-  'Mullayanagiri Trek Guide: Karnataka''s Highest Peak',
-  'mullayanagiri-trek-guide',
-  'Mullayanagiri is Karnataka''s highest peak at 1,930 metres. Here is everything you need to know to plan the trek: the route, the best time, what to carry, and what to expect at the top.',
-  'Mullayanagiri sits at 1,930 metres above sea level, making it the highest point in Karnataka. It is part of the Baba Budangiri range in the Western Ghats, about 45 kilometres from Chikmagalur town and roughly an hour from Nature Kingdom.
+UPDATE blog_posts SET
+  title   = 'Mullayanagiri Trek Guide: Karnataka''s Highest Peak',
+  excerpt = 'Mullayanagiri is Karnataka''s highest peak at 1,930 metres. Here is everything you need to know to plan the trek: the route, the best time, what to carry, and what to expect at the top.',
+  content = $$Mullayanagiri sits at 1,930 metres above sea level, making it the highest point in Karnataka. It is part of the Baba Budangiri range in the Western Ghats, about 45 kilometres from Chikmagalur town and roughly an hour from Nature Kingdom.
 
 The trek itself is not technically difficult. The main route is a well-worn path with stone steps for much of the ascent. What makes it worth doing is the landscape around it: the ridge views, the cloud cover at sunrise, and the sense of standing above the coffee estates that stretch to the horizon below.
 
@@ -176,17 +164,13 @@ It is not guaranteed. Some mornings are cloudy from below and above. But when it
 
 Come back down, eat breakfast, and let the rest of the day be slow. The morning will have been enough.
 
-If you are staying at Nature Kingdom, let us know the evening before if you plan a sunrise trek; we can arrange an early breakfast for when you return.',
-  'Trekking & Adventure',
-  false,
-  null
-),
+If you are staying at Nature Kingdom, let us know the evening before if you plan a sunrise trek; we can arrange an early breakfast for when you return.$$
+WHERE slug = 'mullayanagiri-trek-guide';
 
-(
-  'Things to Do in Chikmagalur: A Local Guide',
-  'things-to-do-in-chikmagalur',
-  'A practical guide to Chikmagalur from people who live here: what is worth your time, what to skip, and how to approach the region without a checklist.',
-  'Chikmagalur is not a city with attractions. It is a landscape with things worth spending time in. The distinction matters.
+UPDATE blog_posts SET
+  title   = 'Things to Do in Chikmagalur: A Local Guide',
+  excerpt = 'A practical guide to Chikmagalur from people who live here: what is worth your time, what to skip, and how to approach the region without a checklist.',
+  content = $$Chikmagalur is not a city with attractions. It is a landscape with things worth spending time in. The distinction matters.
 
 Most visitors arrive with a list (Mullayanagiri, Baba Budangiri, the coffee museum, the waterfalls) and try to tick them off over a weekend. They leave having seen all of them and experienced none of them.
 
@@ -196,7 +180,7 @@ The better approach: choose fewer things, stay longer at each one, and leave som
 
 ## Coffee Estate Walk
 
-Chikmagalur is one of India''s oldest coffee-growing regions. The estates here have been producing coffee for over 250 years. A walk through the estate rows, particularly in the early morning when the dew is still on the leaves, is not a tourist activity. It is simply being present in a place that has been cultivated carefully for generations.
+Chikmagalur is one of India's oldest coffee-growing regions. The estates here have been producing coffee for over 250 years. A walk through the estate rows, particularly in the early morning when the dew is still on the leaves, is not a tourist activity. It is simply being present in a place that has been cultivated carefully for generations.
 
 From November to January, the red coffee cherries are being harvested. You can watch the process, smell the fresh pulp, and understand why the cup you drink every morning has the character it does.
 
@@ -208,7 +192,7 @@ Sunset to 9pm is the best time on the property. The temperature drops, the sky c
 
 ## Mullayanagiri
 
-Karnataka''s highest peak at 1,930 metres. One hour from the property. Worth doing as a sunrise trek if you are willing to leave by 5am. The ridge views and the cloud layer below the peak on a clear morning are unlike anything else in the region.
+Karnataka's highest peak at 1,930 metres. One hour from the property. Worth doing as a sunrise trek if you are willing to leave by 5am. The ridge views and the cloud layer below the peak on a clear morning are unlike anything else in the region.
 
 ## Baba Budangiri
 
@@ -244,10 +228,5 @@ Chikmagalur on a weekend is 250 kilometres from Bangalore. You will spend most o
 
 ## Ask us
 
-We live here. We know which waterfall is worth visiting in which month, which route to Mullayanagiri is less crowded, and which restaurant in town is actually good right now. Ask us when you arrive. We will tell you honestly.',
-  'Chikmagalur Travel Guide',
-  false,
-  null
-)
-
-on conflict (slug) do nothing;
+We live here. We know which waterfall is worth visiting in which month, which route to Mullayanagiri is less crowded, and which restaurant in town is actually good right now. Ask us when you arrive. We will tell you honestly.$$
+WHERE slug = 'things-to-do-in-chikmagalur';
