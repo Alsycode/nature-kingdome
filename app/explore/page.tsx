@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import KingdomBeyond from "@/components/KingdomBeyond";
+import ItinerarySection from "@/components/ItinerarySection";
 import LuxuryFooter from "@/components/LuxuryFooter";
 
 const ease = [0.25, 1, 0.5, 1] as [number, number, number, number];
@@ -86,6 +87,9 @@ export default function ExplorePage() {
 
         {/* ── The horizontal scroll chapter experience ── */}
         <KingdomBeyond />
+
+        {/* ── 4-Day Itinerary ── */}
+        <ItinerarySection />
 
         {/* ─────────────────────────────────────────
             Final CTA
