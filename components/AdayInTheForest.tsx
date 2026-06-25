@@ -30,7 +30,7 @@ const timelineData: TimelineItem[] = [
     time: "11:00 AM",
     title: "Estate Walks",
     description: "Wander companionless through organic coffee blocks alongside our estate naturalists. Touch damp mosses, identify wild orchids, and learn the rich, centuries-old coffee-growing heritage of Chikkamagaluru.",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200"
+    image: "/assets/coffeeestate.png"
   },
   {
     time: "03:00 PM",

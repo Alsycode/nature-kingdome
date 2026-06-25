@@ -32,7 +32,7 @@ const highlights: DiningHighlight[] = [
     subtitle: "8:30 PM – 10:00 PM",
     items: [
       "Ghee Rice / Jeera Rice & Chapathi",
-      "Chicken Gravy / Fry or Fish — optional, subject to availability",
+      "Chicken Fry · Chicken Gravy · Fish Fry — optional, subject to availability",
       "Veg: Dal / Rasam",
       "Paneer / Veg Kurma · Gobi · Sabaji · Papad · Curd Rice",
       "Sweets: Gulab Jamun / Payasa",
