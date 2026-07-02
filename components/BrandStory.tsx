@@ -62,7 +62,7 @@ export default function BrandStory() {
             className="font-sans font-light text-[#F4E7D6]/85 leading-relaxed mb-7"
             style={{ fontSize: 15, maxWidth: 480 }}
           >
-            We did not build a resort; we curated a clearing in the forest.
+            We did not build a resort; we curated a clearing in the coffee estate.
             Architecture that defers to ancient trees, lighting that respects
             the night sky, and spaces designed entirely for deep personal reflection.
           </p>
@@ -81,7 +81,7 @@ export default function BrandStory() {
         <div className="relative overflow-hidden w-full lg:w-[58%] min-h-[60vw] sm:min-h-[50vw] lg:min-h-0">
           <Image
             src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=85&w=1400"
-            alt="Dark cinematic forest path lined with lanterns"
+            alt="Dark cinematic mountain path lined with lanterns"
             fill
             sizes="(max-width: 1024px) 100vw, 58vw"
             className="object-cover select-none transition-transform duration-[1200ms] ease-out hover:scale-[1.02]"
@@ -148,7 +148,7 @@ export default function BrandStory() {
             className="font-sans font-light text-white/50 leading-relaxed"
             style={{ fontSize: 13 }}
           >
-            Where the forest speaks<br />
+            Where the mountain speaks<br />
             in whispers and time<br />
             slows to nature's rhythm.
           </p>

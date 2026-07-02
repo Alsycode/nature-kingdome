@@ -22,7 +22,7 @@ const highlights = [
       </svg>
     ),
     title: "Surrounded by Nature",
-    desc: "Lakes, forests and scenic trails.",
+    desc: "Lakes, mountains and scenic trails.",
   },
   {
     icon: (
@@ -163,7 +163,7 @@ export default function LocationSection() {
               viewport={{ once: true, margin: "-8%" }}
               className="font-sans font-light text-sm sm:text-[0.9rem] text-on-surface/50 leading-[1.8] -mt-2 max-w-sm"
             >
-              Hidden away from the ordinary, our resort is surrounded by untouched forests, misty mountains, and serene landscapes.
+              Hidden away from the ordinary, our resort is surrounded by coffee estates, misty mountains, and serene landscapes.
             </motion.p>
 
             <motion.div

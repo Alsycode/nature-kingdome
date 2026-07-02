@@ -72,7 +72,7 @@ export default function Dining() {
           </div>
           <div className="lg:col-span-4 lg:pt-16">
             <p className="font-sans font-light text-base sm:text-lg text-on-surface/60 leading-relaxed italic border-l border-[#e9c349]/20 pl-6">
-              Every meal at Nature Kingdom is designed to complement the pace of the forest.
+              Every meal at Nature Kingdom is designed to complement the pace of the mountains.
             </p>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function Dining() {
           <div className="absolute inset-0 border border-on-surface/5 pointer-events-none z-10" />
           <motion.img
             style={{ y: imgY }}
-            alt="An intimate table set with simple, hand-thrown clay platters on a rustic teak slab deep within soft jungle shadows"
+            alt="An intimate table set with simple, hand-thrown clay platters on a rustic teak slab deep within the coffee estate"
             className="absolute -top-[10%] -bottom-[10%] left-0 right-0 w-full h-full object-cover select-none scale-105"
             src={menuImg}
           />

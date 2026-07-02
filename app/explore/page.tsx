@@ -61,7 +61,7 @@ export default function ExplorePage() {
                 transition={{ duration: 1.2, delay: 0.1, ease }}
                 className="font-headline text-4xl sm:text-5xl lg:text-[3.6rem] text-[#F4E7D6] leading-[1.05] tracking-tight mb-8"
               >
-                Peaks, Waterfalls, Temples,<br />and Ancient Forest — All Within Reach.
+                Peaks, Waterfalls, Temples,<br />and Ancient Mountains — All Within Reach.
               </motion.h1>
 
               <motion.div

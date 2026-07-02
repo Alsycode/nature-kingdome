@@ -16,15 +16,15 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     time: "05:40 AM",
-    title: "The Forest Wakes",
-    description: "The jungle breathes. Thick, blue fog rises slowly from the valley floors as the first calls of the Malabar whistling thrush break the nighttime silence. A cool mountain breeze filters directly through the open window.",
+    title: "The Mountain Wakes",
+    description: "Mist rises slowly from the valley floors as the first calls of the Malabar whistling thrush break the nighttime silence. A cool mountain breeze filters directly through the open window.",
     image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1200"
   },
   {
     time: "08:00 AM",
-    title: "Breakfast Among The Trees",
-    description: "Sip locally-grown Arabica coffee on a private timber deck, paired with ancestral baked breads. Overhead, giant wood squirrels make their way across the sun-drenched jungle canopy.",
-    image: breakfast,
+    title: "Breakfast With Mountain Views",
+    description: "Sip locally-grown Arabica coffee with the mountains stretching out ahead of you, paired with a fresh home-cooked breakfast. The coffee estate surrounds you on all sides as the morning light settles in.",
+    image: "/coffee.jpg",
   },
   {
     time: "11:00 AM",
@@ -41,13 +41,13 @@ const timelineData: TimelineItem[] = [
   {
     time: "06:45 PM",
     title: "Golden Hour Silence",
-    description: "Position yourself on the western lookout as the mountain range is bathed in heavy orange-gold sunlight. Watch the colors fade to velvet violet over infinite forest ridges.",
+    description: "Position yourself on the western lookout as the mountain range is bathed in heavy orange-gold sunlight. Watch the colors fade to velvet violet over the infinite mountain ridges.",
     image: goldenHourImg
   },
   {
     time: "08:00 PM",
     title: "Campfire & Conversation",
-    description: "Gather around dry-wood fire pits in the central court. Engage in simple, warm conversations with like-minded minds under the cooling canopy whispering in the stellar dark.",
+    description: "Gather around dry-wood fire pits in the central court. Engage in simple, warm conversations with like-minded minds under a sky full of stars, with the coffee estate quiet all around.",
     image: campfire
   },
   {

@@ -47,8 +47,8 @@ const itinerary: Day[] = [
   },
   {
     day: 3,
-    theme: "Lakes, Forest & Sunsets",
-    tagline: "A quieter day — still water, dense forest, and one of the best sunset spots in Chikmagalur.",
+    theme: "Lakes, Mountains & Sunsets",
+    tagline: "A quieter day — still water, open mountains, and one of the best sunset spots in Chikmagalur.",
     stops: [
       { name: "Hirekolale Lake", time: "25–30 min", type: "Lake · Sunset Views" },
       { name: "Bandekallu Gudda", time: "35–40 min", type: "Rock Peak" },

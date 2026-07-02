@@ -326,7 +326,7 @@ export default async function BlogPostPage({
               }}
             >
               Stay at Nature Kingdom — surrounded by coffee estates, misty hills,
-              and forest mornings.
+              and mountain mornings.
             </p>
             <Link
               href="/book"

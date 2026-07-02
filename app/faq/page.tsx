@@ -39,7 +39,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Is Nature Kingdom suitable for couples?",
-        a: "Many of our guests are couples on anniversaries, honeymoons, or a quiet escape together. The private property, bonfire evenings, sunrise views from the terrace, and the surrounding forest create an atmosphere that feels naturally romantic. If you are celebrating something special, let us know in advance and we will make small arrangements to mark the occasion.",
+        a: "Many of our guests are couples on anniversaries, honeymoons, or a quiet escape together. The private property, bonfire evenings, sunrise views from the balcony, and the surrounding coffee estate create an atmosphere that feels naturally romantic. If you are celebrating something special, let us know in advance and we will make small arrangements to mark the occasion.",
       },
       {
         q: "Can families with children stay at Nature Kingdom?",
@@ -63,7 +63,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "What facilities are included in the stay?",
-        a: "Your stay includes a dining area, living room, flat-screen TV, private terrace with forest views, housekeeping, parking, power backup, and a washing machine. Bonfire and BBQ facilities are set up for you each evening. Just let us know your preferred time. Meals are prepared on the property using seasonal, local Karnataka produce.",
+        a: "Your stay includes a dining area, living room, flat-screen TV, private balcony with mountain views, housekeeping, parking, and power backup. Bonfire and BBQ facilities are set up for you each evening. Just let us know your preferred time. Meals are prepared on the property using seasonal, local Karnataka produce.",
       },
       {
         q: "Is Nature Kingdom a private property or shared with other guests?",
@@ -71,11 +71,11 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Is Wi-Fi available at Nature Kingdom?",
-        a: "Wi-Fi is available on the property. Signal strength depends on your mobile network. Chikmagalur is a hilly region and some networks perform better than others. Guests who plan to work remotely generally manage, though we would gently suggest that the setting makes disconnecting easier than staying online.",
+        a: "Wi-Fi is available at good speed. Mobile network connectivity is also good across major networks.",
       },
       {
         q: "Is the property accessible by car?",
-        a: "Yes, private parking is available at the property. The roads leading to Bommenahalli are paved and accessible to regular cars. During heavy monsoon rain, some approach roads can get muddy or slippery. If you are travelling in June to August, a slightly higher vehicle clearance helps. We can share driving directions after you confirm your booking.",
+        a: "Yes, private parking is available at the property. All roads leading to the property are fully paved and accessible to regular cars. We can share driving directions after you confirm your booking.",
       },
       {
         q: "What is the coffee estate experience like at the property?",
@@ -147,7 +147,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Is there a quiet hours policy?",
-        a: "We ask all guests to keep noise levels low after 10:00 PM. Nature Kingdom is a peaceful property and the surrounding environment (the forest, the birds, the stillness) is part of what makes the stay special. Respecting that benefits everyone.",
+        a: "We ask all guests to keep noise levels low after 10:00 PM. Nature Kingdom is a peaceful property and the surrounding environment (the coffee estate, the birds, the stillness) is part of what makes the stay special. Respecting that benefits everyone.",
       },
       {
         q: "Are there any rules around water and electricity?",
@@ -171,7 +171,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "What activities are available at Nature Kingdom?",
-        a: "On the property itself: estate walks through the coffee rows, terrace time, bonfire evenings, BBQ, and the particular pleasure of having nowhere you need to be. The mornings in Chikmagalur are worth waking up early for. Beyond the property: the Mullayanagiri range, Baba Budangiri, Jhari Falls, Kemmangundi, and Manikyadhara Falls are all within a manageable drive.",
+        a: "On the property itself: estate walks through the coffee rows, balcony time, bonfire evenings, BBQ, and the particular pleasure of having nowhere you need to be. The mornings in Chikmagalur are worth waking up early for. Beyond the property: the Mullayanagiri range, Baba Budangiri, Jhari Falls, Kemmangundi, and Manikyadhara Falls are all within a manageable drive.",
       },
       {
         q: "Can we go trekking from Nature Kingdom?",
@@ -183,7 +183,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Is Chikmagalur town accessible from Nature Kingdom?",
-        a: "Chikmagalur town is approximately 25 to 30 kilometres from the property, around 40 to 50 minutes by road. The town has markets, restaurants, coffee board outlets, and the practical amenities most guests need. We can recommend what is worth visiting in town if you ask when you arrive.",
+        a: "Chikmagalur town is around 20 minutes by road. The town has markets, restaurants, coffee board outlets, and the practical amenities most guests need. We can recommend what is worth visiting in town if you ask when you arrive.",
       },
     ],
   },

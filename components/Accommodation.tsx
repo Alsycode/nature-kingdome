@@ -88,7 +88,7 @@ export default function Accommodation() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.5 }}
-                alt="Outdoor stone soaking bath open to dense jungle elements"
+                alt="Outdoor stone soaking bath open to the coffee estate surroundings"
                 className="w-full h-full object-cover select-none"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxdrtD8r9pKg2sIi6aAwhzlDeDG0NXqzuFNnnaM19DoRp2s_OOXWcSWnluK0iXbjPJkq0L4yv2WZryVS5YmctpBdfpnFZFzwXc6I3ZKyll7tfrPd56-CEpi5hiDESV5N0MYxZ1z4wlFRU9_cSHbvsxqr851SWHUcLRh3fZGY2D1cMbqO6P1OEa-9kwJg3XAqSCcXrYXqk_HdbwcjIXjm5_l0srbCldba2G9w_i5DIrz6xk3SP5Wf4Gu1wFElp1lbE1MpTxWmWe_f7P"
               />

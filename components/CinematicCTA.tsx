@@ -76,8 +76,8 @@ export default function CinematicCTA() {
         </span>
 
         <h2 className="font-headline text-4xl sm:text-6xl lg:text-[110px] leading-[1.02] text-on-surface font-light tracking-tighter">
-          The Forest <br className="sm:hidden" />
-          <span className="italic font-light text-[#bdcac0]">Is Waiting.</span>
+          The Mountains <br className="sm:hidden" />
+          <span className="italic font-light text-[#bdcac0]">Are Waiting.</span>
         </h2>
 
         <p className="font-sans font-light text-sm sm:text-lg lg:text-xl text-on-surface/70 max-w-xl mx-auto leading-relaxed tracking-wide">
@@ -138,7 +138,7 @@ export default function CinematicCTA() {
                   Reserve Your Place.
                 </h3>
                 <p className="font-sans font-light text-xs sm:text-sm text-on-surface/60 leading-relaxed">
-                  Due to our commitment to preservation, Nature Kingdom allocates only five cabins to maintain the quiet essence of the forest. Leave your contact details below to initiate booking.
+                  Due to our commitment to preservation, Nature Kingdom allocates only five cabins to maintain the quiet essence of the coffee estate. Leave your contact details below to initiate booking.
                 </p>
               </div>
 

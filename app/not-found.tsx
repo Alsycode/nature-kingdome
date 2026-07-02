@@ -39,7 +39,7 @@ export default function NotFound() {
             marginBottom: "1.5rem",
           }}
         >
-          Lost in the forest?
+          Lost in the mountains?
         </h1>
 
         <p

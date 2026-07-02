@@ -62,7 +62,7 @@ const trustFeatures = [
   {
     icon: <Footprints size={28} strokeWidth={1.2} />,
     title: "Nature Trails",
-    description: "Walk the coffee estate rows and forest paths at your own pace.",
+    description: "Walk the coffee estate rows and mountain paths at your own pace.",
   },
   {
     icon: <UtensilsCrossed size={28} strokeWidth={1.2} />,

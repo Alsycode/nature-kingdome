@@ -113,7 +113,7 @@ const nearbyPlaces = [
     place: "Manikyadhara Falls",
     dist: "~65 km · ~2 hr",
     detail:
-      "A two-tier waterfall reached via a short forest walk. Best visited in the morning before the tourist buses arrive.",
+      "A two-tier waterfall reached via a short mountain walk. Best visited in the morning before the tourist buses arrive.",
   },
 ];
 

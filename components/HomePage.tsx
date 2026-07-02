@@ -55,7 +55,7 @@ export default function HomePage({ initialPackages }: HomePageProps) {
           number="3"
           title="Curated Experiences"
           subtitle="Our Packages"
-          quote="Every stay is a chapter. Choose your story, and let the forest write the rest."
+          quote="Every stay is a chapter. Choose your story, and let the mountains write the rest."
         />
         <PackagesSection initialPackages={initialPackages} />
 

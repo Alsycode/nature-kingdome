@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nature Kingdom — Nature Resort in Chikmagalur",
     description:
-      "Wake up to mist-covered hills. Bonfire nights, forest mornings, and honest hospitality in Chikmagalur, Karnataka.",
+      "Wake up to mist-covered hills. Bonfire nights, mountain mornings, and honest hospitality in Chikmagalur, Karnataka.",
     images: ["/assets/nightvilla.png"],
   },
 

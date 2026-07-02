@@ -27,7 +27,7 @@ const chapters: Chapter[] = [
     sights: [
       { name: "Mullayanagiri", description: "The highest peak in Karnataka, where ancient steps guide you directly through passing mountain clouds." },
       { name: "Baba Budangiri", description: "A mystical range where the winds narrate legacy tales of the first coffee seeds." },
-      { name: "Jhari Falls", description: "Deep within forest estates, water cascades down natural basalt tiers like liquid silver." }
+      { name: "Jhari Falls", description: "Deep within coffee estates, water cascades down natural basalt tiers like liquid silver." }
     ],
     image: "/assets/mullayanagiri.png",
     ambientColor: "from-[#111A16]/85 to-[#0A0D0B]/95"
@@ -48,7 +48,7 @@ const chapters: Chapter[] = [
   {
     id: "forest-lake",
     number: "03",
-    title: "Forest & Lake",
+    title: "Mountains & Lake",
     concept: "Mirror-still glass catchments holding reflections of eternal ancient canopies.",
     sights: [
       { name: "Hirekolale Lake", description: "An elegant, perfectly still mountain basin catching spectacular lilac gradients of sunset." },

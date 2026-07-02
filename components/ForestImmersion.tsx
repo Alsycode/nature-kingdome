@@ -23,7 +23,7 @@ export default function ForestImmersion() {
       <div className="absolute inset-0 z-0">
         <motion.div style={{ y: bgY }} className="absolute -top-[15%] -bottom-[15%] left-0 right-0">
           <Image
-            alt="Enchanting forest mist view from Balcony Sanctuary"
+            alt="Enchanting mountain mist view from Balcony Sanctuary"
             fill
             sizes="100vw"
             className="object-cover brightness-60 contrast-95"
@@ -44,10 +44,10 @@ export default function ForestImmersion() {
           The Experience
         </span>
         <h2 className="font-headline text-4xl sm:text-6xl lg:text-7xl text-on-surface leading-tight font-medium">
-          Wake Up Inside The Forest.
+          Wake Up To Mountain Air.
         </h2>
         <p className="font-sans font-light text-base sm:text-lg lg:text-xl text-on-surface/80 max-w-2xl mx-auto leading-relaxed">
-          Breathe the unfiltered mountain air. Listen to the dawn chorus of the jungle canopy. Your expansive private balcony is a private theater of the wild, untamed world.
+          Breathe the unfiltered mountain air. Listen to the dawn chorus of the birds across the coffee estate. Your expansive private balcony is a private theater of the open mountain world.
         </p>
 
         {/* Decorative thin gold line */}

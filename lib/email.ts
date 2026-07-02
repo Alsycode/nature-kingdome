@@ -275,7 +275,7 @@ function buildConfirmationHtml(
                 font-size:13px;color:#F4E7D6;">Curated<br/>Experiences</p>
               <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:11px;
                 line-height:1.65;color:#484840;">
-                Forest trails to bonfire nights &mdash; every moment intentional.
+                Coffee estate trails to bonfire nights &mdash; every moment intentional.
               </p>
             </td>
           </tr>

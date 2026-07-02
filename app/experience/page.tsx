@@ -93,7 +93,7 @@ export default function ExperiencePage() {
                 transition={{ duration: 1.2, delay: 0.4, ease }}
                 className="font-sans font-light text-base sm:text-lg text-[#F4E7D6]/70 leading-[1.85] max-w-2xl"
               >
-                From the first forest sounds at dawn to the last ember of the bonfire - this is what
+                From the first mountain sounds at dawn to the last ember of the bonfire - this is what
                 a stay at Nature Kingdom feels like, hour by hour, meal by meal.
               </motion.p>
             </div>
@@ -120,7 +120,7 @@ export default function ExperiencePage() {
               Ready to Experience It?
             </span>
             <h2 className="font-headline text-3xl sm:text-5xl text-[#F4E7D6] leading-tight">
-              Book Your Stay and<br />Let the Forest Set the Pace.
+              Book Your Stay and<br />Let the Mountains Set the Pace.
             </h2>
             <p className="font-sans font-light text-sm sm:text-base text-white/45 leading-relaxed max-w-lg mx-auto">
               Submit your dates on the booking form. We confirm via WhatsApp within 2 hours.
