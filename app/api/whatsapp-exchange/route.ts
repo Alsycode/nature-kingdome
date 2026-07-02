@@ -13,13 +13,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: 'Missing accessToken' }, { status: 400 });
   }
 
+  // Debug: check token scopes
+  const debugRes = await fetch(
+    `https://graph.facebook.com/debug_token?input_token=${accessToken}&access_token=${process.env.FB_APP_ID}|${process.env.FB_APP_SECRET}`
+  );
+  const debugData = await debugRes.json();
+  console.log('Token scopes:', JSON.stringify(debugData?.data?.scopes));
+
+  // Try whatsapp_business_management endpoint
   const wabaRes = await fetch(
-    `https://graph.facebook.com/v20.0/me/businesses?fields=whatsapp_business_accounts{id,phone_numbers{id,display_phone_number}}&access_token=${accessToken}`
+    `https://graph.facebook.com/v20.0/me?fields=whatsapp_business_accounts{id,phone_numbers{id,display_phone_number}}&access_token=${accessToken}`
   );
   const wabaData = await wabaRes.json();
 
   console.log('=== WhatsApp Setup ===');
-  console.log('Businesses response:', JSON.stringify(wabaData, null, 2));
+  console.log('WABA response:', JSON.stringify(wabaData, null, 2));
 
   let waba_id: string | null = null;
   let phone_number_id: string | null = null;
