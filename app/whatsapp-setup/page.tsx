@@ -29,7 +29,8 @@ export default function WhatsAppSetup() {
     })(document, 'script', 'facebook-jssdk');
 
     const listener = (event: MessageEvent) => {
-      if (event.origin !== 'https://www.facebook.com') return;
+      console.log('Message received from origin:', event.origin, event.data);
+      if (!event.origin.includes('facebook.com')) return;
       try {
         const data = JSON.parse(event.data);
         if (data.type === 'WA_EMBEDDED_SIGNUP') {
