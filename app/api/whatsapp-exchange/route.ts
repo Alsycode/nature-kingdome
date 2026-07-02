@@ -7,27 +7,18 @@ const supabase = createClient(
 );
 
 export async function POST(req: NextRequest) {
-  const { code } = await req.json();
+  const { accessToken } = await req.json();
 
-  const tokenRes = await fetch(
-    `https://graph.facebook.com/v20.0/oauth/access_token?client_id=${process.env.FB_APP_ID}&client_secret=${process.env.FB_APP_SECRET}&code=${code}&redirect_uri=https://www.naturekingdomhomestay.com/whatsapp-setup`
-  );
-  const tokenData = await tokenRes.json();
-
-  if (tokenData.error) {
-    console.error('Token exchange failed:', JSON.stringify(tokenData.error));
-    return NextResponse.json({ ok: false, error: tokenData.error }, { status: 400 });
+  if (!accessToken) {
+    return NextResponse.json({ ok: false, error: 'Missing accessToken' }, { status: 400 });
   }
 
-  const accessToken = tokenData.access_token;
-
-  // Fetch WABA and phone number from Graph API
   const wabaRes = await fetch(
     `https://graph.facebook.com/v20.0/me/businesses?fields=whatsapp_business_accounts{id,phone_numbers{id,display_phone_number}}&access_token=${accessToken}`
   );
   const wabaData = await wabaRes.json();
 
-  console.log('=== WhatsApp Embedded Signup Complete ===');
+  console.log('=== WhatsApp Setup ===');
   console.log('Businesses response:', JSON.stringify(wabaData, null, 2));
 
   let waba_id: string | null = null;
@@ -47,7 +38,7 @@ export async function POST(req: NextRequest) {
 
   console.log('WABA ID:', waba_id);
   console.log('Phone Number ID:', phone_number_id);
-  console.log('=========================================');
+  console.log('=====================');
 
   const { error: dbError } = await supabase
     .from('whatsapp_config')

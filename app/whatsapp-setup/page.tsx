@@ -48,24 +48,24 @@ export default function WhatsAppSetup() {
     window.FB.login(
       function (response: any) {
         if (response.authResponse) {
-          const code = response.authResponse.code;
+          const accessToken = response.authResponse.accessToken;
           fetch('/api/whatsapp-exchange', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              code,
-              waba_id: sessionStorage.getItem('waba_id'),
-              phone_number_id: sessionStorage.getItem('phone_number_id'),
-            }),
-          }).then(() => alert('Connected! Check server logs for your WABA ID and Phone Number ID.'));
+            body: JSON.stringify({ accessToken }),
+          }).then((res) => res.json()).then((data) => {
+            if (data.ok) {
+              alert(`Connected! WABA ID: ${data.waba_id} | Phone Number ID: ${data.phone_number_id}`);
+            } else {
+              alert('Connection failed. Check server logs.');
+            }
+          });
         } else {
           alert('Setup cancelled or not authorized.');
         }
       },
       {
         config_id: '999527586301334',
-        response_type: 'code',
-        override_default_response_type: true,
         extras: {
           setup: {},
           sessionInfoVersion: '3',
