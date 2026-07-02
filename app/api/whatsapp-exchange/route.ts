@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   const { code, waba_id, phone_number_id } = await req.json();
 
   const tokenRes = await fetch(
-    `https://graph.facebook.com/v20.0/oauth/access_token?client_id=${process.env.FB_APP_ID}&client_secret=${process.env.FB_APP_SECRET}&code=${code}&redirect_uri=https://www.facebook.com/connect/login_success.html`
+    `https://graph.facebook.com/v20.0/oauth/access_token?client_id=${process.env.FB_APP_ID}&client_secret=${process.env.FB_APP_SECRET}&code=${code}&redirect_uri=https://www.naturekingdomhomestay.com/whatsapp-setup`
   );
   const tokenData = await tokenRes.json();
 
