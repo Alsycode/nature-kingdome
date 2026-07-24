@@ -253,7 +253,7 @@ export default function LuxuryFooter() {
           className="font-sans font-light text-white/22"
           style={{ fontSize: 8, letterSpacing: "0.32em" }}
         >
-          © 2026 NATURE KINGDOM, CHIKKAMAGALURU. ALL RIGHTS RESERVED.
+          © 2026 NATURE KINGDOM, CHIKKAMAGALURU. ALL RIGHTS RESERVED. · HOSTED BY K R MANOJ KUMAR
         </p>
       </div>
 
