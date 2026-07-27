@@ -16,7 +16,7 @@ export default function EnquiryModal({ open, onClose }: EnquiryModalProps) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const text = `Hi, I'd like to enquire about a stay at Nature Kingdom.\n\nName: ${form.name}\nPhone: ${form.phone}\n\n${form.message}\n\n(Sent via naturekingdomhomestay.com website)`;
+    const text = `Hi, I'd like to enquire about a stay at Nature Kingdom\n\nI'm ${form.name}, my number is ${form.phone}.\n\n${form.message}`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
     setSent(true);
   }

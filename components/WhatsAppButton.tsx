@@ -3,7 +3,7 @@
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/919148678686?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20a%20stay%20at%20Nature%20Kingdom%2C%20Chikmagalur."
+      href="https://wa.me/919900101868?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20a%20stay%20at%20Nature%20Kingdom"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
