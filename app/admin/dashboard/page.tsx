@@ -2,6 +2,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { adminHeaders, getStoredToken, clearStoredToken } from "@/lib/adminAuth";
+import { bookingRef } from "@/lib/bookingRef";
 import AdminNav from "@/components/admin/AdminNav";
 import Pagination from "@/components/admin/Pagination";
 
@@ -519,7 +520,7 @@ export default function Dashboard() {
                       </div>
 
                       <p className="text-[10px] text-white/20 mt-2">
-                        #{b.id.slice(0, 8).toUpperCase()} · {new Date(b.created_at).toLocaleString("en-IN")}
+                        #{bookingRef(b.id)} · {new Date(b.created_at).toLocaleString("en-IN")}
                       </p>
                     </div>
                   ))}

@@ -8,7 +8,7 @@ interface EnquiryModalProps {
   onClose: () => void;
 }
 
-const WHATSAPP_NUMBER = "919036022922";
+const WHATSAPP_NUMBER = "919900101868";
 
 export default function EnquiryModal({ open, onClose }: EnquiryModalProps) {
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
@@ -16,7 +16,7 @@ export default function EnquiryModal({ open, onClose }: EnquiryModalProps) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const text = `Hi, I'd like to enquire about a stay at Nature Kingdom.\n\nName: ${form.name}\nPhone: ${form.phone}\n\n${form.message}`;
+    const text = `Hi, I'd like to enquire about a stay at Nature Kingdom.\n\nName: ${form.name}\nPhone: ${form.phone}\n\n${form.message}\n\n(Sent via naturekingdomhomestay.com website)`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
     setSent(true);
   }

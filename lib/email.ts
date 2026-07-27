@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { bookingRef } from "./bookingRef";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -60,7 +61,7 @@ function buildConfirmationHtml(
     siteUrlOverride ??
     process.env.NEXT_PUBLIC_SITE_URL ??
     "https://naturekingdomhomestay.com";
-  const ref = booking.id.slice(0, 8).toUpperCase();
+  const ref = bookingRef(booking.id);
 
   return `<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -366,7 +367,7 @@ function buildConfirmationHtml(
 
 // ─── Exports ─────────────────────────────────────────────────────────────────
 
-export async function sendClientNotification(booking: {
+type ClientNotificationBooking = {
   id: string;
   guest_name: string;
   email: string;
@@ -375,17 +376,19 @@ export async function sendClientNotification(booking: {
   check_out: string;
   package_title: string;
   guests: number;
-}) {
-  console.log("[email] sendClientNotification called for booking:", booking.id);
-  console.log("[email] RESEND_API_KEY set?", !!process.env.RESEND_API_KEY);
-  console.log("[email] CLIENT_EMAIL:", CLIENT_EMAIL);
+};
 
-  const { data, error } = await resend.emails.send({
-    from: FROM,
-    to: CLIENT_EMAIL,
-    subject: `New Booking Request — ${booking.guest_name} (${booking.check_in})`,
-    html: `
+export function buildClientNotificationHtml(booking: ClientNotificationBooking) {
+  // Same short ref the guest sees on the confirmation page and quotes on WhatsApp
+  const ref = bookingRef(booking.id);
+
+  return `
       <h2>New booking request received</h2>
+      <p style="margin:0 0 16px;font-family:Arial,Helvetica,sans-serif">
+        <span style="font-size:12px;color:#666;letter-spacing:0.08em;text-transform:uppercase">Booking Reference</span><br />
+        <span style="font-size:26px;font-weight:bold;letter-spacing:0.12em;color:#b8860b">#${ref}</span><br />
+        <span style="font-size:11px;color:#999">The guest sees this same reference — they'll quote it on WhatsApp.</span>
+      </p>
       <table style="border-collapse:collapse;width:100%;max-width:500px">
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Guest</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.guest_name}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Email</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.email}</td></tr>
@@ -394,10 +397,22 @@ export async function sendClientNotification(booking: {
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Check-in</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.check_in}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Check-out</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.check_out}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Guests</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.guests}</td></tr>
-        <tr><td style="padding:8px;border:1px solid #ddd"><strong>Booking ID</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.id}</td></tr>
+        <tr><td style="padding:8px;border:1px solid #ddd"><strong>Booking ID</strong></td><td style="padding:8px;border:1px solid #ddd;font-size:11px;color:#888">${booking.id}</td></tr>
       </table>
       <p style="margin-top:16px">Contact the guest on WhatsApp or phone to collect payment and confirm the booking from your admin panel.</p>
-    `,
+    `;
+}
+
+export async function sendClientNotification(booking: ClientNotificationBooking) {
+  console.log("[email] sendClientNotification called for booking:", booking.id);
+  console.log("[email] RESEND_API_KEY set?", !!process.env.RESEND_API_KEY);
+  console.log("[email] CLIENT_EMAIL:", CLIENT_EMAIL);
+
+  const { data, error } = await resend.emails.send({
+    from: FROM,
+    to: CLIENT_EMAIL,
+    subject: `New Booking Request #${bookingRef(booking.id)} — ${booking.guest_name} (${booking.check_in})`,
+    html: buildClientNotificationHtml(booking),
   });
 
   if (error) {

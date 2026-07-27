@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { bookingRef } from "@/lib/bookingRef";
 
 type Package = {
   id: string;
@@ -105,7 +106,7 @@ function BookingForm() {
       return;
     }
 
-    router.push(`/book/confirmation?ref=${data.id.slice(0, 8).toUpperCase()}&name=${encodeURIComponent(form.guest_name)}`);
+    router.push(`/book/confirmation?ref=${bookingRef(data.id)}&name=${encodeURIComponent(form.guest_name)}`);
   }
 
   const today = new Date().toISOString().split("T")[0];
