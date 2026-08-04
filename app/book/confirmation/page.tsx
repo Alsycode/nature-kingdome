@@ -8,6 +8,7 @@ function ConfirmationContent() {
   const searchParams = useSearchParams();
   const ref = searchParams.get("ref") ?? "";
   const name = searchParams.get("name") ?? "there";
+  const total = searchParams.get("total");
 
   const waNumber = WHATSAPP.replace(/\D/g, "");
   const waMessage = encodeURIComponent(
@@ -36,6 +37,13 @@ function ConfirmationContent() {
           <p className="text-[10px] text-white/30 tracking-widest uppercase mb-1">Booking Reference</p>
           <p className="text-2xl font-mono font-bold text-[#e9c349] tracking-widest">{ref}</p>
           <p className="text-[10px] text-white/30 mt-1">Keep this for your records</p>
+          {total && (
+            <>
+              <div className="w-full h-px bg-white/5 my-3" />
+              <p className="text-[10px] text-white/30 tracking-widest uppercase mb-1">Total Amount</p>
+              <p className="text-xl font-semibold text-white">₹{Number(total).toLocaleString("en-IN")}</p>
+            </>
+          )}
         </div>
 
         {/* WhatsApp CTA */}

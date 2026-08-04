@@ -14,6 +14,8 @@ export interface PackageData {
   features: { icon: ReactNode; label: string }[];
   price: number;
   nights: number;
+  occupancy: number;
+  seasonalNote?: { price: number; label: string; dateRange: string } | null;
 }
 
 interface PackageCardProps {
@@ -97,9 +99,14 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
               ₹{pkg.price.toLocaleString("en-IN")}
             </p>
             <p className="font-sans text-[9px] text-on-surface/40 tracking-wide">per person / night</p>
+            {pkg.seasonalNote && (
+              <p className="font-sans text-[9px] text-[#e9c349]/70 tracking-wide mt-1">
+                Room: ₹{pkg.seasonalNote.price.toLocaleString("en-IN")}/night on {pkg.seasonalNote.dateRange}
+              </p>
+            )}
           </div>
           <a
-            href={pkg.id ? `/book?package=${pkg.id}` : "/book"}
+            href={`/book?guests=${pkg.occupancy}`}
             className="flex items-center gap-2 text-[10px] font-sans tracking-[0.2em] uppercase text-[#e9c349]/70 group-hover:text-[#e9c349] transition-colors duration-300"
           >
             Book Now

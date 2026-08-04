@@ -19,6 +19,7 @@ type Post = {
 const NAV_ITEMS = [
   { href: "/admin/dashboard", label: "Bookings" },
   { href: "/admin/packages", label: "Packages" },
+  { href: "/admin/seasonal-rates", label: "Seasonal Rates" },
   { href: "/admin/blog", label: "Blog", active: true },
   { href: "/admin/testimonials", label: "Testimonials" },
 ];

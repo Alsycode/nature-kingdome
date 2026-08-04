@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import { useState, useRef } from "react";
-import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass, Map, Wifi, Flame, Footprints, ChevronLeft, ChevronRight, Bike, Brain, Target, Zap, Music } from "lucide-react";
+import { ArrowRight, Moon, UtensilsCrossed, TreePine, Flower2, Heart, Waves, Mountain, Compass, Map, Wifi, Flame, Footprints, ChevronLeft, ChevronRight, Bike, Brain, Target, Zap, Music, Sparkles } from "lucide-react";
 import PackageCard, { PackageData } from "./PackageCard";
 
 export type ApiPackage = {
@@ -15,7 +15,35 @@ export type ApiPackage = {
   image_url: string;
   image_alt: string;
   active: boolean;
+  occupancy: number | null;
 };
+
+export type UpcomingSeason = {
+  id: string;
+  label: string;
+  start_date: string;
+  end_date: string;
+  rates: Record<string, number>;
+};
+
+function fmtDateRange(start: string, end: string) {
+  const s = new Date(start + "T00:00:00Z");
+  const e = new Date(end + "T00:00:00Z");
+  const sStr = s.toLocaleDateString("en-IN", { day: "numeric", month: "short", timeZone: "UTC" });
+  const eStr = e.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+  return `${sStr} – ${eStr}`;
+}
+
+/** Earliest upcoming/active season that has a rate for this occupancy, if any. */
+function seasonForOccupancy(occupancy: number, seasons: UpcomingSeason[]) {
+  const season = seasons.find((s) => s.rates[String(occupancy)] != null);
+  if (!season) return null;
+  return {
+    price: season.rates[String(occupancy)],
+    label: season.label,
+    dateRange: fmtDateRange(season.start_date, season.end_date),
+  };
+}
 
 function featureIcon(label: string) {
   const l = label.toLowerCase();
@@ -38,7 +66,8 @@ function packageIcon(title: string) {
   return <TreePine size={16} />;
 }
 
-function toCardData(pkg: ApiPackage): PackageData {
+function toCardData(pkg: ApiPackage, seasons: UpcomingSeason[]): PackageData {
+  const occupancy = pkg.occupancy ?? 2;
   return {
     id: pkg.id,
     number: pkg.number,
@@ -50,6 +79,8 @@ function toCardData(pkg: ApiPackage): PackageData {
     features: pkg.features.map((f) => ({ icon: featureIcon(f.label), label: f.label })),
     price: pkg.price,
     nights: pkg.nights,
+    occupancy,
+    seasonalNote: seasonForOccupancy(occupancy, seasons),
   };
 }
 
@@ -103,10 +134,11 @@ const trustFeatures = [
 
 interface PackagesSectionProps {
   initialPackages: ApiPackage[];
+  upcomingSeasons?: UpcomingSeason[];
 }
 
-export default function PackagesSection({ initialPackages }: PackagesSectionProps) {
-  const packages = initialPackages.filter((p) => p.active).map(toCardData);
+export default function PackagesSection({ initialPackages, upcomingSeasons = [] }: PackagesSectionProps) {
+  const packages = initialPackages.filter((p) => p.active).map((p) => toCardData(p, upcomingSeasons));
   const [slideIndex, setSlideIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
@@ -158,6 +190,29 @@ export default function PackagesSection({ initialPackages }: PackagesSectionProp
         <div className="flex flex-col items-center mt-6 mb-12">
           <div className="w-px h-10 bg-gradient-to-b from-[#e9c349]/20 to-transparent" />
         </div>
+
+        {/* ── Festive Season Banner ──────────────────────────────── */}
+        {upcomingSeasons.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-10 border border-[#e9c349]/25 bg-[#e9c349]/[0.04] px-5 py-4 sm:px-6 sm:py-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5"
+          >
+            <span className="flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#e9c349] font-sans font-semibold flex-shrink-0">
+              <Sparkles size={13} />
+              Festive Rates
+            </span>
+            <div className="flex flex-wrap gap-x-6 gap-y-1.5">
+              {upcomingSeasons.map((s) => (
+                <span key={s.id} className="text-xs font-sans text-on-surface/55">
+                  <span className="text-on-surface/80">{s.label}</span> · {fmtDateRange(s.start_date, s.end_date)}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0 }}

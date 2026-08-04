@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import HomePage from "@/components/HomePage";
 import { supabaseAdmin } from "@/lib/supabase";
 import type { ApiPackage } from "@/components/PackagesSection";
+import { fetchUpcomingSeasonalRates, type UpcomingSeason } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: {
@@ -22,7 +23,15 @@ async function fetchPackages(): Promise<ApiPackage[]> {
   }
 }
 
+async function fetchSeasons(): Promise<UpcomingSeason[]> {
+  try {
+    return await fetchUpcomingSeasonalRates();
+  } catch {
+    return [];
+  }
+}
+
 export default async function Page() {
-  const packages = await fetchPackages();
-  return <HomePage initialPackages={packages} />;
+  const [packages, upcomingSeasons] = await Promise.all([fetchPackages(), fetchSeasons()]);
+  return <HomePage initialPackages={packages} upcomingSeasons={upcomingSeasons} />;
 }

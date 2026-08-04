@@ -11,15 +11,16 @@ import Accommodation from "./Accommodation";
 import ChapterDivider from "./ChapterDivider";
 import LuxuryFooter from "./LuxuryFooter";
 import TestimonialStories from "./TestimonialStories";
-import PackagesSection, { type ApiPackage } from "./PackagesSection";
+import PackagesSection, { type ApiPackage, type UpcomingSeason } from "./PackagesSection";
 import LocationSection from "./LocationSection";
 import EnquiryModal from "./EnquiryModal";
 
 interface HomePageProps {
   initialPackages: ApiPackage[];
+  upcomingSeasons?: UpcomingSeason[];
 }
 
-export default function HomePage({ initialPackages }: HomePageProps) {
+export default function HomePage({ initialPackages, upcomingSeasons = [] }: HomePageProps) {
   const [enquiryOpen, setEnquiryOpen] = useState(false);
 
   return (
@@ -57,7 +58,7 @@ export default function HomePage({ initialPackages }: HomePageProps) {
           subtitle="Our Packages"
           quote="Every stay is a chapter. Choose your story, and let the mountains write the rest."
         />
-        <PackagesSection initialPackages={initialPackages} />
+        <PackagesSection initialPackages={initialPackages} upcomingSeasons={upcomingSeasons} />
 
         <LocationSection />
         <TestimonialStories />

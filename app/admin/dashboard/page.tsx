@@ -15,6 +15,7 @@ type Booking = {
   check_out: string;
   package_title: string;
   guests: number;
+  total_amount: number | null;
   status: "pending_payment" | "confirmed" | "cancelled";
   notes: string;
   created_at: string;
@@ -36,6 +37,7 @@ const STATUS_COLORS: Record<string, string> = {
 const NAV_ITEMS = [
   { href: "/admin/dashboard", label: "Bookings", active: true },
   { href: "/admin/packages", label: "Packages" },
+  { href: "/admin/seasonal-rates", label: "Seasonal Rates" },
   { href: "/admin/blog", label: "Blog" },
   { href: "/admin/testimonials", label: "Testimonials" },
 ];
@@ -182,7 +184,10 @@ function CalendarView({ bookings }: { bookings: Booking[] }) {
                 <div key={b.id} className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 bg-white/[0.03] rounded-lg p-4">
                   <div className="space-y-0.5">
                     <p className="text-sm font-medium text-white">{b.guest_name}</p>
-                    <p className="text-xs text-white/40">{b.package_title} · {b.guests} guest{b.guests > 1 ? "s" : ""}</p>
+                    <p className="text-xs text-white/40">
+                      {b.package_title} · {b.guests} guest{b.guests > 1 ? "s" : ""}
+                      {b.total_amount != null && ` · ₹${b.total_amount.toLocaleString("en-IN")}`}
+                    </p>
                     <p className="text-xs text-white/30">{b.check_in} → {b.check_out}</p>
                     <a href={`https://wa.me/${b.phone.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" className="text-xs text-green-400 hover:text-green-300 transition">{b.phone}</a>
                   </div>
@@ -436,9 +441,9 @@ export default function Dashboard() {
                       </div>
 
                       {/* Middle: booking details */}
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 py-3 border-t border-b border-white/5 mb-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-4 py-3 border-t border-b border-white/5 mb-3">
                         <div>
-                          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-0.5">Package</p>
+                          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-0.5">Rooms</p>
                           <p className="text-sm text-white/80">{b.package_title}</p>
                         </div>
                         <div>
@@ -448,6 +453,12 @@ export default function Dashboard() {
                         <div>
                           <p className="text-[10px] text-white/30 uppercase tracking-wider mb-0.5">Guests</p>
                           <p className="text-sm text-white/80">{b.guests} guest{b.guests > 1 ? "s" : ""}</p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-white/30 uppercase tracking-wider mb-0.5">Total</p>
+                          <p className="text-sm text-[#e9c349] font-medium">
+                            {b.total_amount != null ? `₹${b.total_amount.toLocaleString("en-IN")}` : "—"}
+                          </p>
                         </div>
                       </div>
 

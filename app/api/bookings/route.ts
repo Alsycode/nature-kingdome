@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { sendClientNotification } from "@/lib/email";
+import { quoteBooking, validateRooms, PricingError, type RoomInput } from "@/lib/pricing";
 
 export async function GET(req: NextRequest) {
   if (!isAdmin(req)) return unauthorized();
@@ -24,11 +25,21 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { guest_name, email, phone, check_in, check_out, package_id, package_title, guests } = body;
+  const { guest_name, email, phone, check_in, check_out, rooms } = body as {
+    guest_name?: string;
+    email?: string;
+    phone?: string;
+    check_in?: string;
+    check_out?: string;
+    rooms?: RoomInput[];
+  };
 
-  if (!guest_name || !email || !phone || !check_in || !check_out) {
+  if (!guest_name || !email || !phone || !check_in || !check_out || !rooms) {
     return NextResponse.json({ error: "All fields are required" }, { status: 400 });
   }
+
+  const roomsError = validateRooms(rooms);
+  if (roomsError) return NextResponse.json({ error: roomsError }, { status: 400 });
 
   // Check for overlapping confirmed/pending bookings
   const { data: conflicts } = await supabaseAdmin
@@ -45,6 +56,20 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Price is always computed authoritatively server-side, never trusted from the client.
+  let quote;
+  try {
+    quote = await quoteBooking(check_in, check_out, rooms);
+  } catch (err) {
+    if (err instanceof PricingError) {
+      return NextResponse.json({ error: err.message }, { status: 400 });
+    }
+    console.error("[bookings] Pricing error:", err);
+    return NextResponse.json({ error: "Failed to compute price" }, { status: 500 });
+  }
+
+  const roomLabel = `${rooms.length} Room${rooms.length > 1 ? "s" : ""} (${quote.totalGuests} Guest${quote.totalGuests > 1 ? "s" : ""})`;
+
   const { data, error } = await supabaseAdmin
     .from("bookings")
     .insert({
@@ -53,9 +78,11 @@ export async function POST(req: NextRequest) {
       phone,
       check_in,
       check_out,
-      package_id: package_id || null,
-      package_title: package_title || "General Stay",
-      guests: guests || 1,
+      package_id: null,
+      package_title: roomLabel,
+      guests: quote.totalGuests,
+      rooms: quote.rooms,
+      total_amount: quote.total,
       status: "pending_payment",
     })
     .select()

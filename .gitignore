@@ -8,3 +8,5 @@ coverage/
 !.env.example
 .next/
 tsconfig.tsbuildinfo
+credentials.txt
+nature creds/

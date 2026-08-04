@@ -34,6 +34,8 @@ create policy "Public can read published posts" on blog_posts
   for select using (published = true);
 
 -- Packages table
+-- `occupancy` (1-5) marks this package as the base per-person nightly rate
+-- for that room occupancy tier — see supabase/migration_seasonal_pricing.sql
 create table if not exists packages (
   id uuid primary key default gen_random_uuid(),
   number text not null,
@@ -45,10 +47,27 @@ create table if not exists packages (
   image_url text not null default '',
   image_alt text not null default '',
   active boolean not null default true,
+  occupancy integer,
   created_at timestamptz not null default now()
 );
 
+-- Seasonal / festival rate windows — see supabase/migration_seasonal_pricing.sql
+create table if not exists seasonal_rates (
+  id uuid primary key default gen_random_uuid(),
+  label text not null,
+  start_date date not null,
+  end_date date not null,
+  rates jsonb not null default '{}',
+  active boolean not null default true,
+  created_at timestamptz not null default now(),
+  constraint seasonal_rates_dates_check check (end_date >= start_date)
+);
+
+create index if not exists seasonal_rates_dates_idx on seasonal_rates (start_date, end_date, active);
+
 -- Bookings table
+-- `rooms` and `total_amount` are computed server-side at booking time and
+-- locked in — later rate changes never retroactively change a stored booking.
 create table if not exists bookings (
   id uuid primary key default gen_random_uuid(),
   guest_name text not null,
@@ -59,6 +78,8 @@ create table if not exists bookings (
   package_id uuid references packages(id) on delete set null,
   package_title text not null,
   guests integer not null default 1,
+  rooms jsonb not null default '[]',
+  total_amount integer,
   status text not null default 'pending_payment' check (status in ('pending_payment', 'confirmed', 'cancelled')),
   notes text not null default '',
   created_at timestamptz not null default now()
@@ -114,6 +135,7 @@ on conflict do nothing;
 -- Row Level Security (optional but recommended)
 alter table packages enable row level security;
 alter table bookings enable row level security;
+alter table seasonal_rates enable row level security;
 
 -- Allow public reads on packages
 create policy "Public can read active packages" on packages
@@ -121,4 +143,8 @@ create policy "Public can read active packages" on packages
 
 -- Bookings: only service role can read/write (API routes use service key)
 create policy "Service role full access bookings" on bookings
+  using (true) with check (true);
+
+-- Seasonal rates: only service role can read/write (API routes use service key)
+create policy "Service role full access seasonal_rates" on seasonal_rates
   using (true) with check (true);

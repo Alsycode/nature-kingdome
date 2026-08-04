@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
   if (!isAdmin(req)) return unauthorized();
 
   const body = await req.json();
-  const { number, title, description, price, nights, features, image_url, image_alt } = body;
+  const { number, title, description, price, nights, occupancy, features, image_url, image_alt } = body;
 
   if (!title || !price || !nights) {
     return NextResponse.json({ error: "title, price, and nights are required" }, { status: 400 });
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
 
   const { data, error } = await supabaseAdmin
     .from("packages")
-    .insert({ number, title, description, price, nights, features, image_url, image_alt })
+    .insert({ number, title, description, price, nights, occupancy: occupancy ?? null, features, image_url, image_alt })
     .select()
     .single();
 

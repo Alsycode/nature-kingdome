@@ -40,6 +40,7 @@ export function buildConfirmationHtmlForPreview(
     package_title: string;
     guests: number;
     id: string;
+    total_amount?: number | null;
   },
   siteUrlOverride?: string,
 ): string {
@@ -54,6 +55,7 @@ function buildConfirmationHtml(
     package_title: string;
     guests: number;
     id: string;
+    total_amount?: number | null;
   },
   siteUrlOverride?: string,
 ): string {
@@ -211,14 +213,26 @@ function buildConfirmationHtml(
             </td>
           </tr>
           <!-- Booking ref -->
-          <tr>
-            <td style="padding:13px 20px;
+          <tr${booking.total_amount != null ? ' style="border-bottom:1px solid #1d1d1d;"' : ""}>
+            <td style="padding:13px 20px;${booking.total_amount != null ? "border-bottom:1px solid #1d1d1d;" : ""}
               font-family:Arial,Helvetica,sans-serif;font-size:10px;letter-spacing:0.1em;
               color:#484840;text-transform:uppercase;">Booking Ref</td>
-            <td style="padding:13px 20px;
+            <td style="padding:13px 20px;${booking.total_amount != null ? "border-bottom:1px solid #1d1d1d;" : ""}
               font-family:Georgia,'Times New Roman',serif;font-size:13px;
               color:#c8a97e;letter-spacing:0.12em;">#${ref}</td>
           </tr>
+          ${
+            booking.total_amount != null
+              ? `<tr style="background-color:#141414;">
+            <td style="padding:13px 20px;
+              font-family:Arial,Helvetica,sans-serif;font-size:10px;letter-spacing:0.1em;
+              color:#484840;text-transform:uppercase;">Total Amount</td>
+            <td style="padding:13px 20px;
+              font-family:Georgia,'Times New Roman',serif;font-size:14px;font-weight:bold;
+              color:#F4E7D6;">₹${booking.total_amount.toLocaleString("en-IN")}</td>
+          </tr>`
+              : ""
+          }
         </table>
       </td>
     </tr>
@@ -376,7 +390,19 @@ type ClientNotificationBooking = {
   check_out: string;
   package_title: string;
   guests: number;
+  rooms?: { occupancy: number; subtotal: number }[];
+  total_amount?: number | null;
 };
+
+function roomsTableRows(rooms: ClientNotificationBooking["rooms"]) {
+  if (!rooms || rooms.length === 0) return "";
+  return rooms
+    .map(
+      (r, i) =>
+        `<tr><td style="padding:8px;border:1px solid #ddd">Room ${i + 1} (${r.occupancy} guest${r.occupancy > 1 ? "s" : ""})</td><td style="padding:8px;border:1px solid #ddd">₹${r.subtotal.toLocaleString("en-IN")}</td></tr>`
+    )
+    .join("");
+}
 
 export function buildClientNotificationHtml(booking: ClientNotificationBooking) {
   // Same short ref the guest sees on the confirmation page and quotes on WhatsApp
@@ -393,10 +419,16 @@ export function buildClientNotificationHtml(booking: ClientNotificationBooking) 
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Guest</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.guest_name}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Email</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.email}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Phone</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.phone}</td></tr>
-        <tr><td style="padding:8px;border:1px solid #ddd"><strong>Package</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.package_title}</td></tr>
+        <tr><td style="padding:8px;border:1px solid #ddd"><strong>Rooms</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.package_title}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Check-in</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.check_in}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Check-out</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.check_out}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Guests</strong></td><td style="padding:8px;border:1px solid #ddd">${booking.guests}</td></tr>
+        ${roomsTableRows(booking.rooms)}
+        ${
+          booking.total_amount != null
+            ? `<tr><td style="padding:8px;border:1px solid #ddd"><strong>Total Amount</strong></td><td style="padding:8px;border:1px solid #ddd"><strong style="color:#b8860b">₹${booking.total_amount.toLocaleString("en-IN")}</strong></td></tr>`
+            : ""
+        }
         <tr><td style="padding:8px;border:1px solid #ddd"><strong>Booking ID</strong></td><td style="padding:8px;border:1px solid #ddd;font-size:11px;color:#888">${booking.id}</td></tr>
       </table>
       <p style="margin-top:16px">Contact the guest on WhatsApp or phone to collect payment and confirm the booking from your admin panel.</p>
@@ -430,6 +462,7 @@ export async function sendGuestConfirmation(booking: {
   package_title: string;
   guests: number;
   id: string;
+  total_amount?: number | null;
 }) {
   console.log("[email] sendGuestConfirmation called for booking:", booking.id);
   console.log("[email] Sending to guest:", booking.email);

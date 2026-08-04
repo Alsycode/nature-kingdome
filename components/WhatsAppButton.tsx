@@ -1,6 +1,11 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 export default function WhatsAppButton() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
+
   return (
     <a
       href="https://wa.me/919900101868?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20a%20stay%20at%20Nature%20Kingdom"

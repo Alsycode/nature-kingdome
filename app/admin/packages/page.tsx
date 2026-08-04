@@ -15,6 +15,7 @@ type Package = {
   image_url: string;
   image_alt: string;
   active: boolean;
+  occupancy: number | null;
 };
 
 const emptyForm = {
@@ -23,6 +24,7 @@ const emptyForm = {
   description: "",
   price: "",
   nights: "2",
+  occupancy: "",
   features: "",
   image_url: "",
   image_alt: "",
@@ -31,6 +33,7 @@ const emptyForm = {
 const NAV_ITEMS = [
   { href: "/admin/dashboard", label: "Bookings" },
   { href: "/admin/packages", label: "Packages", active: true },
+  { href: "/admin/seasonal-rates", label: "Seasonal Rates" },
   { href: "/admin/blog", label: "Blog" },
   { href: "/admin/testimonials", label: "Testimonials" },
 ];
@@ -68,6 +71,7 @@ export default function PackagesAdmin() {
       description: pkg.description,
       price: String(pkg.price),
       nights: String(pkg.nights),
+      occupancy: pkg.occupancy != null ? String(pkg.occupancy) : "",
       features: pkg.features.map((f) => f.label).join(", "),
       image_url: pkg.image_url,
       image_alt: pkg.image_alt,
@@ -108,6 +112,7 @@ export default function PackagesAdmin() {
       description: form.description,
       price: parseInt(form.price),
       nights: parseInt(form.nights),
+      occupancy: form.occupancy ? parseInt(form.occupancy) : null,
       features: form.features.split(",").map((f) => ({ label: f.trim() })).filter((f) => f.label),
       image_url: form.image_url,
       image_alt: form.image_alt,
@@ -180,7 +185,19 @@ export default function PackagesAdmin() {
                 </div>
                 <Field label="Title" value={form.title} onChange={(v) => setForm((f) => ({ ...f, title: v }))} required />
                 <Field label="Description" value={form.description} onChange={(v) => setForm((f) => ({ ...f, description: v }))} required />
-                <Field label="Price (₹ / person)" type="number" value={form.price} onChange={(v) => setForm((f) => ({ ...f, price: v }))} required />
+                <div className="grid grid-cols-2 gap-3">
+                  <Field label="Price (₹ / person)" type="number" value={form.price} onChange={(v) => setForm((f) => ({ ...f, price: v }))} required />
+                  <Field
+                    label="Occupancy (guests/room)"
+                    type="number"
+                    value={form.occupancy}
+                    onChange={(v) => setForm((f) => ({ ...f, occupancy: v }))}
+                    placeholder="1–5"
+                  />
+                </div>
+                <p className="text-[10px] text-white/25 -mt-1">
+                  Occupancy marks this as the base rate for that room size — used by the booking form&apos;s price calculator.
+                </p>
                 <Field
                   label="Features (comma separated)"
                   value={form.features}
@@ -296,6 +313,11 @@ export default function PackagesAdmin() {
                     <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-white/40">
                       <span className="text-[#e9c349] font-medium text-sm">₹{pkg.price.toLocaleString("en-IN")}</span>
                       <span>{pkg.nights} nights</span>
+                      {pkg.occupancy != null ? (
+                        <span className="text-[10px] bg-white/5 px-2 py-0.5 rounded-full">{pkg.occupancy}-guest rate</span>
+                      ) : (
+                        <span className="text-[10px] bg-yellow-500/10 text-yellow-300/70 px-2 py-0.5 rounded-full">No occupancy set</span>
+                      )}
                       {pkg.features.length > 0 && (
                         <span className="hidden sm:inline truncate max-w-xs">{pkg.features.map((f) => f.label).join(" · ")}</span>
                       )}
