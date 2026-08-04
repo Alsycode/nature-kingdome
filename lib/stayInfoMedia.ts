@@ -10,7 +10,6 @@ export const STAY_INFO_PHOTOS: string[] = [
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829270/WhatsApp_Image_2026-07-29_at_12.43.21_PM_1_eeald2.jpg",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.43.18_PM_r7zzx2.jpg",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.43.16_PM_b07pw0.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.42.55_PM_1_einw2f.jpg",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829251/WhatsApp_Image_2026-07-29_at_12.42.55_PM_qlipjh.jpg",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.43.19_PM_borpsp.jpg",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.43.19_PM_1_tagdb0.jpg",
