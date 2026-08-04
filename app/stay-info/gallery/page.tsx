@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import StayInfoShell from "@/components/StayInfoShell";
+import GalleryLightbox from "@/components/GalleryLightbox";
 import { STAY_INFO_PHOTOS, STAY_INFO_VIDEOS } from "@/lib/stayInfoMedia";
 
 const BASE_URL = "https://www.naturekingdomhomestay.com";
@@ -22,10 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-function videoPoster(url: string) {
-  return url.replace("/upload/", "/upload/so_0/").replace(/\.mp4$/, ".jpg");
-}
-
 export default function GalleryPage() {
   return (
     <StayInfoShell>
@@ -42,36 +38,7 @@ export default function GalleryPage() {
       </section>
 
       <section className="max-w-[1400px] mx-auto px-6 sm:px-12 lg:px-20 pb-24">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {STAY_INFO_PHOTOS.map((src, i) => (
-            <div key={src} className="relative aspect-square overflow-hidden border border-white/5">
-              <Image
-                src={src}
-                alt={`Nature Kingdom Homestay photo ${i + 1}`}
-                fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className="object-cover"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-
-        <h2 className="font-headline text-xl sm:text-2xl text-on-surface mt-16 mb-6 text-center">Videos</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {STAY_INFO_VIDEOS.map((src) => (
-            <video
-              key={src}
-              controls
-              preload="none"
-              playsInline
-              poster={videoPoster(src)}
-              className="w-full aspect-video border border-white/5 bg-black"
-            >
-              <source src={src} type="video/mp4" />
-            </video>
-          ))}
-        </div>
+        <GalleryLightbox photos={STAY_INFO_PHOTOS} videos={STAY_INFO_VIDEOS} />
       </section>
     </StayInfoShell>
   );
