@@ -39,11 +39,11 @@ const PACKAGES = [
       { label: "Estate Walk" },
       { label: "Cycling & Tennis" },
       { label: "Carrom & Chess" },
-      { label: "BBQ Available" },
+      { label: "BBQ (Add-on, Extra Charge)" },
     ],
     image_url:
-      "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=800&q=80&auto=format&fit=crop",
-    image_alt: "Solo traveller's quiet room overlooking the coffee estate",
+      "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785841205/ChatGPT_Image_Aug_4_2026_04_26_47_PM_f5uvfh.png",
+    image_alt: "Solo traveller wrapped in a shawl on a mountain-view balcony at sunset, holding a coffee mug",
     active: true,
   },
   {
@@ -62,7 +62,7 @@ const PACKAGES = [
       { label: "Estate Walk" },
       { label: "Cycling & Tennis" },
       { label: "Carrom & Chess" },
-      { label: "BBQ Available" },
+      { label: "BBQ (Add-on, Extra Charge)" },
     ],
     image_url:
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80&auto=format&fit=crop",
@@ -85,7 +85,7 @@ const PACKAGES = [
       { label: "Estate Walk" },
       { label: "Cycling & Tennis" },
       { label: "Carrom & Chess" },
-      { label: "BBQ Available" },
+      { label: "BBQ (Add-on, Extra Charge)" },
     ],
     image_url:
       "https://images.unsplash.com/photo-1511497584788-876760111969?w=800&q=80&auto=format&fit=crop",
@@ -108,7 +108,7 @@ const PACKAGES = [
       { label: "Estate Walk" },
       { label: "Cycling & Tennis" },
       { label: "Carrom & Chess" },
-      { label: "BBQ Available" },
+      { label: "BBQ (Add-on, Extra Charge)" },
     ],
     image_url:
       "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80&auto=format&fit=crop",
@@ -131,7 +131,7 @@ const PACKAGES = [
       { label: "Estate Walk" },
       { label: "Cycling & Tennis" },
       { label: "Carrom & Chess" },
-      { label: "BBQ Available" },
+      { label: "BBQ (Add-on, Extra Charge)" },
     ],
     image_url:
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&auto=format&fit=crop",

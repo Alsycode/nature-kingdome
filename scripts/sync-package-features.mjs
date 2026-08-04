@@ -23,7 +23,7 @@ const FEATURES = [
   { label: "Estate Walk" },
   { label: "Cycling & Tennis" },
   { label: "Carrom & Chess" },
-  { label: "BBQ Available" },
+  { label: "BBQ (Add-on, Extra Charge)" },
 ];
 
 async function sync() {

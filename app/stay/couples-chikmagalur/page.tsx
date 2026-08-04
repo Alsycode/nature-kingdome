@@ -62,7 +62,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "What is included in a couples stay at Nature Kingdom?",
-    a: "Your stay includes private accommodation, all meals prepared on the property, a bonfire set up each evening, BBQ arrangements on request, a living room and dining area, a flat-screen TV, housekeeping, parking, power backup, and a terrace with open hillside views. The coffee estate surrounds the property — you can walk through it freely at any hour. Check-in is at 12 PM and check-out at 11 AM.",
+    a: "Your stay includes private accommodation, all meals prepared on the property, a bonfire set up each evening, a living room and dining area, a flat-screen TV, housekeeping, parking, power backup, and a terrace with open hillside views. BBQ can be arranged on request for an additional charge. The coffee estate surrounds the property — you can walk through it freely at any hour. Check-in is at 12 PM and check-out at 11 AM.",
   },
   {
     q: "How far is Chikmagalur from Bangalore for a couples weekend?",
@@ -212,8 +212,8 @@ export default function CouplesChikmagalurPage() {
               </p>
               <p className="font-sans font-light text-sm sm:text-base text-on-surface/65 leading-[1.85]">
                 The stay includes a living room, dining area, flat-screen TV, full housekeeping, parking,
-                power backup, and a private terrace. Bonfire is set up each evening. BBQ is available on
-                request. All meals are prepared on the property using seasonal, local Karnataka produce.
+                power backup, and a private terrace. Bonfire is set up each evening. BBQ can be arranged on
+                request for an additional charge. All meals are prepared on the property using seasonal, local Karnataka produce.
               </p>
             </div>
           </div>
@@ -246,8 +246,8 @@ export default function CouplesChikmagalurPage() {
                 </p>
                 <p className="font-sans font-light text-sm sm:text-base text-on-surface/65 leading-[1.85]">
                   By late afternoon, someone usually wanders out toward the coffee estate. The bonfire starts
-                  at whatever hour feels right. BBQ goes on if you want it — just let the hosts know in the
-                  morning. Dinner is prepared on the property.
+                  at whatever hour feels right. BBQ can be arranged for an extra charge if you want it — just
+                  let the hosts know in the morning. Dinner is prepared on the property.
                 </p>
               </div>
               <div className="border-l border-[#e9c349]/30 pl-6 space-y-4">

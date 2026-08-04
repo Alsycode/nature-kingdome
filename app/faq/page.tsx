@@ -63,7 +63,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "What facilities are included in the stay?",
-        a: "Your stay includes a dining area, living room, flat-screen TV, private balcony with mountain views, housekeeping, parking, and power backup. Bonfire and BBQ facilities are set up for you each evening. Just let us know your preferred time. Meals are prepared on the property using seasonal, local Karnataka produce.",
+        a: "Your stay includes a dining area, living room, flat-screen TV, private balcony with mountain views, housekeeping, parking, and power backup. A bonfire is set up for you each evening — just let us know your preferred time. BBQ can be arranged on request for an additional charge. Meals are prepared on the property using seasonal, local Karnataka produce.",
       },
       {
         q: "Is Nature Kingdom a private property or shared with other guests?",
@@ -103,7 +103,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         q: "Can we arrange a bonfire and BBQ during the stay?",
-        a: "Yes, bonfire evenings are one of the things guests talk about most after they leave. We set up the fire in the outdoor area at sunset. It is included as part of your stay. Just let us know your preferred time and we will have it ready. BBQ arrangements are also available on request. Tell us in the morning if you want BBQ in the evening.",
+        a: "Yes, bonfire evenings are one of the things guests talk about most after they leave. We set up the fire in the outdoor area at sunset. It is included as part of your stay. Just let us know your preferred time and we will have it ready. BBQ is available as a paid add-on, arranged on request — tell us in the morning if you want BBQ in the evening, and we will confirm the extra charge with you.",
       },
     ],
   },
@@ -171,7 +171,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       {
         q: "What activities are available at Nature Kingdom?",
-        a: "On the property itself: estate walks through the coffee rows, balcony time, bonfire evenings, BBQ, and the particular pleasure of having nowhere you need to be. The mornings in Chikmagalur are worth waking up early for. Beyond the property: the Mullayanagiri range, Baba Budangiri, Jhari Falls, Kemmangundi, and Manikyadhara Falls are all within a manageable drive.",
+        a: "On the property itself: estate walks through the coffee rows, balcony time, bonfire evenings, BBQ (available as a paid add-on), and the particular pleasure of having nowhere you need to be. The mornings in Chikmagalur are worth waking up early for. Beyond the property: the Mullayanagiri range, Baba Budangiri, Jhari Falls, Kemmangundi, and Manikyadhara Falls are all within a manageable drive.",
       },
       {
         q: "Can we go trekking from Nature Kingdom?",

@@ -74,8 +74,8 @@ Never use:
 
 ## Resort Facilities
 
-* BBQ Facilities
-* Bonfire
+* BBQ Facilities (paid add-on, arranged on request — never describe as included/free)
+* Bonfire (included in every stay)
 * Dining Area
 * Flat TV
 * Housekeeping

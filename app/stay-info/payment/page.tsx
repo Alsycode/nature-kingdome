@@ -20,6 +20,14 @@ export const metadata: Metadata = {
   },
 };
 
+const BANK_DETAILS = [
+  { label: "Account Name", value: "NATURE KINGDOM ACCOUNT" },
+  { label: "Account Number", value: "073905011709" },
+  { label: "IFSC Code", value: "ICIC0000739" },
+  { label: "Account Type", value: "Current" },
+  { label: "Bank & Branch", value: "ICICI Bank · Chikkamagaluru" },
+];
+
 export default function PaymentPage() {
   return (
     <StayInfoShell>
@@ -42,33 +50,27 @@ export default function PaymentPage() {
             <p className="text-[10px] tracking-[0.25em] uppercase text-on-surface/40 font-sans">Scan to Pay (UPI)</p>
             <div className="w-44 h-44 bg-white p-3 flex items-center justify-center">
               <Image
-                src="/stay-info-qr-placeholder.svg"
-                alt="UPI payment QR code"
-                width={160}
-                height={160}
+                src="/upi-qr.jpg"
+                alt="UPI payment QR code for Nature Kingdom Homestay"
+                width={265}
+                height={275}
                 className="w-full h-full object-contain"
               />
             </div>
             <p className="font-sans font-light text-xs text-on-surface/40 leading-relaxed">
-              Placeholder QR &mdash; replace with the real UPI QR code before sharing this link.
+              Scan with any UPI app to pay Nature Kingdom Homestay.
             </p>
           </div>
 
           {/* Bank details */}
-          <div className="border border-white/10 p-8 flex flex-col gap-3 justify-center">
-            <p className="text-[10px] tracking-[0.25em] uppercase text-on-surface/40 font-sans mb-2">Bank Transfer</p>
-            <p className="font-sans font-light text-xs text-on-surface/60 leading-relaxed">
-              Account Name: <span className="text-on-surface/35">[to be added]</span>
-            </p>
-            <p className="font-sans font-light text-xs text-on-surface/60 leading-relaxed">
-              Account Number: <span className="text-on-surface/35">[to be added]</span>
-            </p>
-            <p className="font-sans font-light text-xs text-on-surface/60 leading-relaxed">
-              IFSC Code: <span className="text-on-surface/35">[to be added]</span>
-            </p>
-            <p className="font-sans font-light text-xs text-on-surface/60 leading-relaxed">
-              Bank &amp; Branch: <span className="text-on-surface/35">[to be added]</span>
-            </p>
+          <div className="border border-white/10 p-8 flex flex-col gap-4 justify-center">
+            <p className="text-[10px] tracking-[0.25em] uppercase text-on-surface/40 font-sans mb-1">Bank Transfer</p>
+            {BANK_DETAILS.map(({ label, value }) => (
+              <div key={label}>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-on-surface/35 font-sans mb-1">{label}</p>
+                <p className="font-sans text-sm text-on-surface/85 leading-relaxed tracking-wide">{value}</p>
+              </div>
+            ))}
           </div>
         </div>
 

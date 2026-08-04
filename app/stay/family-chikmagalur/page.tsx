@@ -87,7 +87,7 @@ const days = [
   {
     label: "Day 2",
     heading: "The Estate and a Waterfall",
-    desc: "Morning walk through the coffee rows while the air is still cool. After breakfast, drive to Jhari Falls — around 30 km away, a short walk from the road, manageable with children. Back for lunch, then a slow afternoon. BBQ in the evening.",
+    desc: "Morning walk through the coffee rows while the air is still cool. After breakfast, drive to Jhari Falls — around 30 km away, a short walk from the road, manageable with children. Back for lunch, then a slow afternoon. BBQ available in the evening for an extra charge, on request.",
   },
   {
     label: "Day 3",
