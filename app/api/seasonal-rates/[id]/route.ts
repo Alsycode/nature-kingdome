@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { supabaseAdmin } from "@/lib/supabase";
 
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
@@ -15,6 +16,8 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  revalidatePath("/");
+  revalidatePath("/stay-info/rates");
   return NextResponse.json(data);
 }
 
@@ -26,6 +29,8 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
   const { error } = await supabaseAdmin.from("seasonal_rates").delete().eq("id", id);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  revalidatePath("/");
+  revalidatePath("/stay-info/rates");
   return NextResponse.json({ success: true });
 }
 
