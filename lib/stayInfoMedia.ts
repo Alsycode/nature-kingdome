@@ -1,18 +1,13 @@
 export const STAY_INFO_PHOTOS: string[] = [
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829271/WhatsApp_Image_2026-07-29_at_12.42.56_PM_py8gxw.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829271/WhatsApp_Image_2026-07-29_at_12.43.05_PM_llg8kz.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829271/WhatsApp_Image_2026-07-29_at_12.43.06_PM_lwooaw.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829271/WhatsApp_Image_2026-07-29_at_12.43.06_PM_1_d6vugv.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829271/WhatsApp_Image_2026-07-29_at_12.43.15_PM_1_spqwt3.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829270/WhatsApp_Image_2026-07-29_at_12.43.21_PM_vqvwkz.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829270/WhatsApp_Image_2026-07-29_at_12.43.20_PM_td6gqk.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829270/WhatsApp_Image_2026-07-29_at_12.43.21_PM_2_qqbn3j.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829270/WhatsApp_Image_2026-07-29_at_12.43.21_PM_1_eeald2.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.43.18_PM_r7zzx2.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.43.16_PM_b07pw0.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829251/WhatsApp_Image_2026-07-29_at_12.42.55_PM_qlipjh.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.43.19_PM_borpsp.jpg",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1785829250/WhatsApp_Image_2026-07-29_at_12.43.19_PM_1_tagdb0.jpg",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786505880/ChatGPT_Image_Aug_12_2026_09_12_06_AM_uklbxn.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523217/ChatGPT_Image_Aug_12_2026_09_12_06_AM_u05jqb.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523210/ChatGPT_Image_Aug_12_2026_01_57_10_PM_lnf5x2.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523210/ChatGPT_Image_Aug_12_2026_01_57_39_PM_et33id.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523209/ChatGPT_Image_Aug_12_2026_01_57_55_PM_t6yino.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523209/ChatGPT_Image_Aug_12_2026_01_58_22_PM_wgktpq.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523207/ChatGPT_Image_Aug_12_2026_01_57_25_PM_b6t3uw.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523207/ChatGPT_Image_Aug_12_2026_01_56_56_PM_cvgmm2.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523512/ChatGPT_Image_Aug_12_2026_02_05_42_PM_fxomup.png",
 ];
 
 export const STAY_INFO_VIDEOS: string[] = [
