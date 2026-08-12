@@ -1,6 +1,5 @@
 export const STAY_INFO_PHOTOS: string[] = [
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786505880/ChatGPT_Image_Aug_12_2026_09_12_06_AM_uklbxn.png",
-  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523217/ChatGPT_Image_Aug_12_2026_09_12_06_AM_u05jqb.png",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523210/ChatGPT_Image_Aug_12_2026_01_57_10_PM_lnf5x2.png",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523210/ChatGPT_Image_Aug_12_2026_01_57_39_PM_et33id.png",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523209/ChatGPT_Image_Aug_12_2026_01_57_55_PM_t6yino.png",
