@@ -1,7 +1,23 @@
 import { supabaseAdmin } from "@/lib/supabase";
-import { MIN_OCCUPANCY, MAX_OCCUPANCY, validateRooms, type RoomInput } from "@/lib/pricingConstants";
+import {
+  MIN_OCCUPANCY,
+  MAX_OCCUPANCY,
+  CHILD_DISCOUNT_RATE,
+  validateRooms,
+  type RoomInput,
+} from "@/lib/pricingConstants";
 
-export { MAX_ROOMS, MIN_OCCUPANCY, MAX_OCCUPANCY, MAX_PROPERTY_GUESTS, validateRooms } from "@/lib/pricingConstants";
+export {
+  MAX_ROOMS,
+  MIN_OCCUPANCY,
+  MAX_OCCUPANCY,
+  MAX_PROPERTY_GUESTS,
+  MAX_CHILDREN_PER_ROOM,
+  CHILD_FREE_UNDER_AGE,
+  CHILD_HALF_PRICE_MAX_AGE,
+  CHILD_DISCOUNT_RATE,
+  validateRooms,
+} from "@/lib/pricingConstants";
 export type { RoomInput } from "@/lib/pricingConstants";
 
 export type BaseRate = { occupancy: number; pricePerPerson: number };
@@ -20,10 +36,13 @@ export type NightBreakdown = {
   rate: number;
   seasonal: boolean;
   seasonLabel: string | null;
+  childrenCharge: number;
 };
 
 export type RoomBreakdown = {
   occupancy: number;
+  children5to10: number;
+  childrenUnder5: number;
   nights: NightBreakdown[];
   subtotal: number;
 };
@@ -71,6 +90,11 @@ function seasonalRateFor(
  * seasonal rate covering that calendar date if one exists for that room's
  * occupancy, otherwise the base per-person rate × occupancy. This means the
  * rate depends only on the stay date, never the date the booking is made.
+ *
+ * Children aged 5–10 are charged CHILD_DISCOUNT_RATE of that night's per-head
+ * tariff (the room's adult rate, divided by occupancy, doesn't change);
+ * children under 5 stay free. Both age groups still count toward the
+ * property's total-guest capacity.
  */
 export function computeQuote(
   checkIn: string,
@@ -94,18 +118,24 @@ export function computeQuote(
       throw new PricingError(`No base rate configured for ${room.occupancy}-guest occupancy.`);
     }
     const baseNightPrice = base.pricePerPerson * room.occupancy;
+    const children5to10 = room.children5to10 ?? 0;
+    const childrenUnder5 = room.childrenUnder5 ?? 0;
 
     const nights: NightBreakdown[] = nightDates.map((date) => {
       const season = seasonalRateFor(date, room.occupancy, seasonalRates);
+      const perHeadRate = season ? season.price / room.occupancy : base.pricePerPerson;
+      const childrenCharge = children5to10 * perHeadRate * CHILD_DISCOUNT_RATE;
       return season
-        ? { date, rate: season.price, seasonal: true, seasonLabel: season.label }
-        : { date, rate: baseNightPrice, seasonal: false, seasonLabel: null };
+        ? { date, rate: season.price, seasonal: true, seasonLabel: season.label, childrenCharge }
+        : { date, rate: baseNightPrice, seasonal: false, seasonLabel: null, childrenCharge };
     });
 
     return {
       occupancy: room.occupancy,
+      children5to10,
+      childrenUnder5,
       nights,
-      subtotal: nights.reduce((sum, n) => sum + n.rate, 0),
+      subtotal: nights.reduce((sum, n) => sum + n.rate + n.childrenCharge, 0),
     };
   });
 
@@ -114,7 +144,10 @@ export function computeQuote(
     checkOut,
     nights: nightDates.length,
     rooms: roomBreakdowns,
-    totalGuests: rooms.reduce((sum, r) => sum + r.occupancy, 0),
+    totalGuests: rooms.reduce(
+      (sum, r) => sum + r.occupancy + (r.children5to10 ?? 0) + (r.childrenUnder5 ?? 0),
+      0
+    ),
     total: roomBreakdowns.reduce((sum, r) => sum + r.subtotal, 0),
   };
 }

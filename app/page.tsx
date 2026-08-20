@@ -4,6 +4,8 @@ import { supabaseAdmin } from "@/lib/supabase";
 import type { ApiPackage } from "@/components/PackagesSection";
 import { fetchUpcomingSeasonalRates, type UpcomingSeason } from "@/lib/pricing";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.naturekingdomhomestay.com/",

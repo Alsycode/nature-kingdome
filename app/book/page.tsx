@@ -6,10 +6,13 @@ import { bookingRef } from "@/lib/bookingRef";
 const MAX_ROOMS = 4;
 const MIN_OCCUPANCY = 1;
 const MAX_OCCUPANCY = 5;
+const MAX_CHILDREN_PER_ROOM = 4;
 
-type NightBreakdown = { date: string; rate: number; seasonal: boolean; seasonLabel: string | null };
-type RoomBreakdown = { occupancy: number; nights: NightBreakdown[]; subtotal: number };
+type NightBreakdown = { date: string; rate: number; seasonal: boolean; seasonLabel: string | null; childrenCharge: number };
+type RoomBreakdown = { occupancy: number; children5to10: number; childrenUnder5: number; nights: NightBreakdown[]; subtotal: number };
 type Quote = { nights: number; rooms: RoomBreakdown[]; totalGuests: number; total: number };
+
+type RoomForm = { occupancy: number; children5to10: number; childrenUnder5: number };
 
 function PriceSpinner() {
   return (
@@ -26,7 +29,9 @@ function BookingForm() {
   const preselectedGuests = Number(searchParams.get("guests")) || 2;
 
   const [blockedDates, setBlockedDates] = useState<Set<string>>(new Set());
-  const [rooms, setRooms] = useState<number[]>([Math.min(Math.max(preselectedGuests, MIN_OCCUPANCY), MAX_OCCUPANCY)]);
+  const [rooms, setRooms] = useState<RoomForm[]>([
+    { occupancy: Math.min(Math.max(preselectedGuests, MIN_OCCUPANCY), MAX_OCCUPANCY), children5to10: 0, childrenUnder5: 0 },
+  ]);
 
   const [form, setForm] = useState({
     guest_name: "",
@@ -49,7 +54,7 @@ function BookingForm() {
       .then((dates: string[]) => setBlockedDates(new Set(dates)));
   }, []);
 
-  const totalGuests = rooms.reduce((sum, o) => sum + o, 0);
+  const totalGuests = rooms.reduce((sum, r) => sum + r.occupancy + r.children5to10 + r.childrenUnder5, 0);
   const datesValid = !!form.check_in && !!form.check_out && form.check_in < form.check_out;
 
   // Live price quote — recomputed whenever dates or room occupancy change.
@@ -64,7 +69,7 @@ function BookingForm() {
       body: JSON.stringify({
         check_in: form.check_in,
         check_out: form.check_out,
-        rooms: rooms.map((occupancy) => ({ occupancy })),
+        rooms,
       }),
       signal: controller.signal,
     })
@@ -81,15 +86,15 @@ function BookingForm() {
 
   function addRoom() {
     if (rooms.length >= MAX_ROOMS) return;
-    setRooms((r) => [...r, MIN_OCCUPANCY]);
+    setRooms((r) => [...r, { occupancy: MIN_OCCUPANCY, children5to10: 0, childrenUnder5: 0 }]);
   }
 
   function removeRoom(index: number) {
     setRooms((r) => r.filter((_, i) => i !== index));
   }
 
-  function setRoomOccupancy(index: number, occupancy: number) {
-    setRooms((r) => r.map((o, i) => (i === index ? occupancy : o)));
+  function updateRoom(index: number, patch: Partial<RoomForm>) {
+    setRooms((r) => r.map((room, i) => (i === index ? { ...room, ...patch } : room)));
   }
 
   function isDateBlocked(dateStr: string) {
@@ -126,7 +131,7 @@ function BookingForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...form,
-        rooms: rooms.map((occupancy) => ({ occupancy })),
+        rooms,
       }),
     });
 
@@ -195,29 +200,51 @@ function BookingForm() {
               <label className="block text-[10px] text-white/40 tracking-wide uppercase">Rooms &amp; Guests</label>
               <span className="text-[10px] text-white/30">{totalGuests} guest{totalGuests > 1 ? "s" : ""} total</span>
             </div>
-            <div className="space-y-2">
-              {rooms.map((occupancy, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <span className="text-xs text-white/40 w-16 flex-shrink-0">Room {i + 1}</span>
-                  <select
-                    value={occupancy}
-                    onChange={(e) => setRoomOccupancy(i, Number(e.target.value))}
-                    className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#e9c349]/50 appearance-none"
-                  >
-                    {Array.from({ length: MAX_OCCUPANCY - MIN_OCCUPANCY + 1 }, (_, k) => MIN_OCCUPANCY + k).map((n) => (
-                      <option key={n} value={n} className="bg-[#0e1a13]">{n} Guest{n > 1 ? "s" : ""}</option>
-                    ))}
-                  </select>
-                  {rooms.length > 1 && (
-                    <button
-                      type="button"
-                      onClick={() => removeRoom(i)}
-                      aria-label="Remove room"
-                      className="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-white/5 text-white/40 rounded-lg hover:bg-red-600/20 hover:text-red-300 transition"
+            <div className="space-y-3">
+              {rooms.map((room, i) => (
+                <div key={i} className="bg-white/[0.02] border border-white/5 rounded-lg p-3 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-white/40 w-16 flex-shrink-0">Room {i + 1}</span>
+                    <select
+                      value={room.occupancy}
+                      onChange={(e) => updateRoom(i, { occupancy: Number(e.target.value) })}
+                      className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#e9c349]/50 appearance-none"
                     >
-                      ✕
-                    </button>
-                  )}
+                      {Array.from({ length: MAX_OCCUPANCY - MIN_OCCUPANCY + 1 }, (_, k) => MIN_OCCUPANCY + k).map((n) => (
+                        <option key={n} value={n} className="bg-[#0e1a13]">{n} Adult{n > 1 ? "s" : ""}</option>
+                      ))}
+                    </select>
+                    {rooms.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => removeRoom(i)}
+                        aria-label="Remove room"
+                        className="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-white/5 text-white/40 rounded-lg hover:bg-red-600/20 hover:text-red-300 transition"
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 pl-[4.5rem]">
+                    <select
+                      value={room.children5to10}
+                      onChange={(e) => updateRoom(i, { children5to10: Number(e.target.value) })}
+                      className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#e9c349]/50 appearance-none"
+                    >
+                      {Array.from({ length: MAX_CHILDREN_PER_ROOM + 1 }, (_, n) => (
+                        <option key={n} value={n} className="bg-[#0e1a13]">{n} Child{n === 1 ? "" : "ren"} (5–10 yrs)</option>
+                      ))}
+                    </select>
+                    <select
+                      value={room.childrenUnder5}
+                      onChange={(e) => updateRoom(i, { childrenUnder5: Number(e.target.value) })}
+                      className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#e9c349]/50 appearance-none"
+                    >
+                      {Array.from({ length: MAX_CHILDREN_PER_ROOM + 1 }, (_, n) => (
+                        <option key={n} value={n} className="bg-[#0e1a13]">{n} Child{n === 1 ? "" : "ren"} (under 5)</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               ))}
             </div>
@@ -230,7 +257,9 @@ function BookingForm() {
                 + Add another room
               </button>
             )}
-            <p className="text-[10px] text-white/25 mt-1.5">Up to {MAX_ROOMS} rooms, {MIN_OCCUPANCY}–{MAX_OCCUPANCY} guests per room.</p>
+            <p className="text-[10px] text-white/25 mt-1.5">
+              Up to {MAX_ROOMS} rooms, {MIN_OCCUPANCY}–{MAX_OCCUPANCY} adults per room. Children 5–10 are charged half the adult tariff, under 5 stay free.
+            </p>
           </div>
 
           {/* Price breakdown */}
@@ -244,12 +273,21 @@ function BookingForm() {
                 {hasSeasonalNight && (
                   <p className="text-[10px] text-[#e9c349] uppercase tracking-wide">Festive season rate applied</p>
                 )}
-                {quote.rooms.map((r, i) => (
-                  <div key={i} className="flex items-center justify-between text-xs text-white/50">
-                    <span>Room {i + 1} · {r.occupancy} guest{r.occupancy > 1 ? "s" : ""} · {quote.nights} night{quote.nights > 1 ? "s" : ""}</span>
-                    <span className="text-white/70">₹{r.subtotal.toLocaleString("en-IN")}</span>
-                  </div>
-                ))}
+                {quote.rooms.map((r, i) => {
+                  const childBits = [
+                    r.children5to10 > 0 ? `${r.children5to10} child${r.children5to10 > 1 ? "ren" : ""} (5–10, half price)` : null,
+                    r.childrenUnder5 > 0 ? `${r.childrenUnder5} child${r.childrenUnder5 > 1 ? "ren" : ""} (under 5, free)` : null,
+                  ].filter(Boolean);
+                  return (
+                    <div key={i} className="flex items-center justify-between text-xs text-white/50">
+                      <span>
+                        Room {i + 1} · {r.occupancy} adult{r.occupancy > 1 ? "s" : ""}
+                        {childBits.length > 0 ? ` · ${childBits.join(", ")}` : ""} · {quote.nights} night{quote.nights > 1 ? "s" : ""}
+                      </span>
+                      <span className="text-white/70">₹{r.subtotal.toLocaleString("en-IN")}</span>
+                    </div>
+                  );
+                })}
                 <div className="flex items-center justify-between pt-2 border-t border-white/10">
                   <span className="text-sm text-white font-medium">Total</span>
                   <span className="text-lg text-[#e9c349] font-semibold">₹{quote.total.toLocaleString("en-IN")}</span>

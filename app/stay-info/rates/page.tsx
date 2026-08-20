@@ -8,6 +8,8 @@ import { fetchUpcomingSeasonalRates } from "@/lib/pricing";
 const BASE_URL = "https://www.naturekingdomhomestay.com";
 const PAGE_URL = `${BASE_URL}/stay-info/rates/`;
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Rates & Packages — Nature Kingdom Homestay",
   description: "Current room rates and stay packages at Nature Kingdom Homestay, Chikmagalur.",

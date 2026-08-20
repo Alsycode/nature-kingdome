@@ -99,6 +99,7 @@ export default function PackageCard({ pkg, index }: PackageCardProps) {
               ₹{pkg.price.toLocaleString("en-IN")}
             </p>
             <p className="font-sans text-[9px] text-on-surface/40 tracking-wide">per person / night</p>
+            <p className="font-sans text-[9px] text-on-surface/30 tracking-wide">Lunch not included</p>
             {pkg.seasonalNote && (
               <p className="font-sans text-[9px] text-[#e9c349]/70 tracking-wide mt-1">
                 Room: ₹{pkg.seasonalNote.price.toLocaleString("en-IN")}/night on {pkg.seasonalNote.dateRange}
