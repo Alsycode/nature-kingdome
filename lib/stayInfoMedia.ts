@@ -7,6 +7,7 @@ export const STAY_INFO_PHOTOS: string[] = [
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523207/ChatGPT_Image_Aug_12_2026_01_57_25_PM_b6t3uw.png",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523207/ChatGPT_Image_Aug_12_2026_01_56_56_PM_cvgmm2.png",
   "https://res.cloudinary.com/ds05t0bd0/image/upload/v1786523512/ChatGPT_Image_Aug_12_2026_02_05_42_PM_fxomup.png",
+  "https://res.cloudinary.com/ds05t0bd0/image/upload/v1787554228/WhatsApp_Image_2026-07-29_at_12.42.55_PM_2_akfvg1.jpg",
 ];
 
 export const STAY_INFO_VIDEOS: string[] = [
